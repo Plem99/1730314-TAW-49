@@ -57,8 +57,8 @@
 		$result = $db->prepare($sql);
 		//La ejecutamos
 		$result->execute([
+	            $_POST['numEmplV'],
 	            $_POST['nombreV'],
-	            $_POST['matriculaV'],
 	            $_POST['emailV'],
 	            $_POST['telefonoV'],
 	            $_POST['carreraV']
