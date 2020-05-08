@@ -54,3 +54,38 @@ function btnEliminarCarrera(id) {
         }
     })
 }
+//Funcion para agregar Alumno
+function registrarCarrera() {
+    var datos = false;
+    var clave = $('#claveCarrera').val();
+    var nombre = $('#nombreCarrera').val();
+
+    if (clave != '' && nombre != '' ) {
+        datos = true;
+    } else {
+        Swal.fire(
+            'Ingresa todos los campos necesarios',
+            'Porfavor ingresa los campos necesarios',
+            'question'
+        )
+    }
+    if (datos) {
+        $.ajax({
+            url: 'includes/backend/registro.php',
+            data: {
+                val:1,
+                claveV: clave,
+                nombreV: nombre
+            },
+            type: 'POST',
+            success: function () {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Carrera Creado',
+                    text: 'Carrera Creado Correctamente.'
+                });
+                tablaCarrera();
+            }
+        });
+    }
+}
