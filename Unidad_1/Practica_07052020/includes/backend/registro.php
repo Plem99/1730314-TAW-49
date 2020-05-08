@@ -53,7 +53,7 @@
 		require_once 'conexion.php';
 		try{
 			//Hacemos la consulta
-		$sql = "INSERT INTO tprofesor (numero_empleado, nombre, email, telefono, id_carrera) VALUES (?,?,?,?,?,?)";
+		$sql = "INSERT INTO tprofesor (numero_empleado, nombre, email, telefono, id_carrera) VALUES (?,?,?,?,?)";
 		$result = $db->prepare($sql);
 		//La ejecutamos
 		$result->execute([
