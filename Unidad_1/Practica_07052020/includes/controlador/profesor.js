@@ -65,3 +65,44 @@ function btnEliminarProfesor(id) {
         }
     })
 }
+//Funcion para agregar Alumno
+function registrarProfesor() {
+    var datos = false;
+    var numEmpl = $('#numEmpleado').val();
+    var nombre = $('#nombreProfesor').val();
+    var email = $('#emailProfesor').val();
+    var telefono = $('#telefonoProfesor').val();
+    var carrera = $('#carrera').val();
+
+    if (numEmpl != '' && nombre != '' && email != '' && telefono != '' && carrera != '') {
+        datos = true;
+    } else {
+        Swal.fire(
+            'Ingresa todos los campos necesarios',
+            'Porfavor ingresa los campos necesarios',
+            'question'
+        )
+    }
+    if (datos) {
+        $.ajax({
+            url: 'includes/backend/registro.php',
+            data: {
+                val:2,
+                numEmplV: numEmpl,
+                nombreV: nombre,
+                emailV: email,
+                telefonoV: telefono,
+                carreraV: carrera
+            },
+            type: 'POST',
+            success: function () {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Profesor Creado',
+                    text: 'Profesor Creado Correctamente.'
+                });
+                tablaProfesor();
+            }
+        });
+    }
+}
