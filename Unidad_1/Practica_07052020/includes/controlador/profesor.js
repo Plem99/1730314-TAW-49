@@ -87,7 +87,7 @@ function registrarProfesor() {
         $.ajax({
             url: 'includes/backend/registro.php',
             data: {
-                val:2,
+                val:3,
                 numEmplV: numEmpl,
                 nombreV: nombre,
                 emailV: email,
