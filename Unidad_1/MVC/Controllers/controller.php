@@ -132,9 +132,9 @@
         1: registroUsuarioModel - OK
         2: ingresoUsuarioModel - OK
         3: vistaUsuarioModel - OK
-        4: editarUsuarioModel
-        5: actualizarUsuarioModel
-        6: borrarUsuarioModel*/
+        4: editarUsuarioModel - OK
+        5: actualizarUsuarioModel - OK
+        6: borrarUsuarioModel - OK*/
     }
 
 ?>
