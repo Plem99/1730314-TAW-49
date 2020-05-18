@@ -9,7 +9,7 @@ require_once "Models/crudProd.php";
 
 require_once "Controllers/controller.php";
 
-//para poder ver el template se hace la peticion mdiante el controlador.
+//para poder ver el template se hace la peticion mediante el controlador.
 
 //Creamos un objeto
 $mvc = new MvcController();
