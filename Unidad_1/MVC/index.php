@@ -5,7 +5,7 @@
 
 require_once "Models/enlaces.php";
 require_once "Models/crud.php";
-require_once "Models/crudProd.php";
+//require_once "Models/crudProd.php";
 
 require_once "Controllers/controller.php";
 

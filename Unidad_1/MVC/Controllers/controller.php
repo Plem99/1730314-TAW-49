@@ -66,7 +66,7 @@
         
         //Controlador de vista de usuarios
         public function vistaUsuarioController(){
-            $respuesta = Datos::vistaUsuariosModel("usuarios");
+            $respuesta = Datos::vistaUsuarioModel("usuarios");
 
             /*El contructor foreach proporciona un modo sencillo de iterar
             sobre arrays, funciona solo con objetos y emitirá un error al intentar
