@@ -21,7 +21,7 @@
             return $module;
 
             //Incluir los URLS de las vistas para cada uno de los parametros
-            //del if respecto a los $enlaces
+            //del if respecto a los  $enlaces
         }
     }
 ?>

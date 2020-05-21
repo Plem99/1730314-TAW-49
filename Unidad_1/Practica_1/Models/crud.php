@@ -43,7 +43,7 @@
             $stmt -> close();
         }
 
-        //Editar Proveedor
+        //Editar  Proveedor
         public function editarProveedorModel($datosModel, $tabla){
             $query = "SELECT id, clave, nombre, rfc, tProveedor, empresa, email FROM $tabla WHERE id = :id";
             $stmt = Conexion::conectar()->prepare($query);

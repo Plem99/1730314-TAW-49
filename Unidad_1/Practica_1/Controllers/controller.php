@@ -147,7 +147,7 @@
             }
         }
         
-        //Controlador de vista de empresa
+        //Controlador de vista de la empresa
         public function vistaEmpresaController(){
             $respuesta = Datos::vistaEmpresaModel("empresa");
 
