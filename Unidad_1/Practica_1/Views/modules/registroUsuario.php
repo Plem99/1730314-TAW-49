@@ -38,7 +38,10 @@
     //Enviar los parámetros del registro al controlador
     $registro = new MvcController();
     $registro -> registroUsuarioController();
-    if(isset($_GET["action"])){
+    if(isset($_GET["registrar"])){
         echo "Registro exitoso";
     }
 ?>
+
+</div>
+</div>

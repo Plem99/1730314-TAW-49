@@ -13,8 +13,8 @@
     </div>
     <div class="col-md-6 col-md-offset-3">
         <div class="form-horizontal" style="">
-<table border="1">
-    <thead>
+<table class="table table-striped">
+    <thead >
         <tr>
             <th>Usuario</th>
             <th>Contraseña</th>

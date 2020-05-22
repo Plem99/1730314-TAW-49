@@ -37,3 +37,5 @@ if(!$_SESSION["validar"]){
         echo "Registro exitoso";
     }
 ?>
+</div>
+</div>
