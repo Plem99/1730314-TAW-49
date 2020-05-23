@@ -33,7 +33,7 @@
         </div>
     </div>
 </form>
-
+  
 <?php
     //Enviar los parámetros del registro al controlador
     $registro = new MvcController();
