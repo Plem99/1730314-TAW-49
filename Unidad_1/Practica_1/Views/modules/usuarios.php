@@ -22,7 +22,7 @@
             <th>Editar</th>
             <th>Borrar</th>
         </tr>
-    </thead>
+    </thead> 
     <tbody>
     <?php
         $vistaUsuario = new MvcController();
