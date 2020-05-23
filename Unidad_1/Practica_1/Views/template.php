@@ -3,7 +3,7 @@
 <html lang="en">
     <head>
     <meta charset="UTF-8">
-    <title>Template</title>
+    <title>Practica 1</title>
     <link rel="stylesheet" type="text/css" href="Views/style/css/bootstrap.min.css">
     </head>
 

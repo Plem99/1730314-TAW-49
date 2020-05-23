@@ -8,7 +8,7 @@
 
 <div class="container">
     <div class="jumbotron">
-        <h2> Lista de Usuarios </h2>
+        <h2> Lista de Categorias </h2>
 
     </div>
     <div class="col-md-6 col-md-offset-3">
@@ -16,18 +16,17 @@
 <table class="table table-striped">
     <thead >
         <tr>
-            <th>Usuario</th>
-            <th>Contraseña</th>
-            <th>Email</th>
+            <th>ID</th>
+            <th>Nombre</th>
             <th>Editar</th>
             <th>Borrar</th>
         </tr>
     </thead> 
     <tbody>
     <?php
-        $vistaUsuario = new MvcController();
-        $vistaUsuario -> vistaUsuarioController();
-        $vistaUsuario -> borrarUsuarioController();
+        $vistaCategoria = new MvcController();
+        $vistaCategoria -> vistaCategoriaController();
+        $vistaCategoria -> borrarCategoriaController();
     ?>
     </tbody>
 </table>

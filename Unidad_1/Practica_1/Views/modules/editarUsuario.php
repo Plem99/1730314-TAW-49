@@ -7,7 +7,7 @@ if(!$_SESSION["validar"]){
 ?>
 <div class="container">
     <div class="jumbotron">
-        <h2> Editar Empresa </h2>
+        <h2> Editar Usuario </h2>
 
     </div>
     <div class="col-md-6 col-md-offset-3">
@@ -15,10 +15,11 @@ if(!$_SESSION["validar"]){
 <form method="post">
     
     <?php
-    $editarEmpresa = new MvcController();
-    $editarEmpresa -> editarEmpresaController(); 
-    $editarEmpresa -> actualizarEmpresaController();
+    $editarUsuario = new MvcController();
+    $editarUsuario -> editarUsuarioController();
+    $editarUsuario -> actualizarUsuarioController();
     ?>
 </form>
+
 </div>
 </div>

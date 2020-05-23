@@ -13,16 +13,32 @@
             <ul class="nav navbar-nav">
             <!--Se utiliza el metodo GET para navegar, en el URL se representa por el
             simbolo de interrogacion-->
-            <li><a href="index.php?action=ingresar">Ingresar</a></li>
+            <?php
+            //Validamos si existe una sesion, de no ser asi solo se mostraran 2 opciones
+              session_start();
+              //$_SESSION["validar"] = false;
+              if(isset($_SESSION["validar"])){
+            ?>
             <li><a href="index.php?action=registroUsuario">Registro Usuario</a></li>
             <li><a href="index.php?action=usuarios">Usuarios</a></li>
             <li><a href="index.php?action=registroProveedor">Registro Proveedor</a></li>
+            <li><a href="index.php?action=proveedores">Proveedores</a></li>
             <li><a href="index.php?action=registroEmpresa">Registro Empresa</a></li>
+            <li><a href="index.php?action=empresas">Empresas</a></li>
             <li><a href="index.php?action=registroCategoria">Registro Categoria</a></li>
-            <li><a href="index.php?action=proveedor">Proveedores</a></li>
-            <li><a href="index.php?action=empresa">Empresas</a></li>
-            <li><a href="index.php?action=categoria">Categorias</a></li>
+            <li><a href="index.php?action=categorias">Categorias</a></li>
             <li><a href="index.php?action=salir">Salir</a></li>
+            <?php
+            }else{
+            ?>
+            <li><a href="index.php?action=ingresar">Ingresar</a></li>
+            <li><a href="index.php?action=registroUsuario">Registro Usuario</a></li>
+            <?php  
+              //echo "No haz iniciado sesion";
+            }
+            ?>
+            
+            
             </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->

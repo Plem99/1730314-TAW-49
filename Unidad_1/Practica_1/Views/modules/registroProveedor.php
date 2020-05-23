@@ -1,9 +1,15 @@
 <?php
-session_start();
+//session_start();
 if(!$_SESSION["validar"]){
     header("location:index.php?action=ingresar");
     exit();
 }
+include_once 'Models/conexion2.php';
+$sql= "SELECT * FROM tempresa";
+$result = $link->query($sql);
+
+$sql2= "SELECT * FROM tcategoria";
+$result2 = $link->query($sql2);
 ?>
 <div class="container">
     <div class="jumbotron">
@@ -36,13 +42,25 @@ if(!$_SESSION["validar"]){
     <div class="form-group">
         <label class=" col-sm-2 control-label" for="txt_id">Tipo de Proveedor: </label>
         <div class="col-sm-10">
-            <input type="text" placeholder = "Tipo de Proveedor"  class="form-control" name="tProveedorRegistro" required>
-        </div>
+        <select class="form-control" name="categoriaRegistro">
+                <?php
+                    while($row = $result2->fetch(PDO::FETCH_ASSOC)){
+                        echo "<option value=".$row['id']." >".$row['nombre']."</option>";
+                    }
+                ?>
+            </select>        
+            </div>
     </div>
     <div class="form-group">
         <label class=" col-sm-2 control-label" for="txt_id">Empresa: </label>
         <div class="col-sm-10">
-            <input type="text" placeholder = "Empresa"  class="form-control" name="empresaRegistro" required>
+            <select class="form-control" name="empresaRegistro">
+                <?php
+                    while($row = $result->fetch(PDO::FETCH_ASSOC)){
+                        echo "<option value=".$row['id']." >".$row['nombre']."</option>";
+                    }
+                ?>
+            </select>
         </div>
     </div>
     <div class="form-group">
@@ -63,7 +81,7 @@ if(!$_SESSION["validar"]){
     //Enviar los parámetros del registro al controlador
     $registro = new MvcController();
     $registro -> registroProveedorController();
-    if(isset($_GET["action"])){
+    if(isset($_GET["registrar"])){
         echo "Registro exitoso";
     }
 ?>
