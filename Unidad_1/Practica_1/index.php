@@ -1,3 +1,4 @@
+
 <?php
 /*El index, en el mostraremos la salida de las vistas al usuario y tambien
  a traves de el enviaremos als distintas acciones que el usuario envie al controlador

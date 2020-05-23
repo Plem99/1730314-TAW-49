@@ -1,7 +1,7 @@
 <?php
 class Database
 {
-    private static $dbName = 'datos' ;
+    private static $dbName = 'practica1' ;
     private static $dbHost = 'localhost' ;
     private static $dbUsername = 'root';
     private static $dbUserPassword = '';

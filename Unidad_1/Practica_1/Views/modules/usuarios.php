@@ -2,10 +2,17 @@
     session_start();
     if(!$_SESSION["validar"]){
         header("location: index.php?action=ingresar");
+        exit();
     }
 ?>
 
-<h1>Listado de Usuarios</h1>
+<div class="container">
+    <div class="jumbotron">
+        <h2> Lista de Usuarios </h2>
+
+    </div>
+    <div class="col-md-6 col-md-offset-3">
+        <div class="form-horizontal" style="">
 <table border="1">
     <thead>
         <tr>
@@ -25,9 +32,11 @@
     </tbody>
 </table>
 <?php
-    if(isset($_GET["action"])){
+    /*if(isset($_GET["action"])){
         if($_GET["action"] == "cambio"){
             echo "Cambio exitoso";
         }
-    }
+    }*/
 ?>
+</div>
+</div>

@@ -1,13 +1,13 @@
 <?php
-    session_start();
-    if(!$_SESSION["validar"]){
-        header("location:index.php?action=ingresar");
-        exit();
-    }
+session_start();
+if(!$_SESSION["validar"]){
+    header("location:index.php?action=ingresar");
+    exit();
+}
 ?>
 <div class="container">
     <div class="jumbotron">
-        <h2> Registro de la Empresa </h2>
+        <h2> Registro de Categoria del Proveedor </h2>
 
     </div>
     <div class="col-md-6 col-md-offset-3">
@@ -32,10 +32,8 @@
 <?php
     //Enviar los parámetros del registro al controlador
     $registro = new MvcController();
-    $registro -> registroEmpresaController();
-    if(isset($_GET["action"])){
+    $registro -> registroCategoriaController();
+    if(isset($_GET["registrar"])){
         echo "Registro exitoso";
     }
 ?>
-</div>
-</div>
