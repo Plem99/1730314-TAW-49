@@ -31,3 +31,16 @@ CREATE TABLE tproveedor(
     FOREIGN KEY (id_empresa) REFERENCES tempresa (id),
     FOREIGN KEY (id_categoria) REFERENCES tcategoria (id)
 );
+/*-------------------------*/
+/*Tabla para el historial*/
+CREATE TABLE thistorial(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    clave VARCHAR(45),
+    nombre VARCHAR(45),
+    rfc VARCHAR(45),
+    email VARCHAR(45),
+    id_empresa INT,
+    id_categoria INT,
+    FOREIGN KEY (id_empresa) REFERENCES tempresa (id),
+    FOREIGN KEY (id_categoria) REFERENCES tcategoria (id)
+);
