@@ -39,6 +39,27 @@
                 }
             }
         } 
+
+        //Controlador de vista de Usuario
+        public function vistaUsuarioController(){
+            $respuesta = Datos::vistaUsuarioModel("tusuario");
+
+            /*El contructor foreach proporciona un modo sencillo de iterar
+            sobre arrays, funciona solo con objetos y emitirá un error al intentar
+            con una propiedad diferente o no inicializada*/
+            foreach($respuesta as $row => $item){
+                echo'<tr>
+                    <td><a href="index.php?action=editarUsuario&id='.$item["id"].'"><button class="btn btn-success">Editar</button></a></td>
+                    <td><a href="index.php?action=usuarios&idBorrar='.$item["id"].'"><button class="btn btn-danger">Borrar</button></a></td>
+                    <td>'.$item["firstname"].'</td>
+                    <td>'.$item["lastname"].'</td>
+                    <td>'.$item["user_name"].'</td>
+                    <td>'.$item["user_email"].'</td>
+                    <td>'.$item["date_added"].'</td>
+                    </tr>';
+            }
+        }
+
         //Controlador registro de Usuario
         public function registroUsuarioController(){
             if(isset($_POST["usuarioRegistro"])){
@@ -65,23 +86,7 @@
             }
         }
         
-        //Controlador de vista de Usuario
-        public function vistaUsuarioController(){
-            $respuesta = Datos::vistaUsuarioModel("tusuario");
-
-            /*El contructor foreach proporciona un modo sencillo de iterar
-            sobre arrays, funciona solo con objetos y emitirá un error al intentar
-            con una propiedad diferente o no inicializada*/
-            foreach($respuesta as $row => $item){
-                echo'<tr>
-                    <td>'.$item["usuario"].'</td>
-                    <td>'.$item["contrasena"].'</td>
-                    <td>'.$item["email"].'</td>
-                    <td><a href="index.php?action=editarUsuario&id='.$item["id"].'"><button class="btn btn-success">Editar</button></a></td>
-                    <td><a href="index.php?action=usuarios&idBorrar='.$item["id"].'"><button class="btn btn-danger">Borrar</button></a></td>
-                    </tr>';
-            }
-        }
+        
 
         //Controlador para editar Usuario (obtener datos)
         public function editarUsuarioController(){
