@@ -73,6 +73,18 @@
             }
             $stmt->close();
         }
+
+        /*-- Este modelo sirve para eliminar a un usuario de la base de datos --*/
+        public function eliminarUserModel($datosModel, $tabla) {
+            $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE user_id = :id");
+            $stmt->bindParam(":id",$datosModel,PDO::PARAM_INT);
+            if ($stmt->execute()) {
+                return "success";
+            } else {
+                return "error";
+            }
+            $stmt->close();
+        }
         
 
         //******************************************************************************/
