@@ -25,7 +25,7 @@
                     "user"=>$_POST["txtUser"],
                     "password"=>$_POST["txtPassword"]
                 );
-                $respuesta = Datos::ingresoUsuarioModel($datosController,"tusuario");
+                $respuesta = Datos::ingresoUsuarioModel($datosController,"users");
                 //Validacion de la respuesta del modelo para ver si es un usuario correcto
                 if($respuesta["user"] == $_POST["txtUser"] &&
                     password_verify($_POST["txtPassword"], $respuesta["password"]){
@@ -42,7 +42,7 @@
 
         //Controlador de vista de Usuario
         public function vistaUsuarioController(){
-            $respuesta = Datos::vistaUsuarioModel("tusuario");
+            $respuesta = Datos::vistaUsuarioModel("users");
 
             /*El contructor foreach proporciona un modo sencillo de iterar
             sobre arrays, funciona solo con objetos y emitirá un error al intentar
@@ -62,102 +62,206 @@
 
         //Controlador registro de Usuario
         public function registroUsuarioController(){
-            if(isset($_POST["usuarioRegistro"])){
-                /*Recibe a traves del método post el "name" (html), 
-                se almacenaran los datos
-                en una variable de tipo array con sus respectivas propiedades*/
-                $datosController = array(
-                    "usuario"=>$_POST["usuarioRegistro"],
-                    "contrasena"=>$_POST["contrasenaRegistro"],
-                    "email"=>$_POST["emailRegistro"]
-                );
-                /*Se le dice a un modelo llamado registroUsuarioModel
-                los datos que se van almacenar, recibirá 2 prámetros:
-                $datosController y el nombre de la tabla a la que hay
-                que ir a guardar los datos*/
-                $respuesta = Datos::registroUsuarioModel($datosController,"tusuario");
-                
-                //Se imprime en la vista la respuesta del modelo
-                if($respuesta == "success"){
-                    header("location:index.php?action=ok");
+            ?>
+            <div class="col-md-6 mt-3">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h4><b>Registro</b> de Usuarios</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post" action="index.php?action=usuarios">
+                        <div class="form-group">
+                            <label for="nusuariotxt">Nombre: </label>
+                            <input class="form-control" type="text" name="nusuariotxt" id="nusuariotxt" placeholder="Ingrese el nombre" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="ausuariotxt">Apellido: </label>
+                            <input class="form-control" type="text" name="ausuariotxt" id="ausuariotxt" placeholder="Ingrese el apellido" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="usuariotxt">Usuario: </label>
+                            <input class="form-control" type="text" name="usuariotxt" id="usuariotxt" placeholder="Ingrese el usuario" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="ucontratxt">Contraseña: </label>
+                            <input class="form-control" type="password" name="ucontratxt" id="ucontratxt" placeholder="Ingrese la contraseña" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="uemailtxt">Correo Electrónico: </label>
+                            <input class="form-control" type="email" name="uemailtxt" id="uemailtxt" placeholder="Ingrese el correo electrónico" required />
+                        </div>
+                        <button class="btn btn-primary" type="submit">Agregar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <?php
+        }
+
+        public function insertarUserController(){
+            if(isset($_POST["nusuariotxt"])){
+                //Encriptar la ontraseña
+                $_POST["ucontratxt"] = password_hash($_POST["ucontatxt"]  PASSWPRD_DEFAULT);
+                //Almacenar en un array los valores de los textos del metodod "registrarUserController"
+                $datosController = array("nusuario"=>$_POST["nusuariotext"],"ausuario"=>$_POST["ausuariotxt"],
+            "usuario"=>$_POST["usuariotxt"],"contra"=>$_POST["ucontratxt"],"email"=>$_POST["uemailtxt"]);
+                //Enviar datos al modelo
+                $respuesta = Datos::insertarUserModel($datosController,"users");
+
+                //Respuesta del modelo
+                if($respuesta=="success"){
+                    echo '
+                        <div class="col-md-6 mt-3">
+                            <div class="alert alert-success alert-dismissible">
+                                <button class="close" type="button" data-dismiss="alert" aria-hidden="true">x</button>
+                                <h5>
+                                    <i class="icon fas fa-check"></i>
+                                    ¡Exito!
+                                </h5>
+                                Usuario Agregado con Éxito
+                            </div>
+                        </div>
+                    ';
                 }else{
-                    header("location:index.php?action=inicio");
+                    echo '
+                        <div class="col-md-6 mt-3">
+                            <div class="alert alert-success alert-dismissible">
+                                <button class="close" type="button" data-dismiss="alert" aria-hidden="true">x</button>
+                                <h5>
+                                    <i class="icon fas fa-check"></i>
+                                    ¡Error!
+                                </h5>
+                                Se ha producido un error al momento de agregar al usuario, intente de nuevo
+                            </div>
+                        </div>
+                    ';
                 }
             }
         }
         
-        
-
-        //Controlador para editar Usuario (obtener datos)
-        public function editarUsuarioController(){
-            $datosController = $_GET["id"];
-            $respuesta = Datos::editarUsuarioModel($datosController,"tusuario");
-
-            echo '
-            <input type="hidden" value=" '.$respuesta["id"].' " class="form-control" name="idEditar">
-        
-            <div class="form-group">
-                <label class=" col-sm-2 control-label" for="txt_id">Usuario: </label>
-                <div class="col-sm-10">
-                    <input type="text" value=" '.$respuesta["usuario"].' " class="form-control" name="usuarioEditar">
+        /*-- Este controlador se encarga de mostrar el formulario al usuario para editar sus datos, la contraseña no se carga debido a que como esta encriptada, no es optimo mostrarle al usuario su contraseña como una cadena de caracteres y se deja
+        en blanco, pero se verifica al momento de hacer una modifica que haya ingresado una contraseña, si no es el caso entonces no se podrá ejecutar la modificación y cada que se quiera hacer una modificación a un determinado usuario, se deberá
+        ingresar tambien una nueva contraseña --*/ 
+        public function editarUserController() { 
+            $datosController = $_GET["idUserEditar"]; //envío de datos al mododelo 
+            $respuesta = Datos::editarUserModel($datosController,"users");
+                ?>
+                <div class="col-md-6 mt-3">
+                <div class="card card-warning">
+                    <div class="card-header">
+                        <h4><b>Editor</b> de Usuarios</h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" action="index.php?action=usuarios">
+                            <div class="form-group"><input type="hidden" name="idUserEditar" class="form-control" value="<?php echo $respuesta["id"]; ?>" required></div>
+                            <div class="form-group">
+                                <label for="nusuariotxtEditar">Nombre: </label>
+                                <input class="form-control" type="text" name="nusuariotxtEditar" id="nusuariotxtEditar" placeholder="Ingrese el nuevo nombre" value="<?php echo $respuesta["nusuario"]; ?>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="ausuariotxtEditar">Apellido: </label>
+                                <input class="form-control" type="text" name="ausuariotxtEditar" id="ausuariotxtEditar" placeholder="Ingrese el nuevo apellido" value="<?php echo $respuesta["ausuario"]; ?>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="usuariotxtEditar">Usuario: </label>
+                                <input class="form-control" type="text" name="usuariotxtEditar" id="usuariotxtEditar" placeholder="Ingrese el nuevo usuario" value="<?php echo $respuesta["usuario"]; ?>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contratxtEditar">Contraseña: </label>
+                                <input class="form-control" type="password" name="contratxtEditar" id="contratxtEditar" placeholder="Ingrese la nueva contraseña" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="uemailtxtEditar">Correo Electrónico: </label>
+                                <input class="form-control" type="email" name="uemailtxtEditar" id="uemailtxtEditar" placeholder="Ingrese el nuevo correo electrónico" value="<?php echo $respuesta["email"]; ?>" required>
+                            </div>
+                            <button class="btn btn-primary" type="submit">Editar</button>
+                        </form>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <label class=" col-sm-2 control-label" for="txt_id">Contraseña: </label>
-                <div class="col-sm-10">
-                    <input type="password" value=" '.$respuesta["contrasena"].' " class="form-control" name="contrasenaEditar">
                 </div>
-            </div>
-            <div class="form-group">
-                <label class=" col-sm-2 control-label" for="txt_id">Email: </label>
-                <div class="col-sm-10">
-                    <input type="text" value=" '.$respuesta["email"].' " class="form-control" name="emailEditar">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-12 col-md-off-set-3">
-                    <input type="submit" class="btn btn-primary form-control" value="Actualizar">     
-                </div>
-            </div>
-            ';
+                <?php
         }
 
-        //Controlador para actualizr Usuario
-        public function actualizarUsuarioController(){
-            if(isset($_POST["usuarioEditar"])){
-                $datosController = array(
-                    "id"=>$_POST["idEditar"],
-                    "usuario"=>$_POST["usuarioEditar"],
-                    "contrasena"=>$_POST["contrasenaEditar"],
-                    "email"=>$_POST["emailEditar"]
-                );
-                $respuesta = Datos::actualizarUsuarioModel($datosController,"tusuario");
-
-                //Recibimos respuesta del modelo
-                if($respuesta == "success"){
-                    header("location:index.php?action=usuarios");
+        //Controlador para actualizar Usuario
+        public function actualizarUserController(){
+            if(isset($_POST["nusuariotxtEditar"])){
+                //Encriptar la ontraseña
+                $_POST["contratxtEditar"] = password_hash($_POST["contatxtEditar"]  PASSWORD_DEFAULT);
+                //Almacenar en un array los valores de los textos del metodod "registrarUserController"
+                $datosController = array("id"=>$_POST["idUserEditar"],"usuario"=>$_POST["nusuariotxtEditar"],
+            "ausuario"=>$_POST["ausuariotxtEditar"],"usuario"=>$_POST["usuariotxtEditar"],"contra"=>$_POST["contratxtEditar"],"email"=>$_POST["uemailtxtEditar"]);
+                
+                //Enviar datos al modelo
+                $respuesta = Datos::actualizarUserModel($datosController,"users");
+                //Respuesta del modelo
+                if($respuesta=="success"){
+                    echo '
+                        <div class="col-md-6 mt-3">
+                            <div class="alert alert-success alert-dismissible">
+                                <button class="close" type="button" data-dismiss="alert" aria-hidden="true">x</button>
+                                <h5>
+                                    <i class="icon fas fa-check"></i>
+                                    ¡Exito!
+                                </h5>
+                                Usuario Editado con Éxito
+                            </div>
+                        </div>
+                    ';
                 }else{
-                    echo "Error";
+                    echo '
+                        <div class="col-md-6 mt-3">
+                            <div class="alert alert-success alert-dismissible">
+                                <button class="close" type="button" data-dismiss="alert" aria-hidden="true">x</button>
+                                <h5>
+                                    <i class="icon fas fa-check"></i>
+                                    ¡Error!
+                                </h5>
+                                Se ha producido un error al momento de editar al usuario, intente de nuevo
+                            </div>
+                        </div>
+                    ';
                 }
             }
         }
 
         //Controlador para borrar Usuario
-        public function borrarUsuarioController(){
-            if(isset($_GET["idBorrar"])){
+        public function eliminarUserController(){
+            if(isset($_POST["idBorrar"])){
+                //Almacenar en un array los valores de los textos del metodod "registrarUserController"
                 $datosController = $_GET["idBorrar"];
-                $respuesta = Datos::borrarUsuarioModel($datosController,"tusuario");
-                //Recibimos respuesta del modelo
-                if($respuesta == "success"){
-                    header("location:index.php?action=usuarios");
+                //Enviar datos al modelo
+                $respuesta = Datos::eliminarUserModel($datosController,"users");
+                //Respuesta del modelo
+                if($respuesta=="success"){
+                    echo '
+                        <div class="col-md-6 mt-3">
+                            <div class="alert alert-success alert-dismissible">
+                                <button class="close" type="button" data-dismiss="alert" aria-hidden="true">x</button>
+                                <h5>
+                                    <i class="icon fas fa-check"></i>
+                                    ¡Exito!
+                                </h5>
+                                Usuario Eliminado con Éxito
+                            </div>
+                        </div>
+                    ';
                 }else{
-                    echo "Error";
+                    echo '
+                        <div class="col-md-6 mt-3">
+                            <div class="alert alert-success alert-dismissible">
+                                <button class="close" type="button" data-dismiss="alert" aria-hidden="true">x</button>
+                                <h5>
+                                    <i class="icon fas fa-check"></i>
+                                    ¡Error!
+                                </h5>
+                                Se ha producido un error al momento de Eliminar al usuario, intente de nuevo
+                            </div>
+                        </div>
+                    ';
                 }
             }
         }
         //******************************************************************************/
-                //******************************************************************************/
-        
     }
 
 ?>

@@ -1,38 +1,37 @@
-<div class="container">
-    <div class="jumbotron">
-        <h2> Registro de Usuarios </h2>
-
-    </div>
-    <div class="col-md-6 col-md-offset-3">
-        <div class="form-horizontal" style="">
-
-
-<form method="post">
-    <div class="form-group">
-        <label class=" col-sm-2 control-label" for="txt_id">Nombre: </label>
-        <div class="col-sm-10">
-            <input type="text" placeholder = "Nombre"  class="form-control" name="usuarioRegistro" required>
+<div class="col-md-6 mt-3">
+    <div class="card card-primary">
+        <div class="card-header">
+            <h4><b>Registro</b> de Usuarios</h4>
+        </div>
+        <div class="card-body">
+            <form method="post" action="index.php?action=usuarios">
+                <div class="form-group">
+                    <label for="nusuariotxt">Nombre: </label>
+                    <input class="form-control" type="text" name="nusuariotxt" id="nusuariotxt" placeholder="Ingrese el nombre" required />
+                </div>
+                <div class="form-group">
+                    <label for="ausuariotxt">Apellido: </label>
+                    <input class="form-control" type="text" name="ausuariotxt" id="ausuariotxt" placeholder="Ingrese el apellido" required />
+                </div>
+                <div class="form-group">
+                    <label for="usuariotxt">Usuario: </label>
+                    <input class="form-control" type="text" name="usuariotxt" id="usuariotxt" placeholder="Ingrese el usuario" required />
+                </div>
+                <div class="form-group">
+                    <label for="ucontratxt">Contraseña: </label>
+                    <input class="form-control" type="password" name="ucontratxt" id="ucontratxt" placeholder="Ingrese la contraseña" required />
+                </div>
+                <div class="form-group">
+                    <label for="uemailtxt">Correo Electrónico: </label>
+                    <input class="form-control" type="email" name="uemailtxt" id="uemailtxt" placeholder="Ingrese el correo electrónico" required />
+                </div>
+                <button class="btn btn-primary" type="submit">Agregar</button>
+            </form>
         </div>
     </div>
-    <div class="form-group">
-        <label class=" col-sm-2 control-label" for="txt_id">Contraseña: </label>
-        <div class="col-sm-10">
-            <input type="password" placeholder = "Contraseña"  class="form-control" name="contrasenaRegistro" required>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class=" col-sm-2 control-label" for="txt_id">Email: </label>
-        <div class="col-sm-10">
-            <input type="text" placeholder = "Email"  class="form-control" name="emailRegistro" required>
-        </div>
-    </div>
+</div>
 
-    <div class="form-group">
-        <div class="col-md-12 col-md-off-set-3">
-            <input type="submit" class="btn btn-primary form-control" name="" value="registrar">     
-        </div>
-    </div>
-</form>
+
   
 <?php
     //Enviar los parámetros del registro al controlador
