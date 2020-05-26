@@ -53,6 +53,26 @@
             return $stmt->fetch();
             $stmt->close();
         }
+
+         /*-- Este modelo sirve para guardar los cambios hechos a un usuarios en particular --*/
+         public function actualizarUserModel($datosModel, $tabla) {
+            
+            //Sentencia de PDO para ejecutar la actualzación del usuario
+            $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET firstname = :nusuario, lastname = :ausuario, user_name = :usuario, user_password = :contra, user_email = :email WHERE user_id = :id");
+            
+            $stmt -> bindParam(":nusuario",$datosModel["nusuario"],PDO::PARAM_STR);
+            $stmt -> bindParam(":ausuario",$datosModel["ausuario"],PDO::PARAM_STR);
+            $stmt -> bindParam(":usuario",$datosModel["usuario"],PDO::PARAM_STR);
+            $stmt -> bindParam(":contra",$datosModel["contra"],PDO::PARAM_STR);
+            $stmt -> bindParam(":email",$datosModel["email"],PDO::PARAM_STR);
+            $stmt -> bindParam(":id",$datosModel["id"],PDO::PARAM_INT);
+            if ($stmt->execute()) {
+                return "success";
+            } else {
+                return "error";
+            }
+            $stmt->close();
+        }
         
 
         //******************************************************************************/
