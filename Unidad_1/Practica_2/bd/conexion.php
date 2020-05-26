@@ -2,9 +2,9 @@
 class Database
 {
     private static $dbName = 'practica2' ;
-    private static $dbHost = 'localhost' ;
-    private static $dbUsername = 'root';
-    private static $dbUserPassword = 'pedromartinez99';
+    private static $dbHost = 'ameb.tech' ;
+    private static $dbUsername = 'plem';
+    private static $dbUserPassword = 'practica2pass';
      
     private static $cont  = null;
      
