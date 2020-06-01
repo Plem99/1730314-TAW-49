@@ -85,10 +85,25 @@
             }
             $stmt->close();
         }
-        
-
         //******************************************************************************/
-
+        public function contarFilasModel($tabla){
+            $stmt = Conexion::conectar()->prepare("SELECT COUNT(*) AS 'filas' FROM $tabla");
+            $stmt->execute();
+            return $stmt->fetch();
+            $stmt->close();
+        }
+        public function sumarGananciaModel($tabla){
+            $stmt = Conexion::Conectar()->prepare("SELECT SUM(amount) AS 'total' FROM $tabla");
+            $stmt->execute();
+            return $stmt->fetch();
+            $stmt->close();
+        }
+        public function obtenerProductsModel($tabla){
+            $stmt = Conexion::Conectar()->prepare("SELECT id_product AS 'id', name_product AS 'nproducto', price_product AS 'nprecio' FROM $tabla WHERE stock >= 1");
+            $stmt->execute();
+            return $stmt->fetch();
+            $stmt->close();
+        }
     }
 
 ?>

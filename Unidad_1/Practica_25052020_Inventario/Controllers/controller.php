@@ -262,6 +262,63 @@
             }
         }
         //******************************************************************************/
-    }
-
+        //CONTROLADORES PARA EL TABLERO //
+        //-- Este controlador sirve para mostrarle al usuario las cajas donde se tiene información sobre los usuarios, productos y ventas registradas, así como los movimientos que se tienen en el historial (altas/bajas de productos) y las ganancias que se tienen de acuerdo a todas las ventas --/
+        public function contarFilas () {
+            $respuesta_users = Datos::contarFilasModel("users");
+            $respuesta_products = Datos::contarFilasModel("products");
+            $respuesta_categories = Datos::contarFilasModel("categories");
+            $respuesta_historial = Datos::contarFilasModel("historial");
+            echo '
+                            <div class="col-lg-3 col-6">
+                                <div class="small-box bg-info">
+                                    <div class="inner">
+                                        <h3>'.$respuesta_users["filas"].'</h3>
+                                        <p>Total de Usuarios</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="far fa-address-card"></i>
+                                    </div>
+                                    <a class="small-box-footer" href="index.php?action=usuarios">Más <i class="fas fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+            <div class="col-lg-3 col-6">
+                                <div class="small-box bg-teal">
+                                    <div class="inner">
+                                        <h3>'.$respuesta_products["filas"].'</h3>
+                                        <p>Total de Productos</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="fas fa-box"></i>
+                                    </div>
+                                    <a class="small-box-footer" href="index.php?action=inventario">Más <i class="fas fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+            <div class="col-lg-3 col-6">
+                                <div class="small-box bg-olive">
+                                    <div class="inner">
+                                        <h3>'.$respuesta_categories["filas"].'</h3>
+                                        <p>Total de Categorías</p>
+                                    </div>
+                                    <div class="icon">
+                                    <i class="fas fa-tag"></i>
+                                    </div>
+                                    <a class="small-box-footer" href="index.php?action=categorias">Más <i class="fas fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+            <div class="col-lg-3 col-6">
+                                <div class="small-box bg-gray">
+                                    <div class="inner">
+                                        <h3>'.$respuesta_historial["filas"].'</h3>
+                                        <p>Movimientos en el Inventario</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="fas fa-archive"></i>
+                                    </div>
+                                    <a class="small-box-footer" href="index.php?action=inventario">Más <i class="fas fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+            ';
+                }
+            }
 ?>

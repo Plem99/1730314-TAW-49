@@ -1,43 +1,50 @@
-<div class="container">
-    <div class="jumbotron">
-        <h2> Ingresar </h2>
+<div class="login-box">
+    <div class="login-logo">
+        <a href="index.php"><b> Sistema de </b> Inventario</a>
+    <div>
+    <!--./Login Logo-->
+    <div class="card">
+        <div class="card-body login-card-boy">
+            <p class="login-box-msg">Login</p>
+            <form method="post">
+                <div class="input-group mb-3">
+                <input type="text" name="txtUser" class="form-control" placeholder="username">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-user">
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="password" name="txtPassword" class="form-control" placeholder="Password">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lack"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
 
-    </div>
-    <div class="col-md-6 col-md-offset-3">
-        <div class="form-horizontal" style="">
-
-<form method="post">
-
-    <div class="form-group">
-        <label class=" col-sm-2 control-label" for="txt_id">Usuario: </label>
-        <div class="col-sm-10">
-            <input type="text" placeholder = "Usuario"  class="form-control" name="usuarioIngreso" required>
+                    <!--./col-->
+                    <div class="col-12">
+                        <button class="btn btn-primary btn-block btn-flat" type="submit">Iniciar Sesion</button>
+                    </div>
+                    <!--./col-->
+                    </div>
+                </form>
+            </div>
+            <!--./login-card-body-->
         </div>
     </div>
-
-    <div class="form-group">
-        <label class=" col-sm-2 control-label" for="txt_id">Contraseña: </label>
-        <div class="col-sm-10">
-            <input type="password" placeholder = "Contraseña"  class="form-control" name="contrasenaIngreso" required>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-12 col-md-off-set-3">
-            <input type="submit" class="btn btn-primary form-control" name="" value="Enviar">     
-        </div>
-    </div>
-</form>
-
-<?php
+    <!--./login-box-->
+    <?php
+    //Llamada al controlador que verifica el inicio de sesion
     $ingreso = new MvcController();
     $ingreso -> ingresoUsuarioController();
-    if(isset($_GET["action"])){
-        if($_GET["action"] == "fallo"){
+    if(isset($_GET["res"])){
+        if($_GET["res"] == "fallo"){
             echo "Fallo al ingresar";
         }
     }
-?>
 
-</div>
-    </div>
+    ?>
