@@ -28,7 +28,7 @@
                 $respuesta = Datos::ingresoUsuarioModel($datosController,"users");
                 //Validacion de la respuesta del modelo para ver si es un usuario correcto
                 if($respuesta["user"] == $_POST["txtUser"] &&
-                    password_verify($_POST["txtPassword"], $respuesta["password"]){
+                    password_verify($_POST["txtPassword"], $respuesta["password"])){
                     session_start();
                     $_SESSION["validar"] = true;
                     $_SESSION["nombre_usuario"] = $respuesta["nombre_usuario"];
@@ -101,7 +101,7 @@
         public function insertarUserController(){
             if(isset($_POST["nusuariotxt"])){
                 //Encriptar la ontraseña
-                $_POST["ucontratxt"] = password_hash($_POST["ucontatxt"]  PASSWPRD_DEFAULT);
+                $_POST["ucontratxt"] = password_hash($_POST["ucontatxt"], PASSWORD_DEFAULT);
                 //Almacenar en un array los valores de los textos del metodod "registrarUserController"
                 $datosController = array("nusuario"=>$_POST["nusuariotext"],"ausuario"=>$_POST["ausuariotxt"],
             "usuario"=>$_POST["usuariotxt"],"contra"=>$_POST["ucontratxt"],"email"=>$_POST["uemailtxt"]);
@@ -186,7 +186,7 @@
         public function actualizarUserController(){
             if(isset($_POST["nusuariotxtEditar"])){
                 //Encriptar la ontraseña
-                $_POST["contratxtEditar"] = password_hash($_POST["contatxtEditar"]  PASSWORD_DEFAULT);
+                $_POST["contratxtEditar"] = password_hash($_POST["contatxtEditar"], PASSWORD_DEFAULT);
                 //Almacenar en un array los valores de los textos del metodod "registrarUserController"
                 $datosController = array("id"=>$_POST["idUserEditar"],"usuario"=>$_POST["nusuariotxtEditar"],
             "ausuario"=>$_POST["ausuariotxtEditar"],"usuario"=>$_POST["usuariotxtEditar"],"contra"=>$_POST["contratxtEditar"],"email"=>$_POST["uemailtxtEditar"]);
