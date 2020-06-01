@@ -320,5 +320,78 @@
                             </div>
             ';
                 }
+        //Controlador de vista de Producto
+        public function vistaProductsController(){
+            $respuesta = Datos::vistaProductsModel("products");
+
+            /*El contructor foreach proporciona un modo sencillo de iterar
+            sobre arrays, funciona solo con objetos y emitirá un error al intentar
+            con una propiedad diferente o no inicializada*/
+            foreach($respuesta as $row => $item){
+                echo'<tr>
+                    <td><a href="index.php?action=inventario&idProductEditar='.$item["id"].'"><button class="btn btn-success">Editar</button></a></td>
+                    <td><a href="index.php?action=inventario&idBorrar='.$item["id"].'"><button class="btn btn-danger">Borrar</button></a></td>
+                    <td>'.$item["id"].'</td>
+                    <td>'.$item["codigo"].'</td>
+                    <td>'.$item["producto"].'</td>
+                    <td>'.$item["fecha"].'</td>
+                    <td>'.$item["precio"].'</td>
+                    <td>'.$item["stock"].'</td>
+                    <td>'.$item["categoria"].'</td>
+                    <td><a href="index.php?action=inventario&idProductAdd='.$item["id"].'"><button class="btn btn-success">Agregar Stock</button></a></td>
+                    <td><a href="index.php?action=inventario&idProductDel='.$item["id"].'"><button class="btn btn-success">Quitar Stock</button></a></td>
+                    </tr>';
             }
+        }
+        //Controlador registro de Producto
+        public function registrarProductController(){
+            ?>
+            <div class="col-md-6 mt-3">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h4><b>Registro</b> de Productos</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post" action="index.php?action=inventario">
+                        <div class="form-group">
+                            <label for="codigotxt">Codigo: </label>
+                            <input class="form-control" type="text" name="codigotxt" id="codigotxt" placeholder="Código del Producto" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="nombretxt">Nombre: </label>
+                            <input class="form-control" type="text" name="nombretxt" id="nombretxt" placeholder="Ingrese el Nombre del Producto" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="preciotxt">Precio: </label>
+                            <input class="form-control" type="number" min="1" name="preciotxt" id="preciotxt" placeholder="Ingrese el Precio del Producto" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="stocktxt">Stock: </label>
+                            <input class="form-control" type="number" min="1" name="stocktxt" id="stocktxt" placeholder="Cantidad de Stock del Producto" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="referenciatxt">Motivo: </label>
+                            <input class="form-control" type="text" name="referenciatxt" id="referenciatxt" placeholder="Referencia del Producto" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="categoriatxt">Categoria: </label>
+                            <select name="categoria" id="categoria" class="form-control">
+                                <?php
+                                    $respuesta_categoria = Datos::obtenerCategoryModel("categories");
+                                    foreach($respuesta_categoria as $row => $item){
+                                ?>
+                                <option value="<?php echo $item["id"]; ?>"><?php echo $item["categoria"]; ?></option>
+                                <?php
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Agregar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <?php
+        }
+    }
 ?>
