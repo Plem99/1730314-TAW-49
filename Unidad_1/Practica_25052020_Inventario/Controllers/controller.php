@@ -393,5 +393,95 @@
         </div>
         <?php
         }
+        /*-- Esta funcion permite insertar productos llamando al modelo  que se encuentra en  el archivo crud 
+        de modelos confirma con un isset que la caja de texto del codigo este llena y procede a llenar en una 
+        variable llamada datos controller este arreglo se manda como parametro al igual que el nombre de la tabla,
+        una vez se obtiene una respuesta de la funcion del modelo de inserccion tenemos que checar si la respuesta
+        fue afirmativa hubo un error y mostrara los respectivas alerta,para insertar datos en la tabla de historial 
+        se tiene que mandar a un modelo llamado ultimoproductmodel este traera el ultimo dato insertado que es el id 
+        del producto que se manda en el array de datoscontroller2 junto al nombre de la tabla asi insertando los datos 
+        en la tabla historial --*/
+        public function insertarProductController(){
+            if(isset($_POST["codigotxt"])){
+                
+            $datosController = array("codigo"=>$_POST["codigotxt"],"precio"=>$_POST["preciotxt"],
+            "stock"=>$_POST["stocktxt"],"categoria"=>$_POST["categoria"],"nombre"=>$_POST["nombretxt"]);
+                //Enviar datos al modelo
+                $respuesta = Datos::insertarProductsModel($datosController,"products");
+
+                //Respuesta del modelo
+                if($respuesta=="success"){
+                    $respuesta = Datos::ultimoProductsModel($datosController,"products");
+                    $datosController2 = array("user"=>$_SESSION["id"],"cantidad"=>$_POST["stocktxt"],"producto"=>$respuesta3["id"],"note"=>$_SESSION["nombre_usuario"]."agrego/compro","reference"=>$_POST["referenciatxt"]);
+                    $respuesta2 = Datos::insertarHistorialModel($datosController,"historial");
+                    echo '
+                        <div class="col-md-6 mt-3">
+                            <div class="alert alert-success alert-dismissible">
+                                <button class="close" type="button" data-dismiss="alert" aria-hidden="true">x</button>
+                                <h5>
+                                    <i class="icon fas fa-check"></li>
+                                    !Éxito!
+                                </h5>
+                                Producto agregado con éxito
+                            </div>
+                        </div>
+                    ';
+                }else{
+                    echo '
+                        <div class="col-md-6 mt-3">
+                            <div class="alert alert-danger alert-dismissible">
+                                <button class="close" type="button" data-dismiss="alert" aria-hidden="true">x</button>
+                                <h5>
+                                    <i class="icon fas fa-check"></li>
+                                    !Error!
+                                </h5>
+                                Se ha produciondo un error al momemento de agregar el produto, trate de nuevo.
+                            </div>
+                        </div>';
+                }
+            }
+        }
+
+        /*-- Esta funcion permite editar los datos de lat abla productos delproducto seleccionado del boton editar abre un formulario llenando la informacion correspondiente y empezando a editardichos campos apartir de los formularios el array de datossolo guarda el get delboton editar que en este caso es el id del producto y se envia elmodelo de edicioon y se pasa por el metodo form al igual que los demas datos --*/
+        public function editarProductController() { 
+            $datosController = $_GET["idProductEditar"]; //envío de datos al mododelo 
+            $respuesta = Datos::editarProductModel($datosController,"products");
+                ?>
+                <div class="col-md-6 mt-3">
+                <div class="card card-warning">
+                    <div class="card-header">
+                        <h4><b>Editor</b> de Productos</h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" action="index.php?action=inventario">
+                            <div class="form-group"><input type="hidden" name="idProductEditar" class="form-control" value="<?php echo $respuesta["id"]; ?>" required>
+                            </div>
+                            <!--<div class="form-group">
+                                <label for="nusuariotxtEditar">Nombre: </label>
+                                <input class="form-control" type="text" name="nusuariotxtEditar" id="nusuariotxtEditar" placeholder="Ingrese el nuevo nombre" value="<?php echo $respuesta["nusuario"]; ?>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="ausuariotxtEditar">Apellido: </label>
+                                <input class="form-control" type="text" name="ausuariotxtEditar" id="ausuariotxtEditar" placeholder="Ingrese el nuevo apellido" value="<?php echo $respuesta["ausuario"]; ?>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="usuariotxtEditar">Usuario: </label>
+                                <input class="form-control" type="text" name="usuariotxtEditar" id="usuariotxtEditar" placeholder="Ingrese el nuevo usuario" value="<?php echo $respuesta["usuario"]; ?>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contratxtEditar">Contraseña: </label>
+                                <input class="form-control" type="password" name="contratxtEditar" id="contratxtEditar" placeholder="Ingrese la nueva contraseña" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="uemailtxtEditar">Correo Electrónico: </label>
+                                <input class="form-control" type="email" name="uemailtxtEditar" id="uemailtxtEditar" placeholder="Ingrese el nuevo correo electrónico" value="<?php echo $respuesta["email"]; ?>" required>
+                            </div>
+                            <button class="btn btn-primary" type="submit">Editar</button>-->
+                        </form>
+                    </div>
+                </div>
+                </div>
+                <?php
+        }
     }
 ?>
