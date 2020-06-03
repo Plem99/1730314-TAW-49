@@ -161,8 +161,6 @@
             $stmt->close();
         }
         public function actualizarProductsModel($datosModel, $tabla) {
-            
-            //Sentencia de PDO para ejecutar la actualzación del usuario
             $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET code_product = :codigo, name_product = :nombre, price_product = :precio, id_category = :categoria, stock = :stock WHERE id_product = :id");
             
             $stmt -> bindParam(":codigo",$datosModel["codigo"],PDO::PARAM_STR);
@@ -177,6 +175,96 @@
                 return "error";
             }
             $stmt->close();
+        }
+        public function eliminarProductsModel($datosModel, $tabla) {
+            $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id_product = :id");
+            $stmt->bindParam(":id",$datosModel,PDO::PARAM_INT);
+            if ($stmt->execute()) {
+                return "success";
+            } else {
+                return "error";
+            }
+            $stmt->close();
+        }
+        public function ultimoProductsModel($datosModel, $tabla) {
+            $stmt = Conexion::conectar()->prepare("SELECT id_product AS 'id' FROM $tabla ORDER BY id_product DESC LIMIT 1");
+            $stmt->execute();
+            return $stmt->fetch();
+            $stmt->close();
+        }
+        public function vistaHistorialModel($tabla){
+            $stmt = Conexion::conectar()->prepare("SELECT CONCAT(u.firstname, ':', u.user_name) AS 'usuario', p.name_product AS 'producto', h.date AS 'fecha', h.reference AS 'referencia', h.note AS 'nota', h.quantity AS 'cantidad' FROM $tabla h INNER JOIN products p, ON h.id_producto = p.id_product INNER JOIN users u ON h.user_id = u.user_id");
+            $stmt->execute();
+            return $stmt->fetchAll();
+            $stmt->close();
+        }
+        public function insertarHistorialModel($datosModel,$tabla) {
+            $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (user_id, quantity, id_producto, note, reference) VALUES (:user,:cantidad,:producto,:note,:reference)");
+            $stmt->bindParam(":user",$datosModel["user"],PDO::PARAM_INT);
+            $stmt->bindParam(":cantidad",$datosModel["cantidad"],PDO::PARAM_INT);
+            $stmt->bindParam(":producto",$datosModel["producto"],PDO::PARAM_INT);
+            $stmt->bindParam(":note",$datosModel["note"],PDO::PARAM_STR);
+            $stmt->bindParam(":reference",$datosModel["reference"],PDO::PARAM_STR);
+            if ($stmt->execute()) {
+                return "success";
+            } else {
+                return "error";
+            }
+            $stmt->close();
+        }
+        public function vistaCategoriesModel($tabla){
+            $stmt = Conexion::conectar()->prepare("SELECT id_category AS 'idc', name_category AS 'ncategoria', description_category AS 'dcategoria', date_added AS 'fcategoria'FROM $tabla");
+            $stmt->execute();
+            return $stmt->fetchAll();
+            $stmt->close();
+        }
+        public function insertarCategoryModel($datosModel,$tabla) {
+            $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (name_category, description_category) VALUES (:ncategoria,:dcategoria)");
+            $stmt->bindParam(":ncategoria",$datosModel["nombre_categoria"],PDO::PARAM_STR);
+            $stmt->bindParam(":dcategoria",$datosModel["descripcion_categoria"],PDO::PARAM_STR);
+            if ($stmt->execute()) {
+                return "success";
+            } else {
+                return "error";
+            }
+            $stmt->close();
+        }
+        public function editarCategoryModel($datosModel,$tabla) {
+            
+            $stmt = Conexion::conectar()->prepare("SELECT id_category AS 'id', name_category AS 'nombre_categoria', description_category AS 'descripcion_categoria' FROM $tabla WHERE id_category=:id");
+            $stmt->bindParam(":id",$datosModel,PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch();
+            $stmt->close();
+        }
+        public function actualizarCategoryModel($datosModel, $tabla) {
+
+            $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET name_category = :nombre_categoria, description_category = :descripcion_categoria WHERE id_category = :id");
+            
+            $stmt -> bindParam(":nombre_categoria",$datosModel["nombre_categoria"],PDO::PARAM_STR);
+            $stmt -> bindParam(":descripcion_categoria",$datosModel["descripcion_categoria"],PDO::PARAM_STR);
+            $stmt -> bindParam(":id",$datosModel["id"],PDO::PARAM_INT);
+            if ($stmt->execute()) {
+                return "success";
+            } else {
+                return "error";
+            }
+            $stmt->close();
+        }
+        public function eliminarCategoryModel($datosModel, $tabla) {
+            $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id_category = :id");
+            $stmt->bindParam(":id",$datosModel,PDO::PARAM_INT);
+            if ($stmt->execute()) {
+                return "success";
+            } else {
+                return "error";
+            }
+            $stmt->close();
+        }
+        public function obtenerCategoryModel($tabla) {
+            $stmt = Conexion::conectar()->prepare("SELECT id_category AS 'id', name_category AS 'categoria' FROM $tabla");
+            $stmt->execute();
+            return $stmt->fetchAll();
         }
     }
 
