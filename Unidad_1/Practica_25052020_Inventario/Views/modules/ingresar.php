@@ -41,8 +41,8 @@
     //Llamada al controlador que verifica el inicio de sesion
     $ingreso = new MvcController();
     $ingreso -> ingresoUsuarioController();
-    if(isset($_GET["res"])){
-        if($_GET["res"] == "fallo"){
+    if(isset($_GET["action"])){
+        if($_GET["action"] == "fallo"){
             echo "Fallo al ingresar";
         }
     }
