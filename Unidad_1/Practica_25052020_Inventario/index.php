@@ -4,11 +4,10 @@
  a traves de el enviaremos als distintas acciones que el usuario envie al controlador
  */
 ob_start();
+require_once "Controllers/controller.php";
 require_once "Models/enlaces.php";
 require_once "Models/crud.php";
-//require_once "Models/crudProd.php";
 
-require_once "Controllers/controller.php";
 
 //para poder ver el template se hace la peticion mediante el controlador.
 

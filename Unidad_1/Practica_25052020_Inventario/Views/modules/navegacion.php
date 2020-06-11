@@ -1,8 +1,8 @@
 <?php
    //session_start();
-   if(!$_GET["action"] == "salir"){
-       header("location: index.php?action=ingresar");
-   }
+   	if ($_GET['action'] == 'salir') {
+		header('location:index.php?action=ingresar');
+	}
 ?>
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -18,9 +18,9 @@
 <aside class="main-sidebar sidebar-dark-success elevation-4">
 <!-- Brand Logo -->
 <a href="index.php?action=tablero" class="brand-link nav-success">
-<img src="views/assets/dist/img/UPV.png" alt="Inventario | TAW | UPV" class="brand-image img-square" style="opacity: .8">
-<span class="brand-text font-weight-light"> Inventarios</span>
-</a>
+		<img src="views/assets/dist/img/AdminLTELogo.png" alt="Inventarios | TAW | UPV" class="brand-image img-square" style="opacity: .8">
+		<span class="brand-text font-weight-light">Inventarios</span>
+	</a>
 
 <!-- Sidebar -->
 <div class="sidebar">
@@ -52,7 +52,7 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="index.php?action=productos" class="nav-link">
+					<a href="index.php?action=inventario" class="nav-link">
 						<i class="nav-icon fas fa-tachometer-alt"></i>
 						<p>
 							Productos
