@@ -12,7 +12,7 @@
 		<div class="row">
 			<!--BOTONES AGREGAR-->
 			<div class="col-lg-7 col-xs-12">
-				<div class="card card-primary">
+				<div class="card ">
 					<div class="card-header"></div>
 					<div class="card-body">
 						<div class="card-header with-border" id="cart-header">
@@ -135,19 +135,19 @@
 							<div class="btn-group ng-scope">
 								<button type="button" class="btn btn-default btn-lg" ng-click="openPayBox()">
 									<i class="fa fa-money-bill" aria-hidden="true"></i>
-									<span class="hidden-xs">Pagar</span>
+									<span class="hidden-xs">Pay</span>
 								</button>
 							</div>
 							<div class="btn-group ng-scope" role="group" ng-controller="saveBox">
 							</div>
 							<div class="btn-group" role="group">
 								<button type="button" id="cart-discount" class="btn btn-default btn-lg" >
-									<i class="fa fa-gift"></i> <span class="hidden-xs">Descuento</span></button>
+									<i class="fa fa-gift"></i> <span class="hidden-xs">Discount</span></button>
 							</div>
 							<div class="btn-group" role="group">
 								<button type="button" class="btn btn-default btn-lg" id="cart-return-to-order">
 									<i class="fa fa-sync"></i>
-									<span class="hidden-xs">Cancelar Venta</span>
+									<span class="hidden-xs">Cancel</span>
 								</button>
 							</div>
 						</div>
@@ -156,7 +156,7 @@
 			</div>
 			<!--PRODUCTOS-->
 			<div class="col-lg-5">
-				<div class="card card-warning">
+				<div class="card ">
 					<div class="card-header with-border"></div>
 					<div class="card-body">
 							<form action="#" method="post" id="search-item-form">
