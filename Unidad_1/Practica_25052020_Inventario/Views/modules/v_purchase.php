@@ -103,7 +103,7 @@
 									<tr class="active">
 										<td width="200" class="text-left">Número de Productos ( <span class="items-number">1</span> )</td>
 										<td width="150" class="text-right hidden-xs"></td>
-										<td width="150" class="text-right">Precio sin IVA</td>
+										<td width="150" class="text-right">Precio Sin IVA</td>
 										<td width="90" class="text-right">
 											<span class="cart-value">$ 0,0</span>
 										</td>
@@ -118,7 +118,7 @@
 									</tr>
 									<tr class="success taxes_large">
 										<td>
-											<div>
+											<div>      
 												<button class="btn btn-primary btn-xs"></button>IVA Total
 												<span class="cart-item-vat pull-right">$ 0,0</span>
 											</div>
