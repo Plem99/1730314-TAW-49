@@ -36,7 +36,7 @@
 		session_start();
 
 		if (isset($_SESSION['validar']) && $_SESSION['validar'] == "true") {
-			include 'Modules/navegacion.php';
+			include 'Views/modules/navegacion.php';
 		}
 	?>
 	<div class="wrapper">
