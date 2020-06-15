@@ -4,6 +4,7 @@
 		header("location:index.php?action=ingresar");
 		exit();
 	}
+
 	$purchases = new MvcController;
 	$datos = $purchases->vistaPurchases();
 ?>
@@ -47,7 +48,7 @@
 								<table class="table" style="margin-bottom:0;">
 								<tbody>
 									<tr id="cart-table-notice" style="display: none;">
-										<td colspan="4">Porfavor, agrega un producto</td>
+										<td colspan="4">Porfavor, agrega un nuevo producto</td>
 									</tr>
 									<tr cart-item-id="0" cart-item="" data-line-weight="0" data-item-barcode="18720048">
 										<td width="200" class="text-left" style="line-height:30px;">
@@ -71,7 +72,7 @@
 										<td width="70" class="text-right item-total-price" style="line-height:30px;">$ 0,0</td>
 									</tr>
 									<tr id="cart-table-notice" style="display: none;">
-										<td colspan="4">Porfavor, agrega un producto</td>
+										<td colspan="4">Porfavor, agrega un nuevo producto</td>
 									</tr>
 									<tr cart-item-id="0" cart-item="" data-line-weight="0" data-item-barcode="18720048">
 										<td width="200" class="text-left" style="line-height:30px;">
