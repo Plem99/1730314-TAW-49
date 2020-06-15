@@ -23,6 +23,14 @@
 			$stmt->close();
 		}
 
+		public function vistaPurchasesModel($tabla) {
+			$stmt = Conexion::conectar()->prepare("SELECT id_product, code_producto , name_product , date_added  price_product,stock, name_category  FROM $tabla ");
+			$stmt -> execute();
+			return $stmt->fetchAll();
+			$stmt->close();
+		}
+
+
 		public function insertarUserModel($datosModel, $tabla) {
 			$stmt = Conexion::conectar()->prepare("INSERT INTO users (firstname, lastname, user_name, user_password, user_email) VALUES (:nusuario, :ausuario, :usuario, :contra, :email)");
 			$stmt -> bindParam(":nusuario", $datosModel["nusuario"], PDO::PARAM_STR);

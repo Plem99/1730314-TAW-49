@@ -920,5 +920,11 @@
                 }
             }
         }
+
+        //Controlador de vista de Usuario
+        public function vistaPurchases(){
+            $respuesta = Datos::vistaPurchasesModel("products");
+            return $respuesta;
+        }
     }
 ?>
