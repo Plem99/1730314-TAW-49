@@ -3,11 +3,11 @@
     class Paginas{
         public function enlacesPaginasModel($enlacesModel){
 			if ($enlacesModel == "ingresar" || $enlacesModel == "usuarios" || $enlacesModel == "v_client" || $enlacesModel == "inventario" || $enlacesModel == "categorias" || $enlacesModel == "tablero" || $enlacesModel == "ventas" || $enlacesModel == "v_purchase" || $enlacesModel == "salir" || $enlacesModel == "inventario") {
-				$module = "views/modules/".$enlacesModel.".php";
+				$module = "Views/modules/".$enlacesModel.".php";
 			} else if ($enlacesModel == "index") {
-				$module = "views/modules/tablero.php";
+				$module = "Views/modules/tablero.php";
 			} else {
-				$module = "views/modules/tablero.php";
+				$module = "Views/modules/tablero.php";
 			}
 
 			return $module;
