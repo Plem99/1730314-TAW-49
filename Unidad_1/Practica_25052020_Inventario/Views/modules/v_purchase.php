@@ -10,7 +10,7 @@
 <div class="container-fluid">
 	<section class="content">
 		<div class="row">
-			<!--BOTONES AGREGAR-->
+			
 			<div class="col-lg-7 col-xs-12">
 				<div class="card ">
 					<div class="card-header"></div>
@@ -32,7 +32,7 @@
 								</div>
 							</form>
 						</div>
-						<!--TICKET-->
+						
 							<table class="table" id="cart-item-table-header">
 								<thead>
 									<tr class="active">
@@ -129,7 +129,7 @@
 								</tfoot>
 						</table>
 					</div>
-					<!--BOTONES DE PAGO Y DESCUENTO-->
+					
 					<div class="card-footer" id="cart-panel">
 						<div class="btn-group btn-group-justified">
 							<div class="btn-group ng-scope">
@@ -154,7 +154,7 @@
 					</div>
 				</div>
 			</div>
-			<!--PRODUCTOS-->
+			
 			<div class="col-lg-5">
 				<div class="card ">
 					<div class="card-header with-border"></div>
@@ -166,20 +166,14 @@
 										</button>
 										<button type="button" class="enable_barcode_search btn btn-large btn-default"><i class="fa fa-barcode"></i></button>
 									</div>
-									<input autocomplete="off" type="text" name="item_sku_barcode" placeholder="Barcode, SKU, product name or category ..." class="form-control">
+									<input autocomplete="off" type="text" name="item_sku_barcode" placeholder="Barcode, SKU, product name or category" class="form-control">
 								</div>
 							</form>
 						</div>
 						<div class="card-body">
 							<div class="overflow-auto"style="max-height: 500px;">
 								<div class="row">
-									<?php
-									foreach ($datos as $producto) {
-										echo '<div class="col-md-4">
-												<img onclick="add('.$producto['id_product'].','.$producto['code_producto'].',\''.$producto['name_product'].'\','.$producto['price_product'].','.$producto['stock'].',\''.$producto['id_category'].'\')" src="http://multi-nexopos.tendoo.org/public/modules/nexo/images/default.png" title="'.$producto['name_product'].'"width="150" height="150">
-											</div>';
-										}
-									?>
+									
 								</div>
 							</div>
 				</div>
