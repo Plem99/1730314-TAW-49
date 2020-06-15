@@ -119,7 +119,7 @@
 									<tr class="success taxes_large">
 										<td>
 											<div>
-												<button class="btn btn-primary btn-xs"><i class="fa fa-eye"></i></button>IVA Total
+												<button class="btn btn-primary btn-xs"></button>IVA Total
 												<span class="cart-item-vat pull-right">$ 0,0</span>
 											</div>
 										</td>
