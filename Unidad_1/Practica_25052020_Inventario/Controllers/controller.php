@@ -212,7 +212,7 @@
     
                 $datosController = array("id" => $_POST["idUserEditar"], "nusuario" => $_POST["nusuariotxtEditar"], "ausuario" => $_POST["ausuariotxtEditar"], "usuario" =>$_POST["usuariotxtEditar"], "contra" => $_POST["contratxtEditar"], "email" => $_POST["uemailtxtEditar"]);
     
-                $respuesta = Datos::actualizarUserModel($datosController,"user");
+                $respuesta = Datos::actualizarUserModel($datosController,"users");
     
                 if ($respuesta == "success") {
                     echo '
@@ -288,6 +288,7 @@
             $respuesta_users = Datos::contarFilasModel("users");
             $respuesta_products = Datos::contarFilasModel("products");
             $respuesta_categories = Datos::contarFilasModel("categories");
+            $respuesta_clientes = Datos::contarFilasModel("clients");
             $respuesta_historial = Datos::contarFilasModel("historial");
             echo '
                             <div class="col-lg-3 col-6">
@@ -312,6 +313,18 @@
                                         <i class="fas fa-box"></i>
                                     </div>
                                     <a class="small-box-footer" href="index.php?action=inventario">Más <i class="fas fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+            <div class="col-lg-3 col-6">
+                                <div class="small-box bg-red">
+                                    <div class="inner">
+                                        <h3>'.$respuesta_clientes["filas"].'</h3>
+                                        <p>Total de Clientes</p>
+                                    </div>
+                                    <div class="icon">
+                                    <i class="ion ion-person-add"></i>
+                                    </div>
+                                    <a class="small-box-footer" href="index.php?action=v_client">Más <i class="fas fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
             <div class="col-lg-3 col-6">
@@ -435,7 +448,7 @@
                             <div class="alert alert-danger alert-dismissible">
                                 <button class="close" type="button" data-dismiss="alert" aria-hidden="true">x</button>
                                 <h5>
-                                    <i class="icon fas fa-ban"></i>
+                                    <i class="icon fas fa-check"></i>
                                         ¡Éxito!
                                 </h5>
                                 Producto agregado con éxito
@@ -791,7 +804,7 @@
                             <div class="alert alert-success alert-dismissible">
                                 <button class="close" type="button" data-dismiss="alert" aria-hidden="true">x</button>
                                 <h5>
-                                    <i class="icon fas fa-ban"></i>
+                                    <i class="icon fas fa-check"></i>
                                         ¡Éxito!
                                 </h5>
                                 Categoria agregada con éxito
@@ -854,7 +867,7 @@
                             <div class="alert alert-danger alert-dismissible">
                                 <button class="close" type="button" data-dismiss="alert" aria-hidden="true">x</button>
                                 <h5>
-                                    <i class="icon fas fa-ban"></i>
+                                    <i class="icon fas fa-check"></i>
                                         ¡Éxito!
                                 </h5>
                                 Categoria editada con éxito
@@ -886,7 +899,7 @@
                             <div class="alert alert-success alert-dismissible">
                                 <button class="close" type="button" data-dismiss="alert" aria-hidden="true">x</button>
                                 <h5>
-                                    <i class="icon fas fa-ban"></i>
+                                    <i class="icon fas fa-check"></i>
                                         ¡Éxito!
                                 </h5>
                                 Categoria eliminada con éxito

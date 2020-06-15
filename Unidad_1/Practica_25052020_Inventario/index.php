@@ -8,6 +8,8 @@ require_once "Controllers/controller.php";
 require_once "Models/enlaces.php";
 require_once "Models/crud.php";
 
+require_once "Controllers/c_client.php";
+require_once "Models/m_client.php";
 
 //para poder ver el template se hace la peticion mediante el controlador.
 

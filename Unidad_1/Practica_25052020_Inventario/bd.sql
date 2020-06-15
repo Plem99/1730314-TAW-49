@@ -2,6 +2,16 @@
 CREATE DATABASE simple_stock;
 /*Utilizando la base de datos simple_stock*/
 USE simple_stock;
+/*Tabla para los clientes*/
+CREATE TABLE clients(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    client_name VARCHAR(50),
+    client_email VARCHAR(50),
+    client_phone VARCHAR(50),
+    client_address VARCHAR(50),
+    client_birthday datetime,
+    client_purchases INT
+);
 /*Tabla para las categorias*/
 CREATE TABLE categories(
     id_category INT AUTO_INCREMENT PRIMARY KEY,

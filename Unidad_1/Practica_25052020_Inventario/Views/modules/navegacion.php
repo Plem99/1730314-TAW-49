@@ -52,6 +52,14 @@
 					</a>
 				</li>
 				<li class="nav-item">
+					<a href="index.php?action=v_client" class="nav-link">
+						<i class="nav-icon fas fa-tachometer-alt"></i>
+						<p>
+							Clientes
+						</p>
+					</a>
+				</li>
+				<li class="nav-item">
 					<a href="index.php?action=inventario" class="nav-link">
 						<i class="nav-icon fas fa-tachometer-alt"></i>
 						<p>
