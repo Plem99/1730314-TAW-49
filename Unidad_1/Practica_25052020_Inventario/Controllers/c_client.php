@@ -211,6 +211,12 @@
             
         }
 
+        //Controlador de vista de Clientes
+        public function c_read_client_select(){
+            $c_answer = m_client::m_read_client($GLOBALS["c_get_table"]);
+            return $c_answer;
+        }
+
         
 
     }

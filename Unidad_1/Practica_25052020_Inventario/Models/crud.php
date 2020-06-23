@@ -24,7 +24,7 @@
 		}
 
 		public function vistaPurchasesModel($tabla) {
-			$stmt = Conexion::conectar()->prepare("SELECT id_product, code_producto , name_product , date_added  price_product,stock, name_category  FROM $tabla ");
+			$stmt = Conexion::conectar()->prepare("SELECT id_product, code_producto , name_product , date_added,  price_product, stock, id_category  FROM $tabla ");
 			$stmt -> execute();
 			return $stmt->fetchAll();
 			$stmt->close();

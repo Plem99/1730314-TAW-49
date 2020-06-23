@@ -7,6 +7,9 @@
 
 	$purchases = new MvcController;
 	$datos = $purchases->vistaPurchases();
+
+	$client = new c_client;
+	$clients = $client->c_read_client_select();
 ?>
 <div class="container-fluid">
 	<section class="content">
@@ -21,7 +24,11 @@
 								<div class="input-group" ng-controller="cartToolBox">
 									<span class="input-group-btn"></span>
 									<select data-live-search="true" name="customer_id" title="Please choose a customer" class="form-control customers-list dropdown-bootstrap">
-										
+									<?php
+									foreach ($clients as $item) {
+										echo '<option value="'.$item['id'].'"> '.$item['client_name'].'</option>';
+									}
+									?>
 									</select>
 									<span class="input-group-btn">
 											
@@ -174,7 +181,13 @@
 						<div class="card-body">
 							<div class="overflow-auto"style="max-height: 500px;">
 								<div class="row">
-									
+								<?php
+									foreach ($datos as $producto) {
+										echo '<div class="col-md-4">
+												<img onclick="add('.$producto['id_product'].','.$producto['code_producto'].',\''.$producto['name_product'].'\','.$producto['price_product'].','.$producto['stock'].',\''.$producto['id_category'].'\')" src="http://multi-nexopos.tendoo.org/public/modules/nexo/images/default.png" title="'.$producto['name_product'].'"width="150" height="150">
+											</div>';
+										}
+									?>
 								</div>
 							</div>
 				</div>
