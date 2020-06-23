@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Ruta para el controller de los empleados
+Route::resource('empleados', 'empleadosController');
