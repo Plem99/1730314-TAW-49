@@ -73,9 +73,8 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fas fa-user-shield"></i>&nbsp;&nbsp;&nbsp;&nbsp;Empleados <span style="float: right" class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
+                      <li><a href="{{url('empleados')}}">Listar empleado</a></li>
                       <li><a href="{{url('empelados/create')}}">Agregar empleado</a></li>
-                      <li><a href="{{url('empleados')}}">Consultar empleado</a></li>
-                     
                     </ul>
                   </li>
                 </ul>
@@ -99,7 +98,9 @@
           <!-- /menu footer buttons -->
         </div>
       </div>
+      <!-- Mostrar el contenido de cada una de las vistas invocadas desde el controlador -->
       @yield('contenido')
+      
       @yield('scripts')
       <!-- /page content -->
       <!-- footer content -->
