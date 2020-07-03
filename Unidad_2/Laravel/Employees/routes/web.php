@@ -23,6 +23,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //Modulo de Empleados
 Route::resource('empleados', 'EmpleadosController');
+//Modulo de Departamentos
+Route::resource('departamentos', 'DepartamentosController');
 /*//Index
 Route::get('/empleados', 'EmpleadosController@index');
 //Crear nuevo empleado

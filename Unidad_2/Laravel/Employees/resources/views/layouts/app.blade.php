@@ -60,7 +60,7 @@
                                 <a class="nav-link" href="{{ route('empleados.index') }}">{{ __('Empleados') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('empleados.index') }}">{{ __('Departamentos') }}</a>
+                                <a class="nav-link" href="{{ route('departamentos.index') }}">{{ __('Departamentos') }}</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -87,9 +87,12 @@
 
         <main class="py-4">
             @yield('content')
-            @yield('read')
-            @yield('create')
-            @yield('edit')
+            @yield('read_emp')
+            @yield('create_emp')
+            @yield('edit_emp')
+            @yield('read_dep')
+            @yield('create_dep')
+            @yield('edit_dep')
         </main>
     </div>
 </body>

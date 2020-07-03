@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section ('titulo', 'Administración de empleados')
-@section('edit')
+@section('edit_emp')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -72,6 +72,17 @@
                             <label class="col-sm-2 col-form-label">{{'Teléfono'}}</label>
                             <div class="col-sm-10">
                                 <input id="telefono" class="form-control" name="telefono" value="{{$empleado->telefono}}" type="number">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">{{'Departamento'}}</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" name="id_departamentos" id="id_departamentos">
+                                @foreach($departamentos as $departamento)
+                                    <option value="{{$departamento->id}}">{{$departamento->nombre}}</option>
+                                @endforeach
+                                </select>
                             </div>
                         </div>
 

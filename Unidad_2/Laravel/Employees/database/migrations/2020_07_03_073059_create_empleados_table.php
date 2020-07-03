@@ -18,12 +18,15 @@ class CreateEmpleadosTable extends Migration
             $table->string('nombres');
             $table->string('apellidos');
             $table->integer('cedula');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('lugar_nacimiento');
             $table->enum('sexo',['masculino','femenino','no definido']);
             $table->enum('estado_civil',['soltero','casado']);
             $table->string('telefono');
+            $table->integer('id_departamentos')->unsigned();
             $table->timestamps();
+
+            $table->foreign('id_departamentos')->references('id')->on('departamentos');
         });
     }
 
