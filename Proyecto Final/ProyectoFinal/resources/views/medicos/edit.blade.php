@@ -29,6 +29,17 @@
                         </div>
 
                         <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">{{'Sexo'}}</label>
+                            <div class="col-sm-4">
+                                <select class="form-control" value="{{$medicos->sexo}}" name="sexo" id="sexo">
+                                <option value="no especificado">No Especificado</option>
+                                    <option value="masculino">Masculino</option>
+                                    <option value="femenino">Femenino</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label class="col-sm-2 col-form-label">{{'Email'}}</label>
                             <div class="col-sm-8">
                                 <input id="email" class="form-control" name="email" value="{{$medicos->email}}" type="email">
@@ -39,6 +50,13 @@
                             <label class="col-sm-2 col-form-label">{{'Contraseña'}}</label>
                             <div class="col-sm-8">
                                 <input id="contrasena" class="form-control" name="contrasena" value="{{$medicos->contrasena}}" type="password">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">{{'Telefono'}}</label>
+                            <div class="col-sm-8">
+                                <input id="telefono" class="form-control" name="telefono" value="{{$medicos->telefono}}" type="text">
                             </div>
                         </div>
 
