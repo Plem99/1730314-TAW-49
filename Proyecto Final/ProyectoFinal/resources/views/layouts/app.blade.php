@@ -22,6 +22,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        .header,.navbar{
+            background-image: url("/img/background.jpg");
+        }
+    </style>
 </head>
 <body>
 <header class="header">

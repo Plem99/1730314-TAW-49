@@ -54,6 +54,7 @@
                                                         <td>
                                                             <div style="display: flex;">
                                                                 <a href="{{url('/medicos/'.$medico->id.'/edit')}}" style="padding: 5px;" class = "btn btn-outline-info"><i data-feather="edit"></i></a>
+                                                                <a href="{{url('/medicos/'.$medico->id.'/profile')}}" style="padding: 5px;" class = "btn btn-outline-info"><i data-feather="briefcase"></i></a>
                                                                 <!--Eliminar empleado (icono)-->
                                                                 <form action="{{url('/medicos/'.$medico->id)}}" method="POST">
                                                                     {{csrf_field()}}
@@ -86,6 +87,7 @@
                                 <br>
                                 <div style="display: flex;">
                                     <a href="{{url('/medicos/'.$medico->id.'/edit')}}" style="padding: 5px;" class = "btn btn-outline-info"><i data-feather="edit"></i></a>
+                                    <a href="{{url('/medicos/'.$medico->id.'/profile')}}" style="padding: 5px;" class = "btn btn-outline-info"><i data-feather="briefcase"></i></a>
                                     <!--Eliminar empleado (icono)-->
                                     <form action="{{url('/medicos/'.$medico->id)}}" method="POST">
                                         {{csrf_field()}}

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\t_paciente;
+use DB;
 use App\t_cita;
 use Illuminate\Http\Request;
 
@@ -14,7 +16,8 @@ class TCitaController extends Controller
      */
     public function index()
     {
-        //
+        $datos = DB::table('t_citas')->join('t_pacientes','t_pacientes.id','=', 't_citas.id_paciente')->select('t_citas.*','t_pacientes.id_medico AS medico','t_pacientes.nombre AS paciente')->get();
+        return view('citas.index', compact('datos'));
     }
 
     /**
@@ -24,7 +27,8 @@ class TCitaController extends Controller
      */
     public function create()
     {
-        //
+        $pacientes = t_paciente::all();
+        return view('citas.create',compact('pacientes'));
     }
 
     /**
@@ -35,7 +39,12 @@ class TCitaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //No mandaremos el _token
+        $datos = request()->except('_token');
+        //Insertar datos en el modelo
+        t_cita::insert($datos);
+
+        return redirect('citas');
     }
 
     /**
@@ -55,9 +64,11 @@ class TCitaController extends Controller
      * @param  \App\t_cita  $t_cita
      * @return \Illuminate\Http\Response
      */
-    public function edit(t_cita $t_cita)
+    public function edit($id)
     {
-        //
+        $citas = t_cita::findOrFail($id);
+        $pacientes = t_paciente::all();
+        return view('citas.edit',compact('citas','pacientes'));
     }
 
     /**
@@ -67,9 +78,11 @@ class TCitaController extends Controller
      * @param  \App\t_cita  $t_cita
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, t_cita $t_cita)
+    public function update(Request $request, $id)
     {
-        //
+        $datos = request()->except(['_token','_method']);
+        t_cita::where('id','=',$id)->update($datos);
+        return redirect('citas');
     }
 
     /**
@@ -78,8 +91,9 @@ class TCitaController extends Controller
      * @param  \App\t_cita  $t_cita
      * @return \Illuminate\Http\Response
      */
-    public function destroy(t_cita $t_cita)
+    public function destroy($id)
     {
-        //
+        t_cita::destroy($id);
+        return redirect('citas');
     }
 }
