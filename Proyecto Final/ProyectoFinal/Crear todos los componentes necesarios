@@ -1,0 +1,35 @@
+##Crea todos los componentes necesarios 
+php artisan make:model Empleados -mcr
+
+TAW_PF
+Sin FK
+t_medico
+t_alergia
+t_medicamento
+Con FK
+t_paciente
+t_servicio
+t_cita
+t_consulta
+t_venta
+t_pacalerg
+t_medrecetado
+
+
+
+php artisan make:model t_medico -mcr
+php artisan make:model t_alergia -mcr
+php artisan make:model t_medicamento -mcr
+php artisan make:model t_paciente -mcr
+php artisan make:model t_servicio -mcr
+php artisan make:model t_cita -mcr
+php artisan make:model t_consulta -mcr
+php artisan make:model t_venta -mcr
+php artisan make:model t_pacalerg -mcr
+php artisan make:model t_medrecetado -mcr
+php artisan make:model t_tipo_sangre -mcr
+php artisan make:model t_paciente_datos -mcr
+
+
+$table->string('nombres');
+$table->string('tipo');

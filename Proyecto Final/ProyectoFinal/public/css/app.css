@@ -7,16 +7,6 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
-.header {
-  background: url(../img/background.jpg) no-repeat center;
-  background-size: cover;
-  min-height: 100vh;
-}
-
-.header .navbar {
-  /*background-color: transparent !important;*/
-}
-
 :root {
   --blue: #3490dc;
   --indigo: #6574cd;

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\t_medico;
+use DB;
 use App\t_paciente;
 use Illuminate\Http\Request;
 
@@ -14,7 +16,8 @@ class TPacienteController extends Controller
      */
     public function index()
     {
-        //
+        $datos = DB::table('t_pacientes')->join('t_medicos','t_medicos.id','=', 't_pacientes.id_medico')->select('t_pacientes.*','t_medicos.nombre AS mediconomb','t_medicos.apellidos AS medicoapell')->get();
+        return view('pacientes.index', compact('datos'));
     }
 
     /**
@@ -24,7 +27,8 @@ class TPacienteController extends Controller
      */
     public function create()
     {
-        //
+        $medicos = t_medico::all();
+        return view('pacientes.create',compact('medicos'));
     }
 
     /**
@@ -35,7 +39,12 @@ class TPacienteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //No mandaremos el _token
+        $datos = request()->except('_token');
+        //Insertar datos en el modelo
+        t_paciente::insert($datos);
+
+        return redirect('pacientes');
     }
 
     /**
@@ -55,9 +64,11 @@ class TPacienteController extends Controller
      * @param  \App\t_paciente  $t_paciente
      * @return \Illuminate\Http\Response
      */
-    public function edit(t_paciente $t_paciente)
+    public function edit($id)
     {
-        //
+        $pacientes = t_paciente::findOrFail($id);
+        $medicos = t_medico::all();
+        return view('pacientes.edit',compact('pacientes','medicos'));
     }
 
     /**
@@ -67,9 +78,11 @@ class TPacienteController extends Controller
      * @param  \App\t_paciente  $t_paciente
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, t_paciente $t_paciente)
+    public function update(Request $request, $id)
     {
-        //
+        $datos = request()->except(['_token','_method']);
+        t_paciente::where('id','=',$id)->update($datos);
+        return redirect('pacientes');
     }
 
     /**
@@ -78,8 +91,9 @@ class TPacienteController extends Controller
      * @param  \App\t_paciente  $t_paciente
      * @return \Illuminate\Http\Response
      */
-    public function destroy(t_paciente $t_paciente)
+    public function destroy($id)
     {
-        //
+        t_paciente::destroy($id);
+        return redirect('pacientes');
     }
 }

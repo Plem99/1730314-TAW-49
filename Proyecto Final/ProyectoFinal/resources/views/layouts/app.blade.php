@@ -65,6 +65,12 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('medicos.index') }}">{{ __('Médicos') }}</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('pacientes.index') }}">{{ __('Pacientes') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('citas.index') }}">{{ __('Citas') }}</a>
+                            </li>
                             <!--<li class="nav-item ">
                                 <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -91,8 +97,29 @@
             @yield('read_medico')
             @yield('create_medico')
             @yield('edit_medico')
+
+            @yield('read_paciente')
+            @yield('create_paciente')
+            @yield('edit_paciente')
+
+            @yield('read_cita')
+            @yield('create_cita')
+            @yield('edit_cita')
+
+            @yield('read_medicamento')
+            @yield('create_medicamento')
+            @yield('edit_medicamento')
+
+            @yield('read_tipo_sangre')
+            @yield('create_tipo_sangre')
+            @yield('edit_tipo_sangre')
+
+            @yield('read_alergia')
+            @yield('create_alergia')
+            @yield('edit_alergia')
         </main>
     </div>
 </header>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 </body>
 </html>

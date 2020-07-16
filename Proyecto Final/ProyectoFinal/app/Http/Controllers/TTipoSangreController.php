@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\t_medicamento;
+use App\t_tipo_sangre;
 use Illuminate\Http\Request;
 
-class TMedicamentoController extends Controller
+class TTipoSangreController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,7 @@ class TMedicamentoController extends Controller
      */
     public function index()
     {
-        //Mostrar datos almacenados
-        $datos = t_medicamento::all();
-        return view('medicamentos.index', compact('datos'));
+        //
     }
 
     /**
@@ -43,10 +41,10 @@ class TMedicamentoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\t_medicamento  $t_medicamento
+     * @param  \App\t_tipo_sangre  $t_tipo_sangre
      * @return \Illuminate\Http\Response
      */
-    public function show(t_medicamento $t_medicamento)
+    public function show(t_tipo_sangre $t_tipo_sangre)
     {
         //
     }
@@ -54,10 +52,10 @@ class TMedicamentoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\t_medicamento  $t_medicamento
+     * @param  \App\t_tipo_sangre  $t_tipo_sangre
      * @return \Illuminate\Http\Response
      */
-    public function edit(t_medicamento $t_medicamento)
+    public function edit(t_tipo_sangre $t_tipo_sangre)
     {
         //
     }
@@ -66,10 +64,10 @@ class TMedicamentoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\t_medicamento  $t_medicamento
+     * @param  \App\t_tipo_sangre  $t_tipo_sangre
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, t_medicamento $t_medicamento)
+    public function update(Request $request, t_tipo_sangre $t_tipo_sangre)
     {
         //
     }
@@ -77,10 +75,10 @@ class TMedicamentoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\t_medicamento  $t_medicamento
+     * @param  \App\t_tipo_sangre  $t_tipo_sangre
      * @return \Illuminate\Http\Response
      */
-    public function destroy(t_medicamento $t_medicamento)
+    public function destroy(t_tipo_sangre $t_tipo_sangre)
     {
         //
     }

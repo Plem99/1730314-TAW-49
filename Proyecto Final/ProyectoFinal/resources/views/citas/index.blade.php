@@ -1,17 +1,17 @@
 @extends('layouts.app')
-@section ('titulo', 'Administración de medicos')
-@section('read_medico')
+@section ('titulo', 'Administración de pacientes')
+@section('read_cita')
 @guest
 @else
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Listado de Médicos') }}</div>
+                <div class="card-header">{{ __('Listado de Pacientes') }}</div>
                 <br>
                 <div class="col-sm-8" style="padding-left: 30px;">
-                    <a type="button" class="btn btn btn-outline-dark btn-sm" href="{{ route('medicos.create') }}" >
-                        {{ __('Nuevo Médico') }}
+                    <a type="button" class="btn btn btn-outline-dark btn-sm" href="{{ route('pacientes.create') }}" >
+                        {{ __('Nuevo Paciente') }}
                     </a>
                 </div>
                 <ul class="nav nav-tabs" style="padding: 20px;">
@@ -32,35 +32,33 @@
                                                     <th>Nombre(s)</th>
                                                     <th>Apellidos</th>
                                                     <th>Sexo</th>
-                                                    <th>Email</th>
-                                                    <th>Contraseña</th>
                                                     <th>Teléfono</th>
-                                                    <th>Tipo</th>
+                                                    <th>Email</th>
+                                                    <th>Médico</th>
                                                     <th>Acción</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                            @foreach($datos as $medico)
+                                            @foreach($datos as $paciente)
                                                     <tr>
                                                         {{--_create_empleados_table--}}
                                                         <td>{{$loop->iteration}}</td>
-                                                        <td>{{$medico->nombre}}</td>
-                                                        <td>{{$medico->apellidos}}</td>
-                                                        <td>{{$medico->sexo}}</td>
-                                                        <td>{{$medico->email}}</td>
-                                                        <td>{{$medico->contrasena}}</td>
-                                                        <td>{{$medico->telefono}}</td>
-                                                        <td>{{$medico->tipo}}</td>
+                                                        <td>{{$paciente->nombre}}</td>
+                                                        <td>{{$paciente->apellidos}}</td>
+                                                        <td>{{$paciente->sexo}}</td>
+                                                        <td>{{$paciente->telefono}}</td>
+                                                        <td>{{$paciente->email}}</td>
+                                                        <td>{{$paciente->mediconomb}} {{$paciente->medicoapell}}</td>
                                                         <td>
                                                             <div style="display: flex;">
-                                                                <a href="{{url('/medicos/'.$medico->id.'/edit')}}" style="padding: 5px;" class = "btn btn-outline-info"><i data-feather="edit"></i></a>
+                                                                <a href="{{url('/pacientes/'.$paciente->id.'/edit')}}" style="padding: 5px;" class = "btn btn-outline-info"><i data-feather="edit"></i></a>
+                                                                <a href="{{url('/pacientes/'.$paciente->id.'/profile')}}" style="padding: 5px;" class = "btn btn-outline-info"><i data-feather="alert-circle"></i></a>
                                                                 <!--Eliminar empleado (icono)-->
-                                                                <form action="{{url('/medicos/'.$medico->id)}}" method="POST">
+                                                                <form action="{{url('/pacientes/'.$paciente->id)}}" method="POST">
                                                                     {{csrf_field()}}
                                                                     {{method_field('DELETE')}}
                                                                     <button style="padding: 5px;" onclick="return confirm('¿Borrar?');" class="btn btn-outline-danger"><i data-feather="trash"></i></button>
                                                                 </form>
-                                                                <a href="{{url('/medicos/'.$medico->id.'/profile')}}" style="padding: 5px;" class = "btn btn-outline-info"><i data-feather="alert-circle"></i></a>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -74,20 +72,21 @@
                         </div>
                     </div>
                     <div style="padding: 20px;display:flex;" id="vistas" class="tab-pane fade border row">
-                    @foreach($datos as $medico)
+                    @foreach($datos as $paciente)
                         <div class="card" style="width:350px;padding: 20px;">
-                            <img class="card-img-top" src="../img/medico.png" alt="Card image" style="width:100%">
+                            <img class="card-img-top" src="../img/paciente.png" alt="Card image" style="width:100%">
                             <div class="card-body">
-                                <h4 class="card-title">{{$medico->nombre}}</h4>
-                                <h6 class="card-subtitle mb-2 text-muted">{{$medico->tipo}}</h6>
-                                <p class="card-text"><b>Sexo:</b> {{$medico->sexo}}</p>
-                                <p class="card-text"><b>Email:</b> {{$medico->email}}</p>
-                                <p class="card-text"><b>Teléfono:</b> {{$medico->telefono}}</p>
+                                <h4 class="card-title">{{$paciente->nombre}}</h4>
+                                <p class="card-subtitle mb-2 text-muted"><b>Médico:</b> {{$paciente->mediconomb}} {{$paciente->medicoapell}}</p>
+                                <p class="card-text"><b>Sexo:</b> {{$paciente->sexo}}</p>
+                                <p class="card-text"><b>Email:</b> {{$paciente->email}}</p>
+                                <p class="card-text"><b>Teléfono:</b> {{$paciente->telefono}}</p>
                                 <br>
                                 <div style="display: flex;">
-                                    <a href="{{url('/medicos/'.$medico->id.'/edit')}}" style="padding: 5px;" class = "btn btn-outline-info"><i data-feather="edit"></i></a>
+                                    <a href="{{url('/pacientes/'.$paciente->id.'/edit')}}" style="padding: 5px;" class = "btn btn-outline-info"><i data-feather="edit"></i></a>
+                                    <a href="{{url('/pacientes/'.$paciente->id.'/profile')}}" style="padding: 5px;" class = "btn btn-outline-info"><i data-feather="alert-circle"></i></a>
                                     <!--Eliminar empleado (icono)-->
-                                    <form action="{{url('/medicos/'.$medico->id)}}" method="POST">
+                                    <form action="{{url('/pacientes/'.$paciente->id)}}" method="POST">
                                         {{csrf_field()}}
                                         {{method_field('DELETE')}}
                                         <button style="padding: 5px;" onclick="return confirm('¿Borrar?');"  class="btn btn-outline-danger"><i data-feather="trash"></i></button>
@@ -115,47 +114,7 @@
             $("#tablas").hide();
         });
     });
-  /*  $(document).ready(function(){
-    function btneliminar(){
-        //alert("asies");
-        const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-            confirmButton: 'btn btn-success',
-            cancelButton: 'btn btn-danger'
-        },
-        buttonsStyling: false
-        })
 
-        swalWithBootstrapButtons.fire({
-        title: 'Estás Seguro?',
-        text: "No podras revertirlo!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Si, borrar!',
-        cancelButtonText: 'No, cancelar!',
-        reverseButtons: false
-        }).then((result) => {
-        if (result.value) {
-            swalWithBootstrapButtons.fire(
-            'Eliminado!',
-            'Médico Eliminado.',
-            'success'
-            )
-        } else if (
-            
-            result.dismiss === Swal.DismissReason.cancel
-        ) {
-            swalWithBootstrapButtons.fire(
-            'Cancelado',
-            'No se elimino el médico',
-            'error'
-            )
-        }
-        })
-    }
-});*/
-
-    
 </script>
 @endsection
 
