@@ -1,22 +1,28 @@
-@extends('layouts.app')
+@extends('layouts.app', [
+    'namePage' => 'medicos',
+    'class' => 'sidebar-mini',
+    'activePage' => 'medicos',
+])
 @section ('titulo', 'Administración de medicos')
-@section('read_medico')
+@section('content')
 @guest
 @else
-<div class="container">
+<div class="panel-header panel-header-sm">
+  </div>
+<div class="content">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Listado de Médicos') }}</div>
+                <h4 style="padding: 20px;" class="card-title"> Listado de Médicos</h4>
                 <br>
-                <div class="col-sm-8" style="padding-left: 30px;">
-                    <a type="button" class="btn btn btn-outline-dark btn-sm" href="{{ route('medicos.create') }}" >
+                <div class="col-sm-8" style="padding-left: 20px;">
+                    <a type="button" class="btn btn-outline-info btn-round" href="{{ route('medicos.create') }}" >
                         {{ __('Nuevo Médico') }}
                     </a>
                 </div>
                 <ul class="nav nav-tabs" style="padding: 20px;">
-                    <li><a class="nav-link border" id="tabvistas" data-toggle="tab" href="#vistas">Vista</a></li>
-                    <li><a class="nav-link border" id="tabtablas" data-toggle="tab" href="#tablas">Tabla</a></li>
+                    <li><a class="nav-link btn-outline-info border" id="tabvistas" data-toggle="tab" href="#vistas">Vista</a></li>
+                    <li><a class="nav-link btn-outline-info border" id="tabtablas" data-toggle="tab" href="#tablas">Tabla</a></li>
                 </ul>
                 <div style="padding: 20px;" class="tab-content">
                     
@@ -51,22 +57,18 @@
                                                         <td>{{$medico->contrasena}}</td>
                                                         <td>{{$medico->telefono}}</td>
                                                         <td>{{$medico->tipo}}</td>
-                                                        <td>
-                                                            <div style="display: flex;">
-                                                                <a href="{{url('/medicos/'.$medico->id.'/edit')}}" style="padding: 5px;" class = "btn btn-outline-info"><i data-feather="edit"></i></a>
-                                                                <a href="{{url('/medicos/'.$medico->id.'/profile')}}" style="padding: 5px;" class = "btn btn-outline-info"><i data-feather="briefcase"></i></a>
-                                                                <!--Eliminar empleado (icono)-->
-                                                                <form action="{{url('/medicos/'.$medico->id)}}" method="POST">
-                                                                    {{csrf_field()}}
-                                                                    {{method_field('DELETE')}}
-                                                                    <button style="padding: 5px;" onclick="return confirm('¿Borrar?');" class="btn btn-outline-danger"><i data-feather="trash"></i></button>
-                                                                </form>
-                                                                <a href="{{url('/medicos/'.$medico->id.'/profile')}}" style="padding: 5px;" class = "btn btn-outline-info"><i data-feather="alert-circle"></i></a>
-                                                            </div>
+                                                        <td class="td-actions text-center">
+                                                            <a href="{{url('/medicos/'.$medico->id.'/edit')}}" rel="tooltip"  class="btn btn-warning btn-round btn-icon"><i class="now-ui-icons ui-2_settings-90"></i></a>
+                                                            <a href="{{url('/medicos/'.$medico->id.'/profile')}}" rel="tooltip"  class="btn btn-info btn-round btn-icon"><i class="now-ui-icons users_single-02"></i></a>
+                                                            <!--Eliminar empleado (icono)-->
+                                                            <form action="{{url('/medicos/'.$medico->id)}}" method="POST">
+                                                                {{csrf_field()}}
+                                                                {{method_field('DELETE')}}
+                                                                <button style="padding: 5px;" onclick="return confirm('¿Borrar?');" rel="tooltip" class="btn btn-danger btn-round btn-icon"><i class="now-ui-icons ui-1_simple-remove"></i></button>
+                                                            </form>
                                                         </td>
                                                     </tr>
                                                 @endforeach
-                                            
                                             </tbody>
                                         </table>
                                     </div>
@@ -74,7 +76,7 @@
                             </div>
                         </div>
                     </div>
-                    <div style="padding: 20px;display:flex;" id="vistas" class="tab-pane fade border row">
+                    <div style="padding: 20px;display:flex;" id="vistas" class="tab-pane fade row">
                     @foreach($datos as $medico)
                         <div class="card" style="width:350px;padding: 20px;">
                             <img class="card-img-top" src="../img/medico.png" alt="Card image" style="width:100%">
@@ -85,14 +87,14 @@
                                 <p class="card-text"><b>Email:</b> {{$medico->email}}</p>
                                 <p class="card-text"><b>Teléfono:</b> {{$medico->telefono}}</p>
                                 <br>
-                                <div style="display: flex;">
-                                    <a href="{{url('/medicos/'.$medico->id.'/edit')}}" style="padding: 5px;" class = "btn btn-outline-info"><i data-feather="edit"></i></a>
-                                    <a href="{{url('/medicos/'.$medico->id.'/profile')}}" style="padding: 5px;" class = "btn btn-outline-info"><i data-feather="briefcase"></i></a>
+                                <div class="td-actions text-center">
+                                    <a href="{{url('/medicos/'.$medico->id.'/edit')}}" rel="tooltip"  class="btn btn-warning btn-round btn-icon"><i class="now-ui-icons ui-2_settings-90"></i></a>
+                                    <a href="{{url('/medicos/'.$medico->id.'/profile')}}" rel="tooltip"  class="btn btn-info btn-round btn-icon"><i class="now-ui-icons users_single-02"></i></a>
                                     <!--Eliminar empleado (icono)-->
                                     <form action="{{url('/medicos/'.$medico->id)}}" method="POST">
                                         {{csrf_field()}}
                                         {{method_field('DELETE')}}
-                                        <button style="padding: 5px;" onclick="return confirm('¿Borrar?');"  class="btn btn-outline-danger"><i data-feather="trash"></i></button>
+                                        <button style="padding: 5px;" onclick="return confirm('¿Borrar?');" rel="tooltip" class="btn btn-danger btn-round btn-icon"><i class="now-ui-icons ui-1_simple-remove"></i></button>
                                     </form>
                                 </div>
                             </div>

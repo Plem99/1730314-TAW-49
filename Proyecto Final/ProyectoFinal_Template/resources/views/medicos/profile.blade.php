@@ -1,11 +1,11 @@
 @extends('layouts.app', [
-    'class' => 'sidebar-mini ',
     'namePage' => 'User Profile',
-    'activePage' => 'profile2',
-    'activeNav' => '',
+    'class' => 'sidebar-mini',
+    'activePage' => 'perfil',
 ])
-
 @section('content')
+@guest
+@else
   <div class="panel-header panel-header-sm">
   </div>
   <div class="content">
@@ -120,4 +120,5 @@
       </div>
     </div>
   </div>
+  @endguest
 @endsection

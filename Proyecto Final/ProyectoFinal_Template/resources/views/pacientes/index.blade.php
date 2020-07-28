@@ -16,7 +16,7 @@
                 <h4 style="padding: 20px;" class="card-title"> Listado de Pacientes</h4>
                 <br>
                 <div class="col-sm-8" style="padding-left: 20px;">
-                    <a type="button" class="btn btn-outline-info btn-round " href="{{ route('pacientes.create') }}" >
+                    <a type="button" class="btn btn-outline-info btn-round" href="{{ route('pacientes.create') }}" >
                         {{ __('Nuevo Paciente') }}
                     </a>
                 </div>
@@ -56,7 +56,7 @@
                                                         <td>{{$paciente->email}}</td>
                                                         <td>{{$paciente->mediconomb}} {{$paciente->medicoapell}}</td>
                                                         <td class="td-actions text-center">
-                                                            <a href="{{url('/pacientes/'.$paciente->id.'/edit')}}" rel="tooltip"  class="btn btn-success btn-round btn-icon"><i class="now-ui-icons ui-2_settings-90"></i></a>
+                                                            <a href="{{url('/pacientes/'.$paciente->id.'/edit')}}" rel="tooltip"  class="btn btn-warning btn-round btn-icon"><i class="now-ui-icons ui-2_settings-90"></i></a>
                                                             <a href="{{url('/pacientes/'.$paciente->id.'/profile')}}" rel="tooltip"  class="btn btn-info btn-round btn-icon"><i class="now-ui-icons users_single-02"></i></a>
                                                             <!--Eliminar empleado (icono)-->
                                                             <form action="{{url('/pacientes/'.$paciente->id)}}" method="POST">
@@ -87,7 +87,7 @@
                                 <p class="card-text"><b>Teléfono:</b> {{$paciente->telefono}}</p>
                                 <br>
                                 <div class="td-actions text-center">
-                                    <a href="{{url('/pacientes/'.$paciente->id.'/edit')}}" rel="tooltip"  class="btn btn-success btn-round btn-icon"><i class="now-ui-icons ui-2_settings-90"></i></a>
+                                    <a href="{{url('/pacientes/'.$paciente->id.'/edit')}}" rel="tooltip"  class="btn btn-warning btn-round btn-icon"><i class="now-ui-icons ui-2_settings-90"></i></a>
                                     <a href="{{url('/pacientes/'.$paciente->id.'/profile')}}" rel="tooltip"  class="btn btn-info btn-round btn-icon"><i class="now-ui-icons users_single-02"></i></a>
                                     <!--Eliminar empleado (icono)-->
                                     <form action="{{url('/pacientes/'.$paciente->id)}}" method="POST">

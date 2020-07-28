@@ -1,22 +1,28 @@
-@extends('layouts.app')
+@extends('layouts.app', [
+    'namePage' => 'citas',
+    'class' => 'sidebar-mini',
+    'activePage' => 'citas',
+])
 @section ('titulo', 'Administración de citas')
-@section('read_cita')
+@section('content')
 @guest
 @else
-<div class="container">
+<div class="panel-header panel-header-sm">
+  </div>
+<div class="content">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Listado de Citas') }}</div>
+                <h4 style="padding: 20px;" class="card-title"> Listado de Citas</h4>
                 <br>
-                <div class="col-sm-8" style="padding-left: 30px;">
-                    <a type="button" class="btn btn btn-outline-dark btn-sm" href="{{ route('citas.create') }}" >
+                <div class="col-sm-8" style="padding-left: 20px;">
+                    <a type="button" class="btn btn-outline-info btn-round" href="{{ route('citas.create') }}" >
                         {{ __('Nueva Cita') }}
                     </a>
                 </div>
                 <ul class="nav nav-tabs" style="padding: 20px;">
-                    <li><a class="nav-link border" id="tabvistas" data-toggle="tab" href="#vistas">Vista</a></li>
-                    <li><a class="nav-link border" id="tabtablas" data-toggle="tab" href="#tablas">Tabla</a></li>
+                    <li><a class="nav-link btn-outline-info border" id="tabvistas" data-toggle="tab" href="#vistas">Vista</a></li>
+                    <li><a class="nav-link btn-outline-info border" id="tabtablas" data-toggle="tab" href="#tablas">Tabla</a></li>
                 </ul>
                 <div style="padding: 20px;" class="tab-content">
                     
@@ -45,16 +51,14 @@
                                                         <td>{{$cita->fecha}}</td>
                                                         <td>{{$cita->paciente}}</td>
                                                         <td>{{$cita->medico}}</td>
-                                                        <td>
-                                                            <div style="display: flex;">
-                                                                <a href="{{url('/citas/'.$cita->id.'/edit')}}" style="padding: 5px;" class = "btn btn-outline-info"><i data-feather="edit"></i></a>
-                                                                <!--Eliminar empleado (icono)-->
-                                                                <form action="{{url('/citas/'.$cita->id)}}" method="POST">
-                                                                    {{csrf_field()}}
-                                                                    {{method_field('DELETE')}}
-                                                                    <button style="padding: 5px;" onclick="return confirm('¿Borrar?');" class="btn btn-outline-danger"><i data-feather="trash"></i></button>
-                                                                </form>
-                                                            </div>
+                                                        <td style="display: flex;">
+                                                            <a href="{{url('/citas/'.$cita->id.'/edit')}}" rel="tooltip"  class="btn btn-warning btn-round btn-icon"><i class="now-ui-icons ui-2_settings-90"></i></a>
+                                                            <!--Eliminar empleado (icono)-->
+                                                            <form action="{{url('/citas/'.$cita->id)}}" method="POST">
+                                                                {{csrf_field()}}
+                                                                {{method_field('DELETE')}}
+                                                                <button onclick="return confirm('¿Borrar?');" rel="tooltip" class="btn btn-danger btn-round btn-icon"><i class="now-ui-icons ui-1_simple-remove"></i></button>
+                                                            </form>
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -66,7 +70,7 @@
                             </div>
                         </div>
                     </div>
-                    <div style="padding: 20px;display:flex;" id="vistas" class="tab-pane fade border row">
+                    <div style="padding: 20px;display:flex;" id="vistas" class="tab-pane fade row">
                     @foreach($datos as $citas)
                         <!--Grid row-->
                         <div class="col-md-6 mb-4">
@@ -108,12 +112,12 @@
                                 <h4 class="text-uppercase font-weight-bold my-4">Nombre: {{$citas->nombre}}</h4>
                                 <p class="text-muted" align="justify">Cualquier duda favor de consultarlo con el médico a cargo, de ser posible llamar a su número teléfonico.</p>
                                 <div style="display: flex;">
-                                    <a href="{{url('/citas/'.$cita->id.'/edit')}}" style="padding: 5px;" class = "btn btn-outline-info"><i data-feather="edit"></i></a>
+                                    <a href="{{url('/citas/'.$cita->id.'/edit')}}" rel="tooltip"  class="btn btn-warning btn-round btn-icon"><i class="now-ui-icons ui-2_settings-90"></i></a>
                                     <!--Eliminar empleado (icono)-->
                                     <form action="{{url('/citas/'.$cita->id)}}" method="POST">
                                         {{csrf_field()}}
                                         {{method_field('DELETE')}}
-                                        <button style="padding: 5px;" onclick="return confirm('¿Borrar?');" class="btn btn-outline-danger"><i data-feather="trash"></i></button>
+                                        <button onclick="return confirm('¿Borrar?');" rel="tooltip" class="btn btn-danger btn-round btn-icon"><i class="now-ui-icons ui-1_simple-remove"></i></button>
                                     </form>
                                 </div>
                             </div>

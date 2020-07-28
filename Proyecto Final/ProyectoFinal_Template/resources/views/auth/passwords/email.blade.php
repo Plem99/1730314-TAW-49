@@ -1,8 +1,8 @@
 @extends('layouts.app', [
-    'namePage' => 'Reset Password',
+    'namePage' => 'Reiniciar Contraseña',
     'class' => 'login-page sidebar-mini ',
     'activePage' => '',
-    'backgroundImage' => asset('assets') . "/img/bg14.jpg",
+    'backgroundImage' => asset('assets') . "/img/medical3.jpg",
 ])
 
 @section('content')
@@ -40,7 +40,7 @@
                             @enderror
                         </div>
                         <div class="card-footer ">
-                            <button  type = "submit" class="btn btn-primary btn-round btn-lg btn-block mb-3">{{ __('Send Password Reset Link') }}</button>
+                            <button  type = "submit" class="btn btn-success btn-round btn-lg btn-block mb-3">{{ __('Enviar Contraseña de Reinicio') }}</button>
                         </div>
                     </div>
                 </form>

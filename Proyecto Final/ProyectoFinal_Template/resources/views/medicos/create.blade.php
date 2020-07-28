@@ -1,9 +1,15 @@
-@extends('layouts.app')
+@extends('layouts.app', [
+    'namePage' => 'medicos',
+    'class' => 'sidebar-mini',
+    'activePage' => 'medicos',
+])
 @section ('titulo', 'Registrar Médico')
-@section('create_medico')
+@section('content')
 @guest
 @else
-<div class="container">
+<div class="panel-header panel-header-sm">
+  </div>
+<div class="content">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -69,7 +75,7 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn btn-outline-success btn-sm">Registrar</button>
+                        <button type="submit" class="btn btn btn-outline-success btn-round">Registrar</button>
                     </form>
                 </div>
             </div>

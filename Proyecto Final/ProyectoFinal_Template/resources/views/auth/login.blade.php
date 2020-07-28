@@ -1,5 +1,5 @@
 @extends('layouts.app', [
-    'namePage' => 'Login page',
+    'namePage' => 'Página de Inicio de Sesión',
     'class' => 'login-page sidebar-mini ',
     'activePage' => 'login',
     'backgroundImage' => asset('assets') . "/img/medical2.jpg",
@@ -63,15 +63,15 @@
                 @endif
                 </div>
                 <div class="card-footer ">
-                <button  type = "submit" class="btn btn-primary btn-round btn-lg btn-block mb-3">{{ __('Get Started') }}</button>
+                <button  type = "submit" class="btn btn-success btn-round btn-lg btn-block mb-3">{{ __('Iniciar Sesión') }}</button>
                 <div class="pull-left">
                     <h6>
-                    <a href="{{ route('register') }}" class="link footer-link">{{ __('Create Account') }}</a>
+                    <a href="{{ route('register') }}" class="link footer-link">{{ __('Crear Cuenta') }}</a>
                     </h6>
                 </div>
                 <div class="pull-right">
                     <h6>
-                    <a href="{{ route('password.request') }}" class="link footer-link">{{ __('Forgot Password?') }}</a>
+                    <a href="{{ route('password.request') }}" class="link footer-link">{{ __('Olvidaste tu contraseña?') }}</a>
                     </h6>                
                 </div>
                 </div>

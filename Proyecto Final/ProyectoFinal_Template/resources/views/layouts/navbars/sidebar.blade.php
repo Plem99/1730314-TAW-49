@@ -19,7 +19,7 @@
           <p>{{ __('Dashboard') }}</p>
         </a>
       </li>
-      <li>
+      <!--<li>
         <a data-toggle="collapse" href="#laravelExamples">
             <i class="fab fa-laravel"></i>
           <p>
@@ -31,7 +31,7 @@
           <ul class="nav">
             <li class="@if ($activePage == 'profile') active @endif">
               <a href="{{ route('profile.edit') }}">
-                <i class="now-ui-icons users_single-02"></i>
+                <i class="now-ui-icons travel_info"></i>
                 <p> {{ __("User Profile") }} </p>
               </a>
             </li>
@@ -42,14 +42,32 @@
               </a>
             </li>
           </ul>
-        </div>
-        <li class="@if ($activePage == 'pacientes') active @endif">
+        </div>-->
+      <li class="@if ($activePage == 'perfil') active @endif">
+        <a href="{{ route('medicos.profile') }}">
+          <i class="now-ui-icons travel_info"></i>
+          <p> {{ __("Perfil") }} </p>
+        </a>
+      </li>
+      <li class="@if ($activePage == 'medicos') active @endif">
+        <a href="{{ route('medicos.index') }}">
+          <i class="now-ui-icons users_circle-08"></i>
+          <p>{{ __('Médicos') }}</p>
+        </a>
+      </li>
+      <li class="@if ($activePage == 'pacientes') active @endif">
         <a href="{{ route('pacientes.index') }}">
           <i class="now-ui-icons users_single-02"></i>
           <p>{{ __('Pacientes') }}</p>
         </a>
       </li>
-      <li class="@if ($activePage == 'icons') active @endif">
+      <li class="@if ($activePage == 'citas') active @endif">
+        <a href="{{ route('citas.index') }}">
+          <i class="now-ui-icons education_agenda-bookmark"></i>
+          <p>{{ __('Citas') }}</p>
+        </a>
+      </li>
+      <!--<li class="@if ($activePage == 'icons') active @endif">
         <a href="{{ route('page.index','icons') }}">
           <i class="now-ui-icons education_atom"></i>
           <p>{{ __('Icons') }}</p>
@@ -78,13 +96,13 @@
           <i class="now-ui-icons text_caps-small"></i>
           <p>{{ __('Typography') }}</p>
         </a>
-      </li>
-      <li class = "@if ($activePage == 'upgrade') active @endif active-pro">
+      </li>-->
+      <!--<li class = "@if ($activePage == 'upgrade') active @endif active-pro">
         <a href="{{ route('page.index','upgrade') }}" class="color-ev">
           <i class="now-ui-icons arrows-1_cloud-download-93"></i>
           <p>{{ __('Upgrade to PRO') }}</p>
         </a>
-      </li>
+      </li>-->
     </ul>
   </div>
 </div>
