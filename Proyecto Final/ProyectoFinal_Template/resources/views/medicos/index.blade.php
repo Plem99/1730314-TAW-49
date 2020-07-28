@@ -13,7 +13,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <h4 style="padding: 20px;" class="card-title"> Listado de Médicos</h4>
+                <h4 style="padding-left: 20px;" class="card-title"> Listado de Médicos</h4>
                 <br>
                 <div class="col-sm-8" style="padding-left: 20px;">
                     <a type="button" class="btn btn-outline-info btn-round" href="{{ route('medicos.create') }}" >
@@ -58,13 +58,13 @@
                                                         <td>{{$medico->telefono}}</td>
                                                         <td>{{$medico->tipo}}</td>
                                                         <td class="td-actions text-center">
-                                                            <a href="{{url('/medicos/'.$medico->id.'/edit')}}" rel="tooltip"  class="btn btn-warning btn-round btn-icon"><i class="now-ui-icons ui-2_settings-90"></i></a>
-                                                            <a href="{{url('/medicos/'.$medico->id.'/profile')}}" rel="tooltip"  class="btn btn-info btn-round btn-icon"><i class="now-ui-icons users_single-02"></i></a>
+                                                            <a href="{{url('/medicos/'.$medico->id.'/edit')}}" rel="tooltip"  class="btn btn-outline-warning btn-round btn-icon"><i class="now-ui-icons ui-2_settings-90"></i></a>
+                                                            <a href="{{url('/medicos/'.$medico->id.'/profile')}}" rel="tooltip"  class="btn btn-outline-info btn-round btn-icon"><i class="now-ui-icons users_single-02"></i></a>
                                                             <!--Eliminar empleado (icono)-->
                                                             <form action="{{url('/medicos/'.$medico->id)}}" method="POST">
                                                                 {{csrf_field()}}
                                                                 {{method_field('DELETE')}}
-                                                                <button style="padding: 5px;" onclick="return confirm('¿Borrar?');" rel="tooltip" class="btn btn-danger btn-round btn-icon"><i class="now-ui-icons ui-1_simple-remove"></i></button>
+                                                                <button style="padding: 5px;" onclick="return confirm('¿Borrar?');" rel="tooltip" class="btn btn-outline-danger btn-round btn-icon"><i class="now-ui-icons ui-1_simple-remove"></i></button>
                                                             </form>
                                                         </td>
                                                     </tr>
@@ -76,9 +76,9 @@
                             </div>
                         </div>
                     </div>
-                    <div style="padding: 20px;display:flex;" id="vistas" class="tab-pane fade row">
+                    <div style="display:flex;" id="vistas" class="tab-pane fade row">
                     @foreach($datos as $medico)
-                        <div class="card" style="width:350px;padding: 20px;">
+                        <!--<div class="card" style="width:380px;padding: 20px;">
                             <img class="card-img-top" src="../img/medico.png" alt="Card image" style="width:100%">
                             <div class="card-body">
                                 <h4 class="card-title">{{$medico->nombre}}</h4>
@@ -90,7 +90,6 @@
                                 <div class="td-actions text-center">
                                     <a href="{{url('/medicos/'.$medico->id.'/edit')}}" rel="tooltip"  class="btn btn-warning btn-round btn-icon"><i class="now-ui-icons ui-2_settings-90"></i></a>
                                     <a href="{{url('/medicos/'.$medico->id.'/profile')}}" rel="tooltip"  class="btn btn-info btn-round btn-icon"><i class="now-ui-icons users_single-02"></i></a>
-                                    <!--Eliminar empleado (icono)-->
                                     <form action="{{url('/medicos/'.$medico->id)}}" method="POST">
                                         {{csrf_field()}}
                                         {{method_field('DELETE')}}
@@ -98,7 +97,37 @@
                                     </form>
                                 </div>
                             </div>
+                        </div>-->
+                        <div class="col-md-4">
+                        <div class="card card-user">
+                        <div class="image">
+                            <img src="{{asset('assets')}}/img/medical4.jpeg" alt="...">
                         </div>
+                        <div class="card-body">
+                            <div class="author">
+                                <img class="avatar border-gray" src="{{asset('assets')}}/img/medico.png" alt="...">
+                                <h4 style="color: rgba(5, 101, 145, 0.9);" class="card-title">{{$medico->nombre}}</h4>
+                                <div >
+                                <p class="description"><b>{{$medico->tipo}}</b></p>
+                                <p class="description"><b>Sexo:</b> {{$medico->sexo}}</p>
+                                <p class="description"><b>Email:</b> {{$medico->email}}</p>
+                                <p class="description"><b>Teléfono:</b> {{$medico->telefono}}</p>
+                            </div>
+                            </div>
+                            
+                        </div>
+                        <hr>
+                        <div class="button-container">
+                            <a href="{{url('/medicos/'.$medico->id.'/edit')}}" rel="tooltip"  class="btn btn-outline-warning btn-round btn-icon "><i class="now-ui-icons ui-2_settings-90"></i></a>
+                            <a href="{{url('/medicos/'.$medico->id.'/profile')}}" rel="tooltip"  class="btn btn-outline-info btn-round btn-icon"><i class="now-ui-icons users_single-02"></i></a>
+                            <form action="{{url('/medicos/'.$medico->id)}}" method="POST">
+                                {{csrf_field()}}
+                                {{method_field('DELETE')}}
+                                <button onclick="return confirm('¿Borrar?');" rel="tooltip" class="btn btn-outline-danger btn-round btn-icon"><i class="now-ui-icons ui-1_simple-remove"></i></button>
+                            </form>
+                        </div>
+                        </div>
+                    </div>
                     @endforeach
                     </div>
                 </div>

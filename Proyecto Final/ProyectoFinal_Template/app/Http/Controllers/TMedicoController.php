@@ -55,7 +55,8 @@ class TMedicoController extends Controller
      */
     public function show(t_medico $t_medico)
     {
-        //
+        
+        return view('medicos.medic_profile');
     }
 
     /**

@@ -16,7 +16,7 @@
       <li class="@if ($activePage == 'home') active @endif">
         <a href="{{ route('home') }}">
           <i class="now-ui-icons design_app"></i>
-          <p>{{ __('Dashboard') }}</p>
+          <p>{{ __('Inicio') }}</p>
         </a>
       </li>
       <!--<li>
@@ -44,9 +44,10 @@
           </ul>
         </div>-->
       <li class="@if ($activePage == 'perfil') active @endif">
-        <a href="{{ route('medicos.profile') }}">
+        <!--<a href="{{ url('/medicos/medic_profile') }}">-->
+        <a href="{{ route('profile.edit') }}">
           <i class="now-ui-icons travel_info"></i>
-          <p> {{ __("Perfil") }} </p>
+          <p>{{ __("Perfil") }}</p>
         </a>
       </li>
       <li class="@if ($activePage == 'medicos') active @endif">

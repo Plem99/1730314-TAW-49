@@ -13,7 +13,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <h4 style="padding: 20px;" class="card-title"> Listado de Citas</h4>
+                <h4 style="padding-left: 20px;" class="card-title"> Listado de Citas</h4>
                 <br>
                 <div class="col-sm-8" style="padding-left: 20px;">
                     <a type="button" class="btn btn-outline-info btn-round" href="{{ route('citas.create') }}" >
@@ -52,12 +52,12 @@
                                                         <td>{{$cita->paciente}}</td>
                                                         <td>{{$cita->medico}}</td>
                                                         <td style="display: flex;">
-                                                            <a href="{{url('/citas/'.$cita->id.'/edit')}}" rel="tooltip"  class="btn btn-warning btn-round btn-icon"><i class="now-ui-icons ui-2_settings-90"></i></a>
+                                                            <a href="{{url('/citas/'.$cita->id.'/edit')}}" rel="tooltip"  class="btn btn-outline-warning btn-round btn-icon"><i class="now-ui-icons ui-2_settings-90"></i></a>
                                                             <!--Eliminar empleado (icono)-->
                                                             <form action="{{url('/citas/'.$cita->id)}}" method="POST">
                                                                 {{csrf_field()}}
                                                                 {{method_field('DELETE')}}
-                                                                <button onclick="return confirm('¿Borrar?');" rel="tooltip" class="btn btn-danger btn-round btn-icon"><i class="now-ui-icons ui-1_simple-remove"></i></button>
+                                                                <button onclick="return confirm('¿Borrar?');" rel="tooltip" class="btn btn-outline-danger btn-round btn-icon"><i class="now-ui-icons ui-1_simple-remove"></i></button>
                                                             </form>
                                                         </td>
                                                     </tr>
@@ -84,40 +84,38 @@
                             <div class="card-image" style="background-image: url(https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2814%29.jpg)">
 
                                 <!-- Content -->
-                                <a href="#!">
                                 <div class="text-white d-flex h-100 mask blue-gradient-rgba">
                                     <div class="first-content align-self-center p-3">
                                     <h3 class="card-title">Cita {{$loop->iteration}}</h3>
                                     </div>
-                                    <div class="second-content align-self-center mx-auto text-center">
+                                    <!--<div class="second-content align-self-center mx-auto text-center">
                                     <i class="far fa-money-bill-alt fa-3x"></i>
-                                    </div>
+                                    </div>-->
                                 </div>
-                                </a>
 
                             </div>
-
+                            <br>
                             <!-- Data -->
                             <div class="third-content ml-auto mr-4 mb-2">
-                                <p class="text-uppercase text-muted">{{$citas->fecha}}</p>
-                                <h4 class="font-weight-bold float-right">Paciente: {{$citas->paciente}}</h4>
+                                <p style="padding-left: 15px;" class="text-uppercase text-muted">{{$citas->fecha}}</p>
+                                <h4 class="card-title float-right">Paciente: {{$citas->paciente}}</h4>
                             </div>
 
                             <!-- Content -->
                             <div class="card-body white">
-                                <div class="progress md-progress">
-                                <div class="progress-bar bg-primary" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div style="display: none;" class="progress md-progress">
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: 100%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                                 <p class="text-muted">Médico: {{$citas->medico}}</p>
-                                <h4 class="text-uppercase font-weight-bold my-4">Nombre: {{$citas->nombre}}</h4>
+                                <h4 class="card-title my-4">Nombre: {{$citas->nombre}}</h4>
                                 <p class="text-muted" align="justify">Cualquier duda favor de consultarlo con el médico a cargo, de ser posible llamar a su número teléfonico.</p>
-                                <div style="display: flex;">
-                                    <a href="{{url('/citas/'.$cita->id.'/edit')}}" rel="tooltip"  class="btn btn-warning btn-round btn-icon"><i class="now-ui-icons ui-2_settings-90"></i></a>
+                                <div class="text-center" style="display: flex;">
+                                    <a href="{{url('/citas/'.$cita->id.'/edit')}}" rel="tooltip"  class="btn btn-outline-warning btn-round btn-icon"><i class="now-ui-icons ui-2_settings-90"></i></a>
                                     <!--Eliminar empleado (icono)-->
                                     <form action="{{url('/citas/'.$cita->id)}}" method="POST">
                                         {{csrf_field()}}
                                         {{method_field('DELETE')}}
-                                        <button onclick="return confirm('¿Borrar?');" rel="tooltip" class="btn btn-danger btn-round btn-icon"><i class="now-ui-icons ui-1_simple-remove"></i></button>
+                                        <button onclick="return confirm('¿Borrar?');" rel="tooltip" class="btn btn-outline-danger btn-round btn-icon"><i class="now-ui-icons ui-1_simple-remove"></i></button>
                                     </form>
                                 </div>
                             </div>
@@ -149,7 +147,6 @@
             $("#tablas").hide();
         });
     });
-
 </script>
 @endsection
 

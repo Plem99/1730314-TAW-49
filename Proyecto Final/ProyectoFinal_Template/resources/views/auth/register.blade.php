@@ -11,7 +11,7 @@
         <div class="col-md-5 ml-auto">
           <div class="info-area info-horizontal mt-5">
             <div class="icon icon-primary">
-              <i class="now-ui-icons media-2_sound-wave"></i>
+              <i class="now-ui-icons education_agenda-bookmark"></i>
             </div>
             <div class="description">
               <h5 class="info-title">{{ __('Citas') }}</h5>
@@ -22,7 +22,7 @@
           </div>
           <div class="info-area info-horizontal">
             <div class="icon icon-primary">
-              <i class="now-ui-icons media-1_button-pause"></i>
+              <i class="now-ui-icons users_single-02"></i>
             </div>
             <div class="description">
               <h5 class="info-title">{{ __('Pacientes') }}</h5>
@@ -33,7 +33,7 @@
           </div>
           <div class="info-area info-horizontal">
             <div class="icon icon-info">
-              <i class="now-ui-icons users_single-02"></i>
+              <i class="now-ui-icons users_circle-08"></i>
             </div>
             <div class="description">
               <h5 class="info-title">{{ __('Médicos') }}</h5>

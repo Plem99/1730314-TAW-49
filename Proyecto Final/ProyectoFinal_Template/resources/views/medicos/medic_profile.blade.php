@@ -1,5 +1,5 @@
 @extends('layouts.app', [
-    'namePage' => 'User Profile',
+    'namePage' => 'Perfil',
     'class' => 'sidebar-mini',
     'activePage' => 'perfil',
 ])
@@ -13,9 +13,9 @@
       <div class="col-md-8">
         <div class="card">
           <div class="card-header">
-            <h5 class="title">{{__(" Edit Profile")}}</h5>
+            <h4 style="padding-left: 5px;" class="card-title">{{__(" Editar Perfil")}}</h4>
           </div>
-          <div class="card-body">
+          <div style="padding-left: 20px;" class="card-body">
             <form method="post" action="{{ route('profile.update') }}" autocomplete="off"
             enctype="multipart/form-data">
               @csrf
@@ -26,8 +26,8 @@
                 <div class="row">
                     <div class="col-md-7 pr-1">
                         <div class="form-group">
-                            <label>{{__(" Name")}}</label>
-                                <input type="text" name="name" class="form-control" value="{{ old('name', auth()->user()->name) }}">
+                            <label>{{__(" Nombre")}}</label>
+                                <input type="text" name="name" class="form-control" value="{{ old('name', auth()->user()->name) }}" required>
                                 @include('alerts.feedback', ['field' => 'name'])
                         </div>
                     </div>
@@ -35,22 +35,22 @@
                 <div class="row">
                   <div class="col-md-7 pr-1">
                     <div class="form-group">
-                      <label for="exampleInputEmail1">{{__(" Email address")}}</label>
-                      <input type="email" name="email" class="form-control" placeholder="Email" value="{{ old('email', auth()->user()->email) }}">
+                      <label for="exampleInputEmail1">{{__(" Email")}}</label>
+                      <input type="email" name="email" class="form-control" placeholder="Email" value="{{ old('email', auth()->user()->email) }}" required>
                       @include('alerts.feedback', ['field' => 'email'])
                     </div>
                   </div>
                 </div>
               <div class="card-footer ">
-                <button type="submit" class="btn btn-primary btn-round">{{__('Save')}}</button>
+                <button type="submit" class="btn btn btn-outline-warning btn-round">{{__('Guardar')}}</button>
               </div>
               <hr class="half-rule"/>
             </form>
           </div>
           <div class="card-header">
-            <h5 class="title">{{__("Password")}}</h5>
+            <h4 style="padding-left: 5px;" class="card-title">{{__("Contraseña")}}</h4>
           </div>
-          <div class="card-body">
+          <div style="padding-left: 20px;"  class="card-body">
             <form method="post" action="{{ route('profile.password') }}" autocomplete="off">
               @csrf
               @method('put')
@@ -58,8 +58,8 @@
               <div class="row">
                 <div class="col-md-7 pr-1">
                   <div class="form-group {{ $errors->has('password') ? ' has-danger' : '' }}">
-                    <label>{{__(" Current Password")}}</label>
-                    <input class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" name="old_password" placeholder="{{ __('Current Password') }}" type="password"  required>
+                    <label>{{__("Contraseña Actual")}}</label>
+                    <input class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" name="old_password" placeholder="{{ __('Contraseña Actual') }}" type="password"  required>
                     @include('alerts.feedback', ['field' => 'old_password'])
                   </div>
                 </div>
@@ -67,8 +67,8 @@
               <div class="row">
                 <div class="col-md-7 pr-1">
                   <div class="form-group {{ $errors->has('password') ? ' has-danger' : '' }}">
-                    <label>{{__(" New password")}}</label>
-                    <input class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('New Password') }}" type="password" name="password" required>
+                    <label>{{__("Nueva Contraseña")}}</label>
+                    <input class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('Nueva Contraseña') }}" type="password" name="password" required>
                     @include('alerts.feedback', ['field' => 'password'])
                   </div>
                 </div>
@@ -76,13 +76,13 @@
             <div class="row">
               <div class="col-md-7 pr-1">
                 <div class="form-group {{ $errors->has('password') ? ' has-danger' : '' }}">
-                  <label>{{__(" Confirm New Password")}}</label>
-                  <input class="form-control" placeholder="{{ __('Confirm New Password') }}" type="password" name="password_confirmation" required>
+                  <label>{{__("Confirmar Nueva Contraseña")}}</label>
+                  <input class="form-control" placeholder="{{ __('Confirmar Nueva Contraseña') }}" type="password" name="password_confirmation" required>
                 </div>
               </div>
-            </div>
+            </div> 
             <div class="card-footer ">
-              <button type="submit" class="btn btn-primary btn-round ">{{__('Change Password')}}</button>
+              <button type="submit" class="btn btn btn-outline-warning btn-round">{{__('Cambiar Contraseña')}}</button>
             </div>
           </form>
         </div>
@@ -91,14 +91,12 @@
       <div class="col-md-4">
         <div class="card card-user">
           <div class="image">
-            <img src="{{asset('assets')}}/img/bg5.jpg" alt="...">
+            <img src="{{asset('assets')}}/img/medical4.jpeg" alt="...">
           </div>
           <div class="card-body">
             <div class="author">
-              <a href="#">
-                <img class="avatar border-gray" src="{{asset('assets')}}/img/default-avatar.png" alt="...">
-                <h5 class="title">{{ auth()->user()->name }}</h5>
-              </a>
+                <img class="avatar border-gray" src="{{asset('assets')}}/img/img_avatar1.png" alt="...">
+                <h5 style="color: rgba(5, 101, 145, 0.9);" class="title">{{ auth()->user()->name }}</h5>
               <p class="description">
                   {{ auth()->user()->email }}
               </p>
@@ -107,13 +105,13 @@
           <hr>
           <div class="button-container">
             <button href="#" class="btn btn-neutral btn-icon btn-round btn-lg">
-              <i class="fab fa-facebook-square"></i>
+              <i style="color: rgba(5, 101, 145, 0.9);" class="fab fa-facebook-square"></i>
             </button>
             <button href="#" class="btn btn-neutral btn-icon btn-round btn-lg">
-              <i class="fab fa-twitter"></i>
+              <i style="color: rgba(5, 101, 145, 0.9);" class="fab fa-twitter"></i>
             </button>
             <button href="#" class="btn btn-neutral btn-icon btn-round btn-lg">
-              <i class="fab fa-google-plus-square"></i>
+              <i style="color: rgba(5, 101, 145, 0.9);" class="fab fa-google-plus-square"></i>
             </button>
           </div>
         </div>
