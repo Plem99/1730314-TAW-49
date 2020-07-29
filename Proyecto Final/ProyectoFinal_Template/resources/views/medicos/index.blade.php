@@ -105,7 +105,7 @@
                         </div>
                         <div class="card-body">
                             <div class="author">
-                                <img class="avatar border-gray" src="{{asset('assets')}}/img/medico.png" alt="...">
+                                <img class="image border-gray" src="{{asset('assets')}}/img/medico.png" alt="...">
                                 <h4 style="color: rgba(5, 101, 145, 0.9);" class="card-title">{{$medico->nombre}}</h4>
                                 <div >
                                 <p class="description"><b>{{$medico->tipo}}</b></p>
@@ -114,7 +114,6 @@
                                 <p class="description"><b>Teléfono:</b> {{$medico->telefono}}</p>
                             </div>
                             </div>
-                            
                         </div>
                         <hr>
                         <div class="button-container">

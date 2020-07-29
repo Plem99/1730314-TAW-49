@@ -23,14 +23,14 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">{{'Nombres'}}</label>
                             <div class="col-sm-8">
-                                <input id="nombres" class="form-control" name="nombre" value="{{$medicos->nombre}}" type="text">
+                                <input id="nombres" class="form-control" name="nombre" value="{{$medicos->nombre}}" type="text" required>
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">{{'Apellidos'}}</label>
                             <div class="col-sm-8">
-                                <input id="apellidos" class="form-control" name="apellidos" value="{{$medicos->apellidos}}" type="text">
+                                <input id="apellidos" class="form-control" name="apellidos" value="{{$medicos->apellidos}}" type="text" required>
                             </div>
                         </div>
 
@@ -48,21 +48,21 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">{{'Email'}}</label>
                             <div class="col-sm-8">
-                                <input id="email" class="form-control" name="email" value="{{$medicos->email}}" type="email">
+                                <input id="email" class="form-control" name="email" value="{{$medicos->email}}" type="email" required>
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">{{'Contraseña'}}</label>
                             <div class="col-sm-8">
-                                <input id="contrasena" class="form-control" name="contrasena" value="{{$medicos->contrasena}}" type="password">
+                                <input id="contrasena" class="form-control" name="contrasena" value="{{$medicos->contrasena}}" type="password" required>
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">{{'Telefono'}}</label>
                             <div class="col-sm-8">
-                                <input id="telefono" class="form-control" name="telefono" value="{{$medicos->telefono}}" type="text">
+                                <input id="telefono" class="form-control" name="telefono" value="{{$medicos->telefono}}" type="text" required>
                             </div>
                         </div>
 

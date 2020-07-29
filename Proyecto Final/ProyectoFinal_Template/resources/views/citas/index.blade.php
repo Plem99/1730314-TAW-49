@@ -109,6 +109,7 @@
                                 <p class="text-muted">Médico: {{$citas->medico}}</p>
                                 <h4 class="card-title my-4">Nombre: {{$citas->nombre}}</h4>
                                 <p class="text-muted" align="justify">Cualquier duda favor de consultarlo con el médico a cargo, de ser posible llamar a su número teléfonico.</p>
+                                <hr>
                                 <div class="text-center" style="display: flex;">
                                     <a href="{{url('/citas/'.$cita->id.'/edit')}}" rel="tooltip"  class="btn btn-outline-warning btn-round btn-icon"><i class="now-ui-icons ui-2_settings-90"></i></a>
                                     <!--Eliminar empleado (icono)-->

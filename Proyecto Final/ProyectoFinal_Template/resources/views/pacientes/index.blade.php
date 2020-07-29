@@ -105,7 +105,7 @@
                         </div>
                         <div class="card-body">
                             <div class="author">
-                                <img class="avatar border-gray" src="{{asset('assets')}}/img/paciente.png" alt="...">
+                                <img class="image border-gray" src="{{asset('assets')}}/img/paciente.png" alt="...">
                                 <h4 style="color: rgba(5, 101, 145, 0.9);" class="card-title">{{$paciente->nombre}}</h4>
                                 <div >
                                 <p class="description"><b>Médico:</b> {{$paciente->mediconomb}} {{$paciente->medicoapell}}</p>

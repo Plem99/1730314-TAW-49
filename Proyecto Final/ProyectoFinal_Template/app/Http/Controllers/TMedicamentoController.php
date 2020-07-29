@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\t_medicamento;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,8 @@ class TMedicamentoController extends Controller
      */
     public function create()
     {
-        //
+        $medicamentos = t_medicamento::all();
+        return view('medicamentos.create',compact('medicamentos'));
     }
 
     /**
@@ -37,7 +39,12 @@ class TMedicamentoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //No mandaremos el _token
+        $datos = request()->except('_token');
+        //Insertar datos en el modelo
+        t_medicamento::insert($datos);
+
+        return redirect('medicamentos');
     }
 
     /**
@@ -57,9 +64,10 @@ class TMedicamentoController extends Controller
      * @param  \App\t_medicamento  $t_medicamento
      * @return \Illuminate\Http\Response
      */
-    public function edit(t_medicamento $t_medicamento)
+    public function edit($id)
     {
-        //
+        $datos = t_medicamento::findOrFail($id);
+        return view('medicamentos.edit',compact('datos'));
     }
 
     /**
@@ -69,9 +77,11 @@ class TMedicamentoController extends Controller
      * @param  \App\t_medicamento  $t_medicamento
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, t_medicamento $t_medicamento)
+    public function update(Request $request, $id)
     {
-        //
+        $datos = request()->except(['_token','_method']);
+        t_medicamento::where('id','=',$id)->update($datos);
+        return redirect('medicamentos');
     }
 
     /**
@@ -80,8 +90,9 @@ class TMedicamentoController extends Controller
      * @param  \App\t_medicamento  $t_medicamento
      * @return \Illuminate\Http\Response
      */
-    public function destroy(t_medicamento $t_medicamento)
+    public function destroy($id)
     {
-        //
+        t_medicamento::destroy($id);
+        return redirect('medicamentos');
     }
 }

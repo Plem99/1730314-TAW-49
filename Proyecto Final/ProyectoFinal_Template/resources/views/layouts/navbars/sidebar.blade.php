@@ -68,6 +68,18 @@
           <p>{{ __('Citas') }}</p>
         </a>
       </li>
+      <li class="@if ($activePage == 'medicamentos') active @endif">
+        <a href="{{ route('medicamentos.index') }}">
+          <i class="now-ui-icons business_briefcase-24"></i>
+          <p>{{ __('Medicamentos') }}</p>
+        </a>
+      </li>
+      <li class="@if ($activePage == 'alergias') active @endif">
+        <a href="{{ route('citas.index') }}">
+          <i class="now-ui-icons media-2_sound-wave"></i>
+          <p>{{ __('Alergias') }}</p>
+        </a>
+      </li>
       <!--<li class="@if ($activePage == 'icons') active @endif">
         <a href="{{ route('page.index','icons') }}">
           <i class="now-ui-icons education_atom"></i>

@@ -23,14 +23,14 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">{{'Nombres'}}</label>
                             <div class="col-sm-8">
-                                <input id="nombres" class="form-control" name="nombre" value="{{$citas->nombre}}" type="text">
+                                <input id="nombres" class="form-control" name="nombre" value="{{$citas->nombre}}" type="text" required>
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">{{'Fecha'}}</label>
                             <div class="col-sm-6">
-                                <input id="fecha" class="form-control" name="fecha" value="{{$citas->fecha}}" type="datetime-local">
+                                <input id="fecha" class="form-control" name="fecha" value="{{$citas->fecha}}" type="datetime-local" required>
                             </div>
                         </div>
 
