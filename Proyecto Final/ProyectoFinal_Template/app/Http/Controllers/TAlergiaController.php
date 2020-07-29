@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\t_alergia;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,9 @@ class TAlergiaController extends Controller
      */
     public function index()
     {
-        //
+        //Mostrar datos almacenados
+        $datos = t_alergia::all();
+        return view('alergias.index', compact('datos'));
     }
 
     /**
@@ -24,7 +27,8 @@ class TAlergiaController extends Controller
      */
     public function create()
     {
-        //
+        $datos = t_alergia::all();
+        return view('alergias.create',compact('datos'));
     }
 
     /**
@@ -35,7 +39,12 @@ class TAlergiaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //No mandaremos el _token
+        $datos = request()->except('_token');
+        //Insertar datos en el modelo
+        t_alergia::insert($datos);
+
+        return redirect('alergias');
     }
 
     /**
@@ -55,9 +64,10 @@ class TAlergiaController extends Controller
      * @param  \App\t_alergia  $t_alergia
      * @return \Illuminate\Http\Response
      */
-    public function edit(t_alergia $t_alergia)
+    public function edit($id)
     {
-        //
+        $datos = t_alergia::findOrFail($id);
+        return view('alergias.edit',compact('datos'));
     }
 
     /**
@@ -67,9 +77,11 @@ class TAlergiaController extends Controller
      * @param  \App\t_alergia  $t_alergia
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, t_alergia $t_alergia)
+    public function update(Request $request, $id)
     {
-        //
+        $datos = request()->except(['_token','_method']);
+        t_alergia::where('id','=',$id)->update($datos);
+        return redirect('alergias');
     }
 
     /**
@@ -78,8 +90,9 @@ class TAlergiaController extends Controller
      * @param  \App\t_alergia  $t_alergia
      * @return \Illuminate\Http\Response
      */
-    public function destroy(t_alergia $t_alergia)
+    public function destroy($id)
     {
-        //
+        t_alergia::destroy($id);
+        return redirect('alergias');
     }
 }

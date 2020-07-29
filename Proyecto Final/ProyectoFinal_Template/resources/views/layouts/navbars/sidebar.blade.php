@@ -15,7 +15,7 @@
     <ul class="nav">
       <li class="@if ($activePage == 'home') active @endif">
         <a href="{{ route('home') }}">
-          <i class="now-ui-icons design_app"></i>
+          <i class="now-ui-icons design_bullet-list-67"></i>
           <p>{{ __('Inicio') }}</p>
         </a>
       </li>
@@ -75,7 +75,7 @@
         </a>
       </li>
       <li class="@if ($activePage == 'alergias') active @endif">
-        <a href="{{ route('citas.index') }}">
+        <a href="{{ route('alergias.index') }}">
           <i class="now-ui-icons media-2_sound-wave"></i>
           <p>{{ __('Alergias') }}</p>
         </a>
