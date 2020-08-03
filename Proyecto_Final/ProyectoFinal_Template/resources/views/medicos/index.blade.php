@@ -7,6 +7,26 @@
 @section('content')
 @guest
 @else
+
+<?php
+    function cambio($sexo){
+        if($sexo=="masculino"){
+            echo "Hombre";
+        }else if($sexo=="femenino"){
+            echo "Mujer";
+        }else if($sexo=="no especificado"){
+            echo "No especificado";
+        }
+    }
+
+    function medicos($tipo){
+        if($tipo=="administrador"){
+            echo "Médico Administrador";
+        }else if($tipo=="consultas"){
+            echo "Médico Asociado";
+        }
+    } 
+?>
 <div class="panel-header panel-header-sm">
   </div>
 <div class="content">
@@ -52,11 +72,11 @@
                                                         <td>{{$loop->iteration}}</td>
                                                         <td>{{$medico->nombre}}</td>
                                                         <td>{{$medico->apellidos}}</td>
-                                                        <td>{{$medico->sexo}}</td>
+                                                        <td><?php cambio($medico->sexo)?> </td>
                                                         <td>{{$medico->email}}</td>
                                                         <td>{{$medico->contrasena}}</td>
                                                         <td>{{$medico->telefono}}</td>
-                                                        <td>{{$medico->tipo}}</td>
+                                                        <td><?php medicos($medico->tipo)?> </td>
                                                         <td class="td-actions text-center">
                                                             <a href="{{url('/medicos/'.$medico->id.'/edit')}}" rel="tooltip"  class="btn btn-outline-warning btn-round btn-icon"><i class="now-ui-icons ui-2_settings-90"></i></a>
                                                             <a href="{{url('/medicos/'.$medico->id.'/profile')}}" rel="tooltip"  class="btn btn-outline-info btn-round btn-icon"><i class="now-ui-icons users_single-02"></i></a>
@@ -106,10 +126,10 @@
                         <div class="card-body">
                             <div class="author">
                                 <img class="image border-gray" src="{{asset('assets')}}/img/medico.png" alt="...">
-                                <h4 style="color: rgba(5, 101, 145, 0.9);" class="card-title">{{$medico->nombre}}</h4>
+                                <h4 style="color: rgba(5, 101, 145, 0.9);" class="card-title">{{$medico->nombre}} {{$medico->apellidos}}</h4>
                                 <div >
-                                <p class="description"><b>{{$medico->tipo}}</b></p>
-                                <p class="description"><b>Sexo:</b> {{$medico->sexo}}</p>
+                                <p class="description"><b><?php medicos($medico->tipo)?> </b></p>
+                                <p class="description"><b>Sexo:</b> <?php cambio($medico->sexo)?> </p>
                                 <p class="description"><b>Email:</b> {{$medico->email}}</p>
                                 <p class="description"><b>Teléfono:</b> {{$medico->telefono}}</p>
                             </div>

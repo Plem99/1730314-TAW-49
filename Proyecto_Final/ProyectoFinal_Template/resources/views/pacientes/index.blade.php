@@ -7,6 +7,18 @@
 @section('content')
 @guest
 @else
+
+<?php
+    function cambio($sexo){
+        if($sexo=="masculino"){
+            echo "Hombre";
+        }else if($sexo=="femenino"){
+            echo "Mujer";
+        }else if($sexo=="no especificado"){
+            echo "No especificado";
+        }
+    }
+?>
 <div class="panel-header panel-header-sm">
   </div>
 <div class="content">
@@ -51,7 +63,7 @@
                                                         <td>{{$loop->iteration}}</td>
                                                         <td>{{$paciente->nombre}}</td>
                                                         <td>{{$paciente->apellidos}}</td>
-                                                        <td>{{$paciente->sexo}}</td>
+                                                        <td><?php cambio($paciente->sexo) ?></td>
                                                         <td>{{$paciente->telefono}}</td>
                                                         <td>{{$paciente->email}}</td>
                                                         <td>{{$paciente->mediconomb}} {{$paciente->medicoapell}}</td>
@@ -106,10 +118,10 @@
                         <div class="card-body">
                             <div class="author">
                                 <img class="image border-gray" src="{{asset('assets')}}/img/paciente.png" alt="...">
-                                <h4 style="color: rgba(5, 101, 145, 0.9);" class="card-title">{{$paciente->nombre}}</h4>
+                                <h4 style="color: rgba(5, 101, 145, 0.9);" class="card-title">{{$paciente->nombre}} {{$paciente->apellidos}}</h4>
                                 <div >
                                 <p class="description"><b>Médico:</b> {{$paciente->mediconomb}} {{$paciente->medicoapell}}</p>
-                                <p class="description"><b>Sexo:</b> {{$paciente->sexo}}</p>
+                                <p class="description"><b>Sexo:</b> <?php cambio($paciente->sexo) ?></p>
                                 <p class="description"><b>Email:</b> {{$paciente->email}}</p>
                                 <p class="description"><b>Teléfono:</b> {{$paciente->telefono}}</p>
                             </div>

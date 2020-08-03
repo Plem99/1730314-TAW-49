@@ -36,12 +36,12 @@ Route::resource('consultas', 'TConsultaController');
 Route::resource('citas', 'TCitaController');
 //Alergias
 Route::resource('alergias', 'TAlergiaController');
-Auth::routes();
+//Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Auth::routes();
+//Route::get('/home', 'HomeController@index')->name('home');
+//Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'UserController', ['except' => ['show']]);

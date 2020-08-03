@@ -50,7 +50,7 @@
                                                         <td>{{$cita->nombre}}</td>
                                                         <td>{{$cita->fecha}}</td>
                                                         <td>{{$cita->paciente}}</td>
-                                                        <td>{{$cita->medico}}</td>
+                                                        <td>{{$cita->medico}} {{$cita->medicoApell}}</td>
                                                         <td style="display: flex;">
                                                             <a href="{{url('/citas/'.$cita->id.'/edit')}}" rel="tooltip"  class="btn btn-outline-warning btn-round btn-icon"><i class="now-ui-icons ui-2_settings-90"></i></a>
                                                             <!--Eliminar empleado (icono)-->
@@ -106,7 +106,7 @@
                                 <div style="display: none;" class="progress md-progress">
                                 <div class="progress-bar bg-primary" role="progressbar" style="width: 100%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
-                                <p class="text-muted">Médico: {{$citas->medico}}</p>
+                                <p class="text-muted">Médico: {{$citas->medico}} {{$citas->medicoApell}}</p>
                                 <h4 class="card-title my-4">Nombre: {{$citas->nombre}}</h4>
                                 <p class="text-muted" align="justify">Cualquier duda favor de consultarlo con el médico a cargo, de ser posible llamar a su número teléfonico.</p>
                                 <hr>
