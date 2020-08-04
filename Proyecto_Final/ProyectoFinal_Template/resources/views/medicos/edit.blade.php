@@ -77,7 +77,7 @@
                                 </select>
                             </div>
                         </div>
-
+                        <hr class="half-rule"/>
                         <button type="submit" class="btn btn-outline-warning btn-round">Actualizar</button>
                     </form>
                 </div>

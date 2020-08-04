@@ -1,9 +1,9 @@
 @extends('layouts.app', [
-    'namePage' => 'citas',
+    'namePage' => 'consultas',
     'class' => 'sidebar-mini',
-    'activePage' => 'citas',
+    'activePage' => 'consultas',
 ])
-@section ('titulo', 'Administración de citas')
+@section ('titulo', 'Registrar Nueva Consulta')
 @section('content')
 @guest
 @else
@@ -13,24 +13,23 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Editar '.$citas->nombre) }}</div>
+                <div class="card-header">{{ __('Crear Nueva Consulta') }}</div>
                 <div class = "card-body">
             <div class = "row">
                 <div class = "col-sm-12">
-                    <form method="post" action="{{url('/citas/'.$citas->id)}}">
+                    <form method="post" action="{{url('/consultas')}}">
                     {{csrf_field()}}
-                    {{method_field('PATCH')}}
                         <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">{{'Nombres'}}</label>
+                            <label class="col-sm-2 col-form-label">{{'Descripcion'}}</label>
                             <div class="col-sm-8">
-                                <input id="nombres" class="form-control" name="nombre" value="{{$citas->nombre}}" type="text" required>
+                                <input id="descripcion" class="form-control" name="descripcion" value="" type="text" required>
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">{{'Fecha'}}</label>
                             <div class="col-sm-6">
-                                <input id="fecha" class="form-control" name="fecha" value="{{$citas->fecha}}" type="datetime-local" required>
+                                <input id="fecha" class="form-control" name="fecha" value="" type="datetime-local" required>
                             </div>
                         </div>
 
@@ -45,7 +44,7 @@
                             </div>
                         </div>
                         <hr class="half-rule"/>
-                        <button type="submit" class="btn btn-outline-warning btn-round">Actualizar</button>
+                        <button type="submit" class="btn btn btn-outline-success btn-round">Registrar</button>
                     </form>
                 </div>
             </div>

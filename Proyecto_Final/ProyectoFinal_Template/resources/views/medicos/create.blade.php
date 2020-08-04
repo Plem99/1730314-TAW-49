@@ -76,7 +76,7 @@
                                 </select>
                             </div>
                         </div>
-
+                        <hr class="half-rule"/>
                         <button type="submit" class="btn btn btn-outline-success btn-round">Registrar</button>
                     </form>
                 </div>

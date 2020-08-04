@@ -1,9 +1,9 @@
 @extends('layouts.app', [
-    'namePage' => 'citas',
+    'namePage' => 'consultas',
     'class' => 'sidebar-mini',
-    'activePage' => 'citas',
+    'activePage' => 'consultas',
 ])
-@section ('titulo', 'Administración de citas')
+@section ('titulo', 'Administración de Consultas')
 @section('content')
 @guest
 @else
@@ -13,11 +13,11 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <h4 style="padding-left: 20px;" class="card-title"> Listado de Citas</h4>
+                <h4 style="padding-left: 20px;" class="card-title"> Listado de Consultas</h4>
                 <br>
                 <div class="col-sm-8" style="padding-left: 20px;">
-                    <a type="button" class="btn btn-outline-info btn-round" href="{{ route('citas.create') }}" >
-                        {{ __('Nueva Cita') }}
+                    <a type="button" class="btn btn-outline-info btn-round" href="{{ route('consultas.create') }}" >
+                        {{ __('Nueva Consulta') }}
                     </a>
                 </div>
                 <ul class="nav nav-tabs" style="padding: 20px;">
@@ -35,7 +35,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Nombre</th>
+                                                    <th>Descripcion</th>
                                                     <th>Fecha</th>
                                                     <th>Paciente</th>
                                                     <th>Médico</th>
@@ -43,18 +43,18 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                            @foreach($datos as $cita)
+                                            @foreach($datos as $consultas)
                                                     <tr>
                                                         {{--_create_empleados_table--}}
                                                         <td>{{$loop->iteration}}</td>
-                                                        <td>{{$cita->nombre}}</td>
-                                                        <td>{{$cita->fecha}}</td>
-                                                        <td>{{$cita->paciente}} {{$cita->pacienteapell}}</td>
-                                                        <td>{{$cita->medico}} {{$cita->medicoApell}}</td>
+                                                        <td>{{$consultas->descripcion}}</td>
+                                                        <td>{{$consultas->fecha}}</td>
+                                                        <td>{{$consultas->paciente}} {{$consultas->pacienteapell}}</td>
+                                                        <td>{{$consultas->medico}} {{$consultas->medicoApell}}</td>
                                                         <td style="display: flex;">
-                                                            <a href="{{url('/citas/'.$cita->id.'/edit')}}" rel="tooltip"  class="btn btn-outline-warning btn-round btn-icon"><i class="now-ui-icons ui-2_settings-90"></i></a>
+                                                            <a href="{{url('/consultas/'.$consultas->id.'/edit')}}" rel="tooltip"  class="btn btn-outline-info btn-round btn-icon"><i class="now-ui-icons education_glasses"></i></a>
                                                             <!--Eliminar empleado (icono)-->
-                                                            <form action="{{url('/citas/'.$cita->id)}}" method="POST">
+                                                            <form action="{{url('/consultas/'.$consultas->id)}}" method="POST">
                                                                 {{csrf_field()}}
                                                                 {{method_field('DELETE')}}
                                                                 <button onclick="return confirm('¿Borrar?');" rel="tooltip" class="btn btn-outline-danger btn-round btn-icon"><i class="now-ui-icons ui-1_simple-remove"></i></button>
@@ -71,12 +71,12 @@
                         </div>
                     </div>
                     <div style="padding: 20px;display:flex;" id="vistas" class="tab-pane fade row">
-                    @foreach($datos as $citas)
+                    @foreach($datos as $consultas)
                         <!--Grid row-->
                         <div class="col-md-6 mb-4">
 
                         <!--Grid column-->
-                        <div class="col-md-12">
+                        <div class="col-md-10">
 
                         <!-- Card -->
                         <div class="card gradient-card">
@@ -86,7 +86,7 @@
                                 <!-- Content -->
                                 <div class="text-white d-flex h-100 mask blue-gradient-rgba">
                                     <div class="first-content align-self-center p-3">
-                                    <h3 class="card-title">Cita: #{{$loop->iteration}}</h3>
+                                    <h3 class="card-title">Consulta: #{{$loop->iteration}}</h3>
                                     </div>
                                     <!--<div class="second-content align-self-center mx-auto text-center">
                                     <i class="far fa-money-bill-alt fa-3x"></i>
@@ -97,8 +97,8 @@
                             <br>
                             <!-- Data -->
                             <div class="third-content ml-auto mr-4 mb-2">
-                                <p style="padding-left: 15px;" class="text-uppercase text-muted">{{$citas->fecha}}</p>
-                                <h4 class="card-title float-right">Paciente: {{$citas->paciente}} {{$cita->pacienteapell}}</h4>
+                                <p style="padding-left: 15px;" class="text-uppercase text-muted">{{$consultas->fecha}}</p>
+                                <h4 class="card-title float-right">Paciente: {{$consultas->paciente}} {{$consultas->pacienteapell}}</h4>
                             </div>
 
                             <!-- Content -->
@@ -106,14 +106,14 @@
                                 <div style="display: none;" class="progress md-progress">
                                 <div class="progress-bar bg-primary" role="progressbar" style="width: 100%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
-                                <p class="text-muted">Médico: {{$citas->medico}} {{$citas->medicoApell}}</p>
-                                <h4 class="card-title my-4">Nombre: {{$citas->nombre}}</h4>
-                                <p class="text-muted" align="justify">Cualquier duda favor de consultarlo con el médico a cargo, de ser posible llamar a su número teléfonico.</p>
+                                <p class="text-muted">Médico: {{$consultas->medico}} {{$consultas->medicoApell}}</p>
+                                <h4 class="card-title my-4">Consulta: #{{$loop->iteration}}</h4>
+                                <p class="text-muted" align="justify">{{$consultas->descripcion}}</p>
                                 <hr>
                                 <div class="text-center" style="display: flex;">
-                                    <a href="{{url('/citas/'.$cita->id.'/edit')}}" rel="tooltip"  class="btn btn-outline-warning btn-round btn-icon"><i class="now-ui-icons ui-2_settings-90"></i></a>
+                                    <a href="{{url('/consultas/'.$consultas->id.'/edit')}}" rel="tooltip"  class="btn btn-outline-info btn-round btn-icon"><i class="now-ui-icons education_glasses"></i></a>
                                     <!--Eliminar empleado (icono)-->
-                                    <form action="{{url('/citas/'.$cita->id)}}" method="POST">
+                                    <form action="{{url('/consultas/'.$consultas->id)}}" method="POST">
                                         {{csrf_field()}}
                                         {{method_field('DELETE')}}
                                         <button onclick="return confirm('¿Borrar?');" rel="tooltip" class="btn btn-outline-danger btn-round btn-icon"><i class="now-ui-icons ui-1_simple-remove"></i></button>

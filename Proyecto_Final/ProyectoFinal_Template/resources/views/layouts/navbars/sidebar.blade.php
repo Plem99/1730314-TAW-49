@@ -95,6 +95,13 @@
           <p>{{ __('Citas') }}</p>
         </a>
       </li>
+      
+      <li class="@if ($activePage == 'consultas') active @endif">
+        <a href="{{ route('consultas.index') }}">
+          <i class="now-ui-icons files_paper"></i>
+          <p>{{ __('Consultas') }}</p>
+        </a>
+      </li>
       @endif
       <!--No seran visibles para medicos asociados y secretarios-->
       @if(tipo($tipo) != "3" && tipo($tipo) != "4")
