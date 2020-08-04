@@ -1,3 +1,23 @@
+<?php
+  $tipo=auth()->user()->tipo;
+  //Para que solo te muestre los modulos compatibles para cada tipo de usuario
+  function tipo($tipo){
+
+    //Lo que se retornara es el valor para saber que tipo de usuario es   
+    if($tipo == "superadmin"){
+      return "1";
+    }else if($tipo == "administrador"){
+      return "2";
+    }else if($tipo == "secretario"){
+      return "3";
+    }else if($tipo == "consultas"){
+      return "4";
+    }
+
+  }
+  
+?>
+
 <div class="sidebar" data-color="blue">
   <!--
     Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
@@ -16,7 +36,7 @@
       <li class="@if ($activePage == 'home') active @endif">
         <a href="{{ route('home') }}">
           <i class="now-ui-icons design_bullet-list-67"></i>
-          <p>{{ __('Inicio') }}</p>
+          <p>{{ __('Inicio') }}  </p>
         </a>
       </li>
       <!--<li>
@@ -43,6 +63,8 @@
             </li>
           </ul>
         </div>-->
+      
+      
       <li class="@if ($activePage == 'perfil') active @endif">
         <!--<a href="{{ url('/medicos/medic_profile') }}">-->
         <a href="{{ route('profile.edit') }}">
@@ -50,12 +72,17 @@
           <p>{{ __("Perfil") }}</p>
         </a>
       </li>
+      <!--No seran visibles para medicos asociados y secretarios-->
+      @if(tipo($tipo) != "3" && tipo($tipo) != "4")
       <li class="@if ($activePage == 'medicos') active @endif">
         <a href="{{ route('medicos.index') }}">
           <i class="now-ui-icons users_circle-08"></i>
           <p>{{ __('Médicos') }}</p>
         </a>
       </li>
+      @endif
+      <!--No seran visibles para medicos asociados-->
+      @if(tipo($tipo) != "4")
       <li class="@if ($activePage == 'pacientes') active @endif">
         <a href="{{ route('pacientes.index') }}">
           <i class="now-ui-icons users_single-02"></i>
@@ -68,6 +95,9 @@
           <p>{{ __('Citas') }}</p>
         </a>
       </li>
+      @endif
+      <!--No seran visibles para medicos asociados y secretarios-->
+      @if(tipo($tipo) != "3" && tipo($tipo) != "4")
       <li class="@if ($activePage == 'medicamentos') active @endif">
         <a href="{{ route('medicamentos.index') }}">
           <i class="now-ui-icons business_briefcase-24"></i>
@@ -80,6 +110,7 @@
           <p>{{ __('Alergias') }}</p>
         </a>
       </li>
+      @endif
       <!--<li class="@if ($activePage == 'icons') active @endif">
         <a href="{{ route('page.index','icons') }}">
           <i class="now-ui-icons education_atom"></i>

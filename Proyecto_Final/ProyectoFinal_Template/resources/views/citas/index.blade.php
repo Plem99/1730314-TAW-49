@@ -49,7 +49,7 @@
                                                         <td>{{$loop->iteration}}</td>
                                                         <td>{{$cita->nombre}}</td>
                                                         <td>{{$cita->fecha}}</td>
-                                                        <td>{{$cita->paciente}}</td>
+                                                        <td>{{$cita->paciente}} {{$cita->pacienteapell}}</td>
                                                         <td>{{$cita->medico}} {{$cita->medicoApell}}</td>
                                                         <td style="display: flex;">
                                                             <a href="{{url('/citas/'.$cita->id.'/edit')}}" rel="tooltip"  class="btn btn-outline-warning btn-round btn-icon"><i class="now-ui-icons ui-2_settings-90"></i></a>
@@ -98,7 +98,7 @@
                             <!-- Data -->
                             <div class="third-content ml-auto mr-4 mb-2">
                                 <p style="padding-left: 15px;" class="text-uppercase text-muted">{{$citas->fecha}}</p>
-                                <h4 class="card-title float-right">Paciente: {{$citas->paciente}}</h4>
+                                <h4 class="card-title float-right">Paciente: {{$citas->paciente}} {{$cita->pacienteapell}}</h4>
                             </div>
 
                             <!-- Content -->

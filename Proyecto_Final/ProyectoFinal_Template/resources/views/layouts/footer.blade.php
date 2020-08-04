@@ -31,7 +31,7 @@
       <a href="https://www.invisionapp.com" target="_blank">{{__(" Invision")}}</a>{{__(" . Coded by")}}
       <a href="https://www.creative-tim.com" target="_blank">{{__(" Creative Tim ")}}</a>&
       <a href="https://www.updivision.com" target="_blank">{{__(" Updivision")}}</a>-->
-      <a href="https://www.plem.tech" target="_blank">{{__(" Plem.Tech")}}</a>
+      <a href="http://www.plem.tech" target="_blank">{{__(" Plem.Tech")}}</a>
     </div>
   </div>
 </footer>

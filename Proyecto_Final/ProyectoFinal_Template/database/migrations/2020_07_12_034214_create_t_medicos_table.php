@@ -21,7 +21,8 @@ class CreateTMedicosTable extends Migration
             $table->string('email')->unique();
             $table->string('contrasena');
             $table->string('telefono');
-            $table->enum('tipo',['administrador','consultas']);
+            $table->enum('tipo',['superadmin','administrador','consultas','secretario']);
+            $table->string('sector')->nullable();
             $table->timestamps();
         });
     }

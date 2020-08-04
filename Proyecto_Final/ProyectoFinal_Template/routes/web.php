@@ -20,8 +20,10 @@ Route::get('/', function () {
 Auth::routes();
 //Home
 Route::get('/home', 'HomeController@index')->name('home');
+//Usuarios
+Route::resource('medicos', 'UserController');
 //Médicos
-Route::resource('medicos', 'TMedicoController');
+//Route::resource('medicos', 'TMedicoController');
 //Medicamentos
 Route::resource('medicamentos', 'TMedicamentoController');
 //Pacientes

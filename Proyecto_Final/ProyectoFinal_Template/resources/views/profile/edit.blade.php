@@ -35,9 +35,38 @@
                 <div class="row">
                   <div class="col-md-7 pr-1">
                     <div class="form-group">
+                      <label>{{'Apellidos'}}</label>
+                        <input id="apellidos" class="form-control" name="apellidos" value="{{old('apellidos', auth()->user()->apellidos) }}" type="text" required disabled>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-7 pr-1">
+                    <div class="form-group">
+                      <label>{{'Sexo'}}</label>
+                        <select class="form-control" value="{{old('sexo', auth()->user()->sexo)}}" name="sexo" id="sexo" disabled>
+                          <option>{{auth()->user()->sexo}}</option>  
+                          <option value="no especificado">No Especificado</option>
+                          <option value="masculino">Masculino</option>
+                          <option value="femenino">Femenino</option>
+                        </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-7 pr-1">
+                    <div class="form-group">
                       <label for="exampleInputEmail1">{{__(" Email")}}</label>
                       <input type="email" name="email" class="form-control" placeholder="Email" value="{{ old('email', auth()->user()->email) }}" required>
                       @include('alerts.feedback', ['field' => 'email'])
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-7 pr-1">
+                    <div class="form-group">
+                      <label>{{'Telefono'}}</label>
+                        <input id="telefono" class="form-control" name="telefono" value="{{old('telefono', auth()->user()->telefono)}}" type="text" required disabled>
                     </div>
                   </div>
                 </div>
@@ -96,7 +125,8 @@
           <div class="card-body">
             <div class="author">
                 <img class="avatar border-gray" src="{{asset('assets')}}/img/img_avatar1.png" alt="...">
-                <h5 style="color: rgba(5, 101, 145, 0.9);" class="title">{{ auth()->user()->name }}</h5>
+                <h5 style="color: rgba(5, 101, 145, 0.9);" class="title">{{ auth()->user()->name }} {{ auth()->user()->apellidos }}</h5>
+                <h6 style="color: rgba(0, 0, 0, 0.9);" class="card-title">{{ auth()->user()->tipo }}</h6>
               <p class="description">
                   {{ auth()->user()->email }}
               </p>

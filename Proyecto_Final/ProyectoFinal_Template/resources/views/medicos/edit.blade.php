@@ -13,7 +13,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Editar a '.$medicos->nombre.' '.$medicos->apellidos) }}</div>
+                <div class="card-header">{{ __('Editar a '.$medicos->name.' '.$medicos->apellidos) }}</div>
                 <div class = "card-body">
             <div class = "row">
                 <div class = "col-sm-12">
@@ -23,7 +23,7 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">{{'Nombres'}}</label>
                             <div class="col-sm-8">
-                                <input id="nombres" class="form-control" name="nombre" value="{{$medicos->nombre}}" type="text" required>
+                                <input id="name" class="form-control" name="name" value="{{$medicos->name}}" type="text" required>
                             </div>
                         </div>
 
@@ -55,7 +55,7 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">{{'Contraseña'}}</label>
                             <div class="col-sm-8">
-                                <input id="contrasena" class="form-control" name="contrasena" value="{{$medicos->contrasena}}" type="password" required>
+                                <input id="password" class="form-control" name="password" value="{{$medicos->password}}" type="password" disabled>
                             </div>
                         </div>
 
@@ -70,8 +70,10 @@
                             <label class="col-sm-2 col-form-label">{{'Tipo'}}</label>
                             <div class="col-sm-4">
                                 <select class="form-control" value="{{$medicos->tipo}}" name="tipo" id="tipo">
+                                    <option value="superadmin">Super Administrador</option>
                                     <option value="administrador">Administrador</option>
                                     <option value="consultas">Consultas</option>
+                                    <option value="secretario">Secretario</option>
                                 </select>
                             </div>
                         </div>

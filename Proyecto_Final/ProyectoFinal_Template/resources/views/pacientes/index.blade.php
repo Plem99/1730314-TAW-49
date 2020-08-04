@@ -18,6 +18,7 @@
             echo "No especificado";
         }
     }
+    
 ?>
 <div class="panel-header panel-header-sm">
   </div>
@@ -68,14 +69,18 @@
                                                         <td>{{$paciente->email}}</td>
                                                         <td>{{$paciente->mediconomb}} {{$paciente->medicoapell}}</td>
                                                         <td class="td-actions text-center">
+                                                        @if(auth()->user()->tipo != "secretario")
                                                             <a href="{{url('/pacientes/'.$paciente->id.'/edit')}}" rel="tooltip"  class="btn btn-outline-warning btn-round btn-icon"><i class="now-ui-icons ui-2_settings-90"></i></a>
+                                                        @endif
                                                             <a href="{{url('/pacientes/'.$paciente->id.'/profile')}}" rel="tooltip"  class="btn btn-outline-info btn-round btn-icon"><i class="now-ui-icons users_single-02"></i></a>
+                                                        @if(auth()->user()->tipo != "secretario")
                                                             <!--Eliminar empleado (icono)-->
                                                             <form action="{{url('/pacientes/'.$paciente->id)}}" method="POST">
                                                                 {{csrf_field()}}
                                                                 {{method_field('DELETE')}}
                                                                 <button onclick="return confirm('¿Borrar?');" rel="tooltip" class="btn btn-outline-danger btn-round btn-icon"><i class="now-ui-icons ui-1_simple-remove"></i></button>
                                                             </form>
+                                                        @endif
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -130,13 +135,17 @@
                         </div>
                         <hr>
                         <div class="button-container">
+                        @if(auth()->user()->tipo != "secretario")
                             <a href="{{url('/pacientes/'.$paciente->id.'/edit')}}" rel="tooltip"  class="btn btn-outline-warning btn-round btn-icon "><i class="now-ui-icons ui-2_settings-90"></i></a>
+                        @endif
                             <a href="{{url('/pacientes/'.$paciente->id.'/profile')}}" rel="tooltip"  class="btn btn-outline-info btn-round btn-icon"><i class="now-ui-icons users_single-02"></i></a>
+                            @if(auth()->user()->tipo != "secretario")
                             <form action="{{url('/pacientes/'.$paciente->id)}}" method="POST">
                                 {{csrf_field()}}
                                 {{method_field('DELETE')}}
                                 <button onclick="return confirm('¿Borrar?');" rel="tooltip" class="btn btn-outline-danger btn-round btn-icon"><i class="now-ui-icons ui-1_simple-remove"></i></button>
                             </form>
+                            @endif
                         </div>
                         </div>
                     </div>

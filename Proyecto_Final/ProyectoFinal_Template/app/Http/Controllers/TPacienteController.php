@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\t_medico;
+use App\User;
 use DB;
 use App\t_paciente;
 use Illuminate\Http\Request;
@@ -16,7 +16,11 @@ class TPacienteController extends Controller
      */
     public function index()
     {
-        $datos = DB::table('t_pacientes')->join('t_medicos','t_medicos.id','=', 't_pacientes.id_medico')->select('t_pacientes.*','t_medicos.nombre AS mediconomb','t_medicos.apellidos AS medicoapell')->get();
+        $datos = DB::table('t_pacientes')
+            ->join('users','users.id','=', 't_pacientes.id_medico')
+            ->select('t_pacientes.*','users.name AS mediconomb','users.apellidos AS medicoapell')
+            //->where('users.tipo', '<>', 'secretario')
+            ->get();
         return view('pacientes.index', compact('datos'));
     }
 
@@ -27,7 +31,9 @@ class TPacienteController extends Controller
      */
     public function create()
     {
-        $medicos = t_medico::all();
+        //Para no poder seleccionar a un secretario como medico
+        $medicos = User::all()->where('tipo', '<>', 'secretario');
+        
         return view('pacientes.create',compact('medicos'));
     }
 
@@ -67,7 +73,8 @@ class TPacienteController extends Controller
     public function edit($id)
     {
         $pacientes = t_paciente::findOrFail($id);
-        $medicos = t_medico::all();
+        //Para no poder seleccionar a un secretario como medico
+        $medicos = User::all()->where('tipo', '<>', 'secretario');
         return view('pacientes.edit',compact('pacientes','medicos'));
     }
 

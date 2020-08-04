@@ -22,7 +22,7 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">{{'Nombres'}}</label>
                             <div class="col-sm-8">
-                                <input id="nombre" class="form-control" name="nombre" value="" type="text" required>
+                                <input id="name" class="form-control" name="name" value="" type="text" required>
                             </div>
                         </div>
 
@@ -54,7 +54,7 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">{{'Contraseña'}}</label>
                             <div class="col-sm-8">
-                                <input id="contrasena" class="form-control" name="contrasena" value="" type="password" required>
+                                <input id="password" class="form-control" name="password" value="" type="password" required>
                             </div>
                         </div>
 
@@ -69,8 +69,10 @@
                             <label class="col-sm-2 col-form-label">{{'Tipo'}}</label>
                             <div class="col-sm-4">
                                 <select class="form-control" name="tipo" id="tipo">
+                                    <option value="superadmin">Super Administrador</option>
                                     <option value="administrador">Administrador</option>
                                     <option value="consultas">Consultas</option>
+                                    <option value="secretario">Secretario</option>
                                 </select>
                             </div>
                         </div>

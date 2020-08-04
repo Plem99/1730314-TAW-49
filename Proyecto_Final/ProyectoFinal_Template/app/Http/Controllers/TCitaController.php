@@ -22,8 +22,8 @@ class TCitaController extends Controller
             ->get();*/
         $datos = DB::table('t_citas')
             ->join('t_pacientes','t_pacientes.id','=', 't_citas.id_paciente')
-            ->join('t_medicos','t_medicos.id','=', 't_pacientes.id_medico')
-            ->select('t_citas.*','t_medicos.nombre AS medico', 't_medicos.apellidos AS medicoApell','t_pacientes.nombre AS paciente')
+            ->join('users','users.id','=', 't_pacientes.id_medico')
+            ->select('t_citas.*','users.name AS medico', 'users.apellidos AS medicoApell','t_pacientes.nombre AS paciente', 't_pacientes.apellidos AS pacienteapell')
             ->get();
         return view('citas.index', compact('datos'));
     }

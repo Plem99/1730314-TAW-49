@@ -20,14 +20,10 @@
     }
 
     function medicos($tipo){
-        if($tipo=="superadmin"){
-            echo "Super Administrador";
-        }else if($tipo=="administrador"){
+        if($tipo=="administrador"){
             echo "Médico Administrador";
         }else if($tipo=="consultas"){
             echo "Médico Asociado";
-        }else if($tipo=="secretario"){
-            echo "Secretario/a";
         }
     } 
 ?>
@@ -40,7 +36,7 @@
                 <h4 style="padding-left: 20px;" class="card-title"> Listado de Médicos</h4>
                 <br>
                 <div class="col-sm-8" style="padding-left: 20px;">
-                    <a disabled type="button" class="btn btn-outline-info btn-round" href="{{ route('medicos.create') }}" >
+                    <a type="button" class="btn btn-outline-info btn-round" href="{{ route('medicos.create') }}" >
                         {{ __('Nuevo Médico') }}
                     </a>
                 </div>
@@ -74,11 +70,11 @@
                                                     <tr>
                                                         {{--_create_empleados_table--}}
                                                         <td>{{$loop->iteration}}</td>
-                                                        <td>{{$medico->name}}</td>
+                                                        <td>{{$medico->nombre}}</td>
                                                         <td>{{$medico->apellidos}}</td>
                                                         <td><?php cambio($medico->sexo)?> </td>
                                                         <td>{{$medico->email}}</td>
-                                                        <td>{{$medico->password}}</td>
+                                                        <td>{{$medico->contrasena}}</td>
                                                         <td>{{$medico->telefono}}</td>
                                                         <td><?php medicos($medico->tipo)?> </td>
                                                         <td class="td-actions text-center">
@@ -130,7 +126,7 @@
                         <div class="card-body">
                             <div class="author">
                                 <img class="image border-gray" src="{{asset('assets')}}/img/medico.png" alt="...">
-                                <h4 style="color: rgba(5, 101, 145, 0.9);" class="card-title">{{$medico->name}} {{$medico->apellidos}}</h4>
+                                <h4 style="color: rgba(5, 101, 145, 0.9);" class="card-title">{{$medico->nombre}} {{$medico->apellidos}}</h4>
                                 <div >
                                 <p class="description"><b><?php medicos($medico->tipo)?> </b></p>
                                 <p class="description"><b>Sexo:</b> <?php cambio($medico->sexo)?> </p>

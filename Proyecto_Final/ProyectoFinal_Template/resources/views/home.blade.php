@@ -4,7 +4,29 @@
     'activePage' => 'home',
     'backgroundImage' => asset('now') . "/img/medical2.jpg",
 ])
+<?php
+    function cambio($sexo){
+        if($sexo=="masculino"){
+            echo "Hombre";
+        }else if($sexo=="femenino"){
+            echo "Mujer";
+        }else if($sexo=="no especificado"){
+            echo "No especificado";
+        }
+    }
 
+    function medicos($tipo){
+        if($tipo=="superadmin"){
+            echo "Super Administrador";
+        }else if($tipo=="administrador"){
+            echo "Médico Administrador";
+        }else if($tipo=="consultas"){
+            echo "Médico Asociado";
+        }else if($tipo=="secretario"){
+            echo "Secretario/a";
+        }
+    } 
+?>
 @section('content')
   <div class="panel-header panel-header-lg">
     <canvas id="bigDashboardChart"></canvas>
@@ -172,97 +194,29 @@
       <div class="col-md-6">
         <div class="card">
           <div class="card-header">
-            <h5 class="card-category">All Persons List</h5>
-            <h4 class="card-title"> Employees Stats</h4>
+            <h5 class="card-category">Lista de todos los administradores</h5>
+            <h4 class="card-title"> Administradores</h4>
           </div>
           <div class="card-body">
             <div class="table-responsive">
               <table class="table">
                 <thead class=" text-primary">
-                  <th>
-                    Name
-                  </th>
-                  <th>
-                    Country
-                  </th>
-                  <th>
-                    City
-                  </th>
-                  <th class="text-right">
-                    Salary
-                  </th>
+                  <th>Nombre</th>
+                  <th>Apellidos</th>
+                  <th>Sexo</th>
+                  <th>Email</th>
+                  <th>Tipo</th>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>
-                      Dakota Rice
-                    </td>
-                    <td>
-                      Niger
-                    </td>
-                    <td>
-                      Oud-Turnhout
-                    </td>
-                    <td class="text-right">
-                      $36,738
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Minerva Hooper
-                    </td>
-                    <td>
-                      Curaçao
-                    </td>
-                    <td>
-                      Sinaai-Waas
-                    </td>
-                    <td class="text-right">
-                      $23,789
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Sage Rodriguez
-                    </td>
-                    <td>
-                      Netherlands
-                    </td>
-                    <td>
-                      Baileux
-                    </td>
-                    <td class="text-right">
-                      $56,142
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Doris Greene
-                    </td>
-                    <td>
-                      Malawi
-                    </td>
-                    <td>
-                      Feldkirchen in Kärnten
-                    </td>
-                    <td class="text-right">
-                      $63,542
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Mason Porter
-                    </td>
-                    <td>
-                      Chile
-                    </td>
-                    <td>
-                      Gloucester
-                    </td>
-                    <td class="text-right">
-                      $78,615
-                    </td>
-                  </tr>
+                  @foreach($datos as $admin)
+                    <tr>
+                      <td>{{$admin->name}}</td>
+                      <td>{{$admin->apellidos}}</td>
+                      <td><?php cambio($admin->sexo)?></td>
+                      <td>{{$admin->email}}</td>
+                      <td><?php medicos($admin->tipo)?> </td>
+                      </tr>
+                  @endforeach
                 </tbody>
               </table>
             </div>

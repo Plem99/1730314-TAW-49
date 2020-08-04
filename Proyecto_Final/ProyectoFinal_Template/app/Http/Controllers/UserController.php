@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -16,6 +17,95 @@ class UserController extends Controller
      */
     public function index(User $model)
     {
-        return view('users.index', ['users' => $model->paginate(15)]);
+        //return view('users.index', ['users' => $model->paginate(15)]);
+        $datos = User::all();
+        return view('medicos.index', compact('datos'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $medicos = User::all();
+        return view('medicos.create',compact('medicos'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request, array $data)
+    {
+        //No mandaremos el _token
+        $datos = request()->except('_token');
+        //$datos = request()->fill(['password' => Hash::make($request['password'])]);
+        //Insertar datos en el modelo
+        /*return User::create([
+            'name' => $data['name'],
+            'apellidos' => $data['apellidos'],
+            'sexo' => $data['sexo'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'telefono' => $data['telefono'],
+            'tipo' => $data['tipo'],
+        ]);*/
+        User::insert($datos);
+
+        return redirect('medicos');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\User  $users
+     * @return \Illuminate\Http\Response
+     */
+    public function show(User $users)
+    {
+        
+        //return view('medicos.medic_profile');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\User  $t_medico
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $medicos = User::findOrFail($id);
+        return view('medicos.edit',compact('medicos'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\User  $users
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $datos = request()->except(['_token','_method']);
+        User::where('id','=',$id)->update($datos);
+        return redirect('medicos');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\User  $users
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        User::destroy($id);
+        return redirect('medicos');
     }
 }
