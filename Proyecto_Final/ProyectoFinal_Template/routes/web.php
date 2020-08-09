@@ -28,7 +28,12 @@ Route::resource('medicos', 'UserController');
 Route::resource('medicamentos', 'TMedicamentoController');
 //Pacientes
 Route::resource('pacientes', 'TPacienteController');
+//Perfil del paciente
 Route::get('pacientes/{id}/profile', 'TPacienteController@profile');
+//Crear datos del paciente
+Route::get('pacientes/{id}/createDatos', 'TPacienteController@createDatos');
+Route::post('pacientes/{id}/storeDatos', 'TPacienteController@storeDatos');
+Route::get('pacientes/{id}/storeDatos', 'TPacienteController@storeDatos');
 //Route::get('pacientes', 'TPacienteController@profile');
 //Servicios
 Route::resource('servicios', 'TServicioController');
