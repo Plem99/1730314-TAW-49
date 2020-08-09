@@ -79,6 +79,25 @@ class TPacienteController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  \App\t_paciente  $t_paciente
+     * @return \Illuminate\Http\Response
+     */
+    public function profile($id)
+    {
+        //$pacientes = t_paciente::findOrFail($id);
+        $datos = DB::table('t_pacientes')
+            ->join('users','users.id','=', 't_pacientes.id_medico')
+            ->select('t_pacientes.*','users.name AS mediconomb','users.apellidos AS medicoapell')
+            ->where('t_pacientes.id', '=', $id)
+            ->get();
+        //Para no poder seleccionar a un secretario como medico
+        //$medicos = User::all()->where('tipo', '<>', 'secretario');
+        return view('pacientes.profile',compact('datos'));
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

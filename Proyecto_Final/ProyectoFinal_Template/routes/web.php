@@ -28,6 +28,8 @@ Route::resource('medicos', 'UserController');
 Route::resource('medicamentos', 'TMedicamentoController');
 //Pacientes
 Route::resource('pacientes', 'TPacienteController');
+Route::get('pacientes/{id}/profile', 'TPacienteController@profile');
+//Route::get('pacientes', 'TPacienteController@profile');
 //Servicios
 Route::resource('servicios', 'TServicioController');
 //Ventas
