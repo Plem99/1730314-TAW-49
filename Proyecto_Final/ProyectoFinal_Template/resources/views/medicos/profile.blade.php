@@ -1,9 +1,9 @@
 @extends('layouts.app', [
-    'namePage' => 'pacientes',
+    'namePage' => 'medicos',
     'class' => 'sidebar-mini',
-    'activePage' => 'pacientes',
+    'activePage' => 'medicos',
 ])
-@section ('titulo', 'Administración de pacientes')
+@section ('titulo', 'Administración de Medicos')
 @section('content')
 @guest
 @else
@@ -125,7 +125,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
-                            <img style="width: 50%;" src="{{asset('assets')}}/img/paciente.png" alt=""/>
+                            <img style="width: 50%;" src="{{asset('assets')}}/img/medico.png" alt=""/>
                             <!--<div class="file btn btn-lg btn-primary">
                                 Change Photo
                                 <input type="file" name="file"/>
@@ -134,15 +134,13 @@
                     </div>
                     <div class="col-md-6">
                         <div class="profile-head">
-                                @foreach($datos as $paciente)
+                                
                                     <h5>
-                                        {{$paciente->nombre}} {{$paciente->apellidos}}
+                                        {{$datos->name}} {{$datos->apellidos}}
                                     </h5>
-                                    <h6>
-                                        Médico: {{$paciente->mediconomb}} {{$paciente->medicoapell}}
-                                    </h6>
-                                @endforeach
-                                    <p class="proile-rating">No. Total de Pacientes : <span>{{$numpac}}</span></p>
+                                    
+                                
+                                    <p class="proile-rating">No. de Pacientes : <span>{{$numpac}}</span></p>
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
                                     <a style="color: rgba(5, 101, 145, 0.9);" class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">General</a>
@@ -158,7 +156,7 @@
                         <!--Valida si existen datos con ese paciente-->
                         @if(!$newdatos)
                             <!--<input type="submit" class="profile-edit-btn" name="btnAddMore" value="Añadir Datos" href="{{ route('pacientes.create') }}"/>-->
-                            <a type="button" class=" btn-outline-info " href="{{url('/pacientes/'.$paciente->id.'/createDatos') }}" >{{ __('Añadir Datos') }}</a>
+                            <a type="button" class=" btn-outline-info " href="{{url('/medicos/'.$datos->id.'/createDatos') }}" >{{ __('Añadir Datos') }}</a>
                         @else
                             
                         @endif
@@ -184,13 +182,13 @@
                         <div class="tab-content profile-tab" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                             <div class="content">
-                                @foreach($datos as $paciente)
+                                
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <label>ID</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>{{$paciente->id}}</p>
+                                                <p>{{$datos->id}}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -198,7 +196,7 @@
                                                 <label>Nombre</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>{{$paciente->nombre}}</p>
+                                                <p>{{$datos->name}}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -206,7 +204,7 @@
                                                 <label>Apellidos</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>{{$paciente->apellidos}}</p>
+                                                <p>{{$datos->apellidos}}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -214,7 +212,7 @@
                                                 <label>Sexo</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>{{cambio($paciente->sexo)}}</p>
+                                                <p>{{cambio($datos->sexo)}}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -222,7 +220,7 @@
                                                 <label>Teléfono</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>{{$paciente->telefono}}</p>
+                                                <p>{{$datos->telefono}}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -230,67 +228,41 @@
                                                 <label>Email</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>{{$paciente->email}}</p>
+                                                <p>{{$datos->email}}</p>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Médico</label>
+                                                <label>Tipo</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>{{$paciente->mediconomb}} {{$paciente->medicoapell}}</p>
+                                                <p>{{$datos->tipo}}</p>
                                             </div>
                                         </div>
-                                @endforeach
+                                
                             </div>
                             </div>
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                 <div class="content">
-                                <form method="post" action="{{url('/pacientes/'.$paciente->id.'/updateDatos')}}">
+                                <form method="post" action="{{url('/medicos/'.$datos->id.'/updateDatos')}}">
                                 {{csrf_field()}}
                                 {{method_field('PATCH')}} 
-                                @foreach($datosPac as $datos)
+                                @foreach($datosServ as $datos)
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Peso</label>
+                                                <label>Nombre</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <input style="width: 30%;" id="peso" class="form-control" name="peso" value="{{$datos->peso}}" type="text" required>
+                                                <input style="width: 30%;" id="nombre" class="form-control" name="nombre" value="{{$datos->nombre}}" type="text" required>
                                             </div>
                                         </div>
                                         <br>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Estatura</label>
+                                                <label>Descripcion</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <input style="width: 30%;" id="estatura" class="form-control" name="estatura" value="{{$datos->estatura}}" type="text" required>
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Indice de Masa Corporal</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <input style="width: 30%;" id="imc" class="form-control" name="imc" value="{{$datos->imc}}" type="text" required>
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Tipo de Sangre</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <div class="col-sm-4">
-                                                        <select class="form-control" name="id_tipo_sangre" id="id_tipo_sangre">
-                                                        @foreach($datosPac as $tiposang)
-                                                            <option value="{{$tiposang->id}}">{{$tiposang->nombre}}</option>
-                                                        @endforeach
-                                                        </select>
-                                                    </div>
-                                                </div>                                            
+                                                <input style="width: 30%;" id="descripcion" class="form-control" name="descripcion" value="{{$datos->descripcion}}" type="text" required>
                                             </div>
                                         </div>
                                     @endforeach

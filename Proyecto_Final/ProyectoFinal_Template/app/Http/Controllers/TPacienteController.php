@@ -116,22 +116,22 @@ class TPacienteController extends Controller
      */
     public function profile($id)
     {
-        //$pacientes = t_paciente::findOrFail($id);
+        //Obtener los datos del paciente (mas especificos)
         $datosPac = DB::table('t_pacientes')
             ->join('t_paciente_datos','t_paciente_datos.id_paciente','=', 't_pacientes.id')
             ->join('t_tipo_sangres','t_tipo_sangres.id','=', 't_paciente_datos.id_tipo_sangre')
             ->select('t_paciente_datos.*','t_tipo_sangres.*')
             ->where('t_pacientes.id', '=', $id)
             ->get();
-        
+        //Obtener los datos del paciente 
         $datos = DB::table('t_pacientes')
             ->join('users','users.id','=', 't_pacientes.id_medico')
             ->select('t_pacientes.*','users.name AS mediconomb','users.apellidos AS medicoapell')
             ->where('t_pacientes.id', '=', $id)
             ->get();
-            
+        //Obtener numero de pacientes registrados
         $numpac = DB::table('t_pacientes')->count();
-
+        //Validar si existe un registro de datos para x paciente
         $newdatos = t_paciente_datos::where('id_paciente', '=', $id)->exists();
         
         return view('pacientes.profile',compact('datos','datosPac','numpac','newdatos'));
@@ -149,6 +149,21 @@ class TPacienteController extends Controller
         $datos = request()->except(['_token','_method']);
         t_paciente::where('id','=',$id)->update($datos);
         return redirect('pacientes');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\t_paciente_datos  $t_paciente
+     * @return \Illuminate\Http\Response
+     */
+    public function updateDatos(Request $request, $id)
+    {
+        $datos = request()->except(['_token','_method']);
+        t_paciente_datos::where('id','=',$id)->update($datos);
+        //return redirect('pacientes');
+        return redirect('pacientes/'.$id.'/profile');
     }
 
     /**

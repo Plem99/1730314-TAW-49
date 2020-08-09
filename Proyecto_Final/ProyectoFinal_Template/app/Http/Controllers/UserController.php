@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\t_servicio;
+use DB;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
@@ -81,6 +83,27 @@ class UserController extends Controller
     {
         $medicos = User::findOrFail($id);
         return view('medicos.edit',compact('medicos'));
+    }
+
+    public function profile($id)
+    {
+        //Obtener los datos del medico 
+        $datos = User::findOrFail($id);
+        //Obtener los datos del paciente (mas especificos)
+        $datosServ = DB::table('users')
+            ->join('t_servicios','t_servicios.id_medico','=', 'users.id')
+            ->select('t_servicios.*')
+            ->get();
+        //Obtener numero de pacientes registrados con x medico
+        $numpac = DB::table('t_pacientes')
+            ->join('users','users.id','=', 't_pacientes.id_medico')
+            //->select('t_pacientes.*','users.*')
+            ->where('t_pacientes.id_medico', '=', $id)
+            ->count();
+        //Validar si existe un registro de datos para x medico
+        $newdatos = t_servicio::where('id_medico', '=', $id)->exists();
+        
+        return view('medicos.profile',compact('datos','datosServ','numpac','newdatos'));
     }
 
     /**
