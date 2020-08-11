@@ -36,6 +36,18 @@ class UserController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createDatos($id)
+    {
+        //Para no poder seleccionar a un secretario como medico
+        $medico = User::findOrFail($id);
+        return view('medicos.createDatos',compact('medico','id'));
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -59,6 +71,22 @@ class UserController extends Controller
         User::insert($datos);
 
         return redirect('medicos');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeDatos(Request $request, $id)
+    {
+        //No mandaremos el _token
+        $datos = request()->except('_token');
+        //Insertar datos en el modelo
+        t_servicio::insert($datos);
+
+        return redirect('medicos/'.$id.'/profile');
     }
 
     /**
@@ -93,6 +121,7 @@ class UserController extends Controller
         $datosServ = DB::table('users')
             ->join('t_servicios','t_servicios.id_medico','=', 'users.id')
             ->select('t_servicios.*')
+            ->where('t_servicios.id_medico', '=', $id)
             ->get();
         //Obtener numero de pacientes registrados con x medico
         $numpac = DB::table('t_pacientes')
@@ -118,6 +147,21 @@ class UserController extends Controller
         $datos = request()->except(['_token','_method']);
         User::where('id','=',$id)->update($datos);
         return redirect('medicos');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\User  $Users
+     * @return \Illuminate\Http\Response
+     */
+    public function updateDatos(Request $request, $id)
+    {
+        $datos = request()->except(['_token','_method']);
+        t_servicio::where('id','=',$id)->update($datos);
+        //return redirect('pacientes');
+        return redirect('medicos/'.$id.'/profile');
     }
 
     /**

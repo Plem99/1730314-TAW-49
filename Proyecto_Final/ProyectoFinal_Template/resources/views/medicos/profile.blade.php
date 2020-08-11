@@ -247,13 +247,13 @@
                                 <form method="post" action="{{url('/medicos/'.$datos->id.'/updateDatos')}}">
                                 {{csrf_field()}}
                                 {{method_field('PATCH')}} 
-                                @foreach($datosServ as $datos)
+                                @foreach($datosServ as $serv)
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <label>Nombre</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <input style="width: 30%;" id="nombre" class="form-control" name="nombre" value="{{$datos->nombre}}" type="text" required>
+                                                <input style="width: 30%;" id="nombre" class="form-control" name="nombre" value="{{$serv->nombre}}" type="text" required>
                                             </div>
                                         </div>
                                         <br>
@@ -262,7 +262,7 @@
                                                 <label>Descripcion</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <input style="width: 30%;" id="descripcion" class="form-control" name="descripcion" value="{{$datos->descripcion}}" type="text" required>
+                                                <input style="width: 30%;" id="descripcion" class="form-control" name="descripcion" value="{{$serv->descripcion}}" type="text" required>
                                             </div>
                                         </div>
                                     @endforeach
