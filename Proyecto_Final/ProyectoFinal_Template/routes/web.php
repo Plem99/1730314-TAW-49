@@ -54,6 +54,8 @@ Route::resource('consultas', 'TConsultaController');
 Route::resource('citas', 'TCitaController');
 //Alergias
 Route::resource('alergias', 'TAlergiaController');
+//Tipo de sangre
+Route::resource('tiposangre', 'TTipoSangreController');
 //Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');

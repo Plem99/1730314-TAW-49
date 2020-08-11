@@ -22,7 +22,7 @@ class CreateTPacientesTable extends Migration
             $table->string('email')->unique();
             $table->integer('id_medico')->unsigned();
             $table->timestamps();
-            $table->foreign('id_medico')->references('id')->on('users');
+            $table->foreign('id_medico')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

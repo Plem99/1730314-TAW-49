@@ -21,8 +21,8 @@ class CreateTPacienteDatosTable extends Migration
             $table->integer('id_paciente')->unsigned();
             $table->integer('id_tipo_sangre')->unsigned();
             $table->timestamps();
-            $table->foreign('id_paciente')->references('id')->on('t_pacientes');
-            $table->foreign('id_tipo_sangre')->references('id')->on('t_tipo_sangres');
+            $table->foreign('id_paciente')->references('id')->on('t_pacientes')->onDelete('cascade');
+            $table->foreign('id_tipo_sangre')->references('id')->on('t_tipo_sangres')->onDelete('cascade');
         });
     }
 

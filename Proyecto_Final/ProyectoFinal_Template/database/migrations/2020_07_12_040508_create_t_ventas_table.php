@@ -20,7 +20,7 @@ class CreateTVentasTable extends Migration
             $table->timestamp('fecha');
             $table->integer('id_consulta')->unsigned();
             $table->timestamps();
-            $table->foreign('id_consulta')->references('id')->on('t_consultas');
+            $table->foreign('id_consulta')->references('id')->on('t_consultas')->onDelete('cascade');
         });
     }
 

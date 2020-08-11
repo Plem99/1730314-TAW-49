@@ -19,7 +19,7 @@ class CreateTConsultasTable extends Migration
             $table->timestamp('fecha');
             $table->integer('id_paciente')->unsigned();
             $table->timestamps();
-            $table->foreign('id_paciente')->references('id')->on('t_pacientes');
+            $table->foreign('id_paciente')->references('id')->on('t_pacientes')->onDelete('cascade');
         });
     }
 

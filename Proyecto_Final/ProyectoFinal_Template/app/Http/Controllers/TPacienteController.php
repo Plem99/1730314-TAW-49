@@ -168,7 +168,7 @@ class TPacienteController extends Controller
     public function updateDatos(Request $request, $id)
     {
         $datos = request()->except(['_token','_method']);
-        t_paciente_datos::where('id','=',$id)->update($datos);
+        t_paciente_datos::where('id_paciente','=',$id)->update($datos);
         //return redirect('pacientes');
         return redirect('pacientes/'.$id.'/profile');
     }

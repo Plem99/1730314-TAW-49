@@ -125,13 +125,22 @@
         </a>
       </li>
       @endif
-      <li class="@if ($activePage == 'icons') active @endif">
+      <!--No seran visibles para medicos asociados y secretarios-->
+      @if(tipo($tipo) != "3" && tipo($tipo) != "4")
+      <li class="@if ($activePage == 'tiposangre') active @endif">
+        <a href="{{ route('tiposangre.index') }}">
+          <i class="now-ui-icons health_ambulance"></i>
+          <p>{{ __('Tipos de sangre') }}</p>
+        </a>
+      </li>
+      @endif
+      <!--<li class="@if ($activePage == 'icons') active @endif">
         <a href="{{ route('page.index','icons') }}">
           <i class="now-ui-icons education_atom"></i>
           <p>{{ __('Icons') }}</p>
         </a>
       </li>
-      <!--<li class = "@if ($activePage == 'maps') active @endif">
+      <li class = "@if ($activePage == 'maps') active @endif">
         <a href="{{ route('page.index','maps') }}">
           <i class="now-ui-icons location_map-big"></i>
           <p>{{ __('Maps') }}</p>

@@ -146,7 +146,7 @@
                                     <a style="color: rgba(5, 101, 145, 0.9);" class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">General</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a style="color: rgba(5, 101, 145, 0.9);" class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Específicos</a>
+                                    <a style="color: rgba(5, 101, 145, 0.9);" class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Servicios</a>
                                 </li>
                             </ul>
                         </div>

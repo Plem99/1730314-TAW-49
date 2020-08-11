@@ -167,7 +167,7 @@ class UserController extends Controller
     public function updateDatos(Request $request, $id)
     {
         $datos = request()->except(['_token','_method']);
-        t_servicio::where('id','=',$id)->update($datos);
+        t_servicio::where('id_medico','=',$id)->update($datos);
         //return redirect('pacientes');
         return redirect('medicos/'.$id.'/profile');
     }

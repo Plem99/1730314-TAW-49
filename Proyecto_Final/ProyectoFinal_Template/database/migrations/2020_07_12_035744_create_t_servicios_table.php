@@ -19,7 +19,7 @@ class CreateTServiciosTable extends Migration
             $table->string('descripcion');
             $table->integer('id_medico')->unsigned();
             $table->timestamps();
-            $table->foreign('id_medico')->references('id')->on('users');
+            $table->foreign('id_medico')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

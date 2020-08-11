@@ -17,8 +17,8 @@ class CreateTMedrecetadosTable extends Migration
             $table->integer('id_consulta')->unsigned();
             $table->integer('id_medicamento')->unsigned();
             $table->timestamps();
-            $table->foreign('id_consulta')->references('id')->on('t_consultas');
-            $table->foreign('id_medicamento')->references('id')->on('t_medicamentos');
+            $table->foreign('id_consulta')->references('id')->on('t_consultas')->onDelete('cascade');
+            $table->foreign('id_medicamento')->references('id')->on('t_medicamentos')->onDelete('cascade');
         });
     }
 

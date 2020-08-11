@@ -17,8 +17,8 @@ class CreateTPacalergsTable extends Migration
             $table->integer('id_paciente')->unsigned();
             $table->integer('id_alergia')->unsigned();
             $table->timestamps();
-            $table->foreign('id_paciente')->references('id')->on('t_pacientes');
-            $table->foreign('id_alergia')->references('id')->on('t_alergias');
+            $table->foreign('id_paciente')->references('id')->on('t_pacientes')->onDelete('cascade');
+            $table->foreign('id_alergia')->references('id')->on('t_alergias')->onDelete('cascade');
         });
     }
 

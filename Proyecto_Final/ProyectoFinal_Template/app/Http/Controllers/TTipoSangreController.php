@@ -14,7 +14,8 @@ class TTipoSangreController extends Controller
      */
     public function index()
     {
-        //
+        $datos = t_tipo_sangre::all();
+        return view('tiposangre.index', compact('datos'));
     }
 
     /**
@@ -24,7 +25,7 @@ class TTipoSangreController extends Controller
      */
     public function create()
     {
-        //
+        return view('tiposangre.create');
     }
 
     /**
@@ -35,7 +36,11 @@ class TTipoSangreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $datos = request()->except('_token');
+        //Insertar datos en el modelo
+        t_tipo_sangre::insert($datos);
+
+        return redirect('tiposangre');
     }
 
     /**
@@ -55,9 +60,10 @@ class TTipoSangreController extends Controller
      * @param  \App\t_tipo_sangre  $t_tipo_sangre
      * @return \Illuminate\Http\Response
      */
-    public function edit(t_tipo_sangre $t_tipo_sangre)
+    public function edit($id)
     {
-        //
+        $datos = t_tipo_sangre::findOrFail($id);
+        return view('tiposangre.edit',compact('datos'));
     }
 
     /**
@@ -67,9 +73,11 @@ class TTipoSangreController extends Controller
      * @param  \App\t_tipo_sangre  $t_tipo_sangre
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, t_tipo_sangre $t_tipo_sangre)
+    public function update(Request $request, $id)
     {
-        //
+        $datos = request()->except(['_token','_method']);
+        t_tipo_sangre::where('id','=',$id)->update($datos);
+        return redirect('tiposangre');
     }
 
     /**
@@ -78,8 +86,9 @@ class TTipoSangreController extends Controller
      * @param  \App\t_tipo_sangre  $t_tipo_sangre
      * @return \Illuminate\Http\Response
      */
-    public function destroy(t_tipo_sangre $t_tipo_sangre)
+    public function destroy($id)
     {
-        //
+        t_tipo_sangre::destroy($id);
+        return redirect('tiposangre');
     }
 }
