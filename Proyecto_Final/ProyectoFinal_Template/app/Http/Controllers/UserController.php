@@ -21,6 +21,14 @@ class UserController extends Controller
     {
         //return view('users.index', ['users' => $model->paginate(15)]);
         $datos = User::all();
+        if(auth()->user()->tipo == "superadmin"){
+            $datos = User::all();
+        }else if(auth()->user()->tipo == "administrador"){
+            $datos = DB::table('users')
+            ->select('users.*')
+            ->where('users.tipo', '<>', "superadmin")  
+            ->get();
+        }
         return view('medicos.index', compact('datos'));
     }
 

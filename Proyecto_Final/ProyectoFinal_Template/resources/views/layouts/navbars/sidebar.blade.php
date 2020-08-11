@@ -81,18 +81,25 @@
         </a>
       </li>
       @endif
-      <!--No seran visibles para medicos asociados-->
-      @if(tipo($tipo) != "4")
+      
       <li class="@if ($activePage == 'pacientes') active @endif">
         <a href="{{ route('pacientes.index') }}">
           <i class="now-ui-icons users_single-02"></i>
           <p>{{ __('Pacientes') }}</p>
         </a>
       </li>
+      <!--No seran visibles para medicos asociados-->
+      @if(tipo($tipo) != "4")
       <li class="@if ($activePage == 'citas') active @endif">
         <a href="{{ route('citas.index') }}">
           <i class="now-ui-icons education_agenda-bookmark"></i>
           <p>{{ __('Citas') }}</p>
+        </a>
+      </li>
+      <li class="@if ($activePage == 'calendario') active @endif">
+        <a href="{{ route('calendario.fullcalendar') }}">
+          <i class="now-ui-icons ui-1_calendar-60"></i>
+          <p>{{ __('Calendario') }}</p>
         </a>
       </li>
       
@@ -118,13 +125,13 @@
         </a>
       </li>
       @endif
-      <!--<li class="@if ($activePage == 'icons') active @endif">
+      <li class="@if ($activePage == 'icons') active @endif">
         <a href="{{ route('page.index','icons') }}">
           <i class="now-ui-icons education_atom"></i>
           <p>{{ __('Icons') }}</p>
         </a>
       </li>
-      <li class = "@if ($activePage == 'maps') active @endif">
+      <!--<li class = "@if ($activePage == 'maps') active @endif">
         <a href="{{ route('page.index','maps') }}">
           <i class="now-ui-icons location_map-big"></i>
           <p>{{ __('Maps') }}</p>

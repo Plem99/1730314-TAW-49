@@ -9,6 +9,7 @@
 @else
 
 <?php
+    //Cambio de nombre
     function cambio($sexo){
         if($sexo=="masculino"){
             echo "Hombre";
@@ -18,7 +19,7 @@
             echo "No especificado";
         }
     }
-
+    //Cambiar el nombre del tipo de medicos dependiendo de su valor en la bd
     function medicos($tipo){
         if($tipo=="superadmin"){
             echo "Super Administrador";
@@ -82,13 +83,13 @@
                                                         <td>{{$medico->telefono}}</td>
                                                         <td><?php medicos($medico->tipo)?> </td>
                                                         <td class="td-actions text-center">
-                                                            <a href="{{url('/medicos/'.$medico->id.'/edit')}}" rel="tooltip"  class="btn btn-outline-warning btn-round btn-icon"><i class="now-ui-icons ui-2_settings-90"></i></a>
-                                                            <a href="{{url('/medicos/'.$medico->id.'/profile')}}" rel="tooltip"  class="btn btn-outline-info btn-round btn-icon"><i class="now-ui-icons users_single-02"></i></a>
+                                                            <a href="{{url('/medicos/'.$medico->id.'/edit')}}" rel="tooltip"  class="btn btn-outline-warning btn-square btn-icon"><i class="now-ui-icons ui-2_settings-90"></i></a>
+                                                            <a href="{{url('/medicos/'.$medico->id.'/profile')}}" rel="tooltip"  class="btn btn-outline-info btn-square btn-icon"><i class="now-ui-icons users_single-02"></i></a>
                                                             <!--Eliminar empleado (icono)-->
                                                             <form action="{{url('/medicos/'.$medico->id)}}" method="POST">
                                                                 {{csrf_field()}}
                                                                 {{method_field('DELETE')}}
-                                                                <button style="padding: 5px;" onclick="return confirm('¿Borrar?');" rel="tooltip" class="btn btn-outline-danger btn-round btn-icon"><i class="now-ui-icons ui-1_simple-remove"></i></button>
+                                                                <button style="padding: 5px;" onclick="return confirm('¿Borrar?');" rel="tooltip" class="btn btn-outline-danger btn-square btn-icon"><i class="now-ui-icons ui-1_simple-remove"></i></button>
                                                             </form>
                                                         </td>
                                                     </tr>
@@ -102,26 +103,7 @@
                     </div>
                     <div style="display:flex;" id="vistas" class="tab-pane fade row">
                     @foreach($datos as $medico)
-                        <!--<div class="card" style="width:380px;padding: 20px;">
-                            <img class="card-img-top" src="../img/medico.png" alt="Card image" style="width:100%">
-                            <div class="card-body">
-                                <h4 class="card-title">{{$medico->nombre}}</h4>
-                                <h6 class="card-subtitle mb-2 text-muted">{{$medico->tipo}}</h6>
-                                <p class="card-text"><b>Sexo:</b> {{$medico->sexo}}</p>
-                                <p class="card-text"><b>Email:</b> {{$medico->email}}</p>
-                                <p class="card-text"><b>Teléfono:</b> {{$medico->telefono}}</p>
-                                <br>
-                                <div class="td-actions text-center">
-                                    <a href="{{url('/medicos/'.$medico->id.'/edit')}}" rel="tooltip"  class="btn btn-warning btn-round btn-icon"><i class="now-ui-icons ui-2_settings-90"></i></a>
-                                    <a href="{{url('/medicos/'.$medico->id.'/profile')}}" rel="tooltip"  class="btn btn-info btn-round btn-icon"><i class="now-ui-icons users_single-02"></i></a>
-                                    <form action="{{url('/medicos/'.$medico->id)}}" method="POST">
-                                        {{csrf_field()}}
-                                        {{method_field('DELETE')}}
-                                        <button style="padding: 5px;" onclick="return confirm('¿Borrar?');" rel="tooltip" class="btn btn-danger btn-round btn-icon"><i class="now-ui-icons ui-1_simple-remove"></i></button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>-->
+                        
                         <div class="col-md-4">
                         <div class="card card-user">
                         <div class="image">
@@ -141,12 +123,12 @@
                         </div>
                         <hr>
                         <div class="button-container">
-                            <a href="{{url('/medicos/'.$medico->id.'/edit')}}" rel="tooltip"  class="btn btn-outline-warning btn-round btn-icon "><i class="now-ui-icons ui-2_settings-90"></i></a>
-                            <a href="{{url('/medicos/'.$medico->id.'/profile')}}" rel="tooltip"  class="btn btn-outline-info btn-round btn-icon"><i class="now-ui-icons users_single-02"></i></a>
+                            <a href="{{url('/medicos/'.$medico->id.'/edit')}}" rel="tooltip"  class="btn btn-outline-warning btn-square btn-icon "><i class="now-ui-icons ui-2_settings-90"></i></a>
+                            <a href="{{url('/medicos/'.$medico->id.'/profile')}}" rel="tooltip"  class="btn btn-outline-info btn-square btn-icon"><i class="now-ui-icons users_single-02"></i></a>
                             <form action="{{url('/medicos/'.$medico->id)}}" method="POST">
                                 {{csrf_field()}}
                                 {{method_field('DELETE')}}
-                                <button onclick="return confirm('¿Borrar?');" rel="tooltip" class="btn btn-outline-danger btn-round btn-icon"><i class="now-ui-icons ui-1_simple-remove"></i></button>
+                                <button onclick="return confirm('¿Borrar?');" rel="tooltip" class="btn btn-outline-danger btn-square btn-icon"><i class="now-ui-icons ui-1_simple-remove"></i></button>
                             </form>
                         </div>
                         </div>

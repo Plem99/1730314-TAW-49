@@ -48,12 +48,12 @@
                                                         <td>{{$medicamento->nombre}}</td>
                                                         <td>{{$medicamento->descripcion}}</td>
                                                         <td style="display: flex;">
-                                                            <a href="{{url('/medicamentos/'.$medicamento->id.'/edit')}}" rel="tooltip"  class="btn btn-outline-warning btn-round btn-icon"><i class="now-ui-icons ui-2_settings-90"></i></a>
+                                                            <a href="{{url('/medicamentos/'.$medicamento->id.'/edit')}}" rel="tooltip"  class="btn btn-outline-warning btn-square btn-icon"><i class="now-ui-icons ui-2_settings-90"></i></a>
                                                             <!--Eliminar empleado (icono)-->
                                                             <form action="{{url('/medicamentos/'.$medicamento->id)}}" method="POST">
                                                                 {{csrf_field()}}
                                                                 {{method_field('DELETE')}}
-                                                                <button onclick="return confirm('¿Borrar?');" rel="tooltip" class="btn btn-outline-danger btn-round btn-icon"><i class="now-ui-icons ui-1_simple-remove"></i></button>
+                                                                <button onclick="return confirm('¿Borrar?');" rel="tooltip" class="btn btn-outline-danger btn-square btn-icon"><i class="now-ui-icons ui-1_simple-remove"></i></button>
                                                             </form>
                                                         </td>
                                                     </tr>
@@ -76,11 +76,11 @@
                                 <p class="card-text">{{$medicamento->descripcion}}</p>
                                 <hr>
                                 <div style="display: flex;">
-                                    <a href="{{url('/medicamentos/'.$medicamento->id.'/edit')}}" rel="tooltip"  class="btn btn-outline-warning btn-round btn-icon "><i class="now-ui-icons ui-2_settings-90"></i></a>
+                                    <a href="{{url('/medicamentos/'.$medicamento->id.'/edit')}}" rel="tooltip"  class="btn btn-outline-warning btn-square btn-icon "><i class="now-ui-icons ui-2_settings-90"></i></a>
                                     <form action="{{url('/medicamentos/'.$medicamento->id)}}" method="POST">
                                         {{csrf_field()}}
                                         {{method_field('DELETE')}}
-                                        <button onclick="return confirm('¿Borrar?');" rel="tooltip" class="btn btn-outline-danger btn-round btn-icon"><i class="now-ui-icons ui-1_simple-remove"></i></button>
+                                        <button onclick="return confirm('¿Borrar?');" rel="tooltip" class="btn btn-outline-danger btn-square btn-icon"><i class="now-ui-icons ui-1_simple-remove"></i></button>
                                     </form>
                                 </div>
                             </div>

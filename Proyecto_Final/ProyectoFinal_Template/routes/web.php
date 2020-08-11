@@ -61,6 +61,12 @@ Route::resource('alergias', 'TAlergiaController');
 
 //Route::get('/home', 'HomeController@index')->name('home');
 
+//fullcalender
+Route::get('calendario/fullcalendar', ['as' => 'calendario.fullcalendar', 'uses' => 'FullCalendarController@index']);
+Route::post('calendario/fullcalendar/create','FullCalendarController@create');
+Route::post('calendario/fullcalendar/update','FullCalendarController@update');
+Route::post('calendario/fullcalendar/delete','FullCalendarController@destroy');
+
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);

@@ -19,7 +19,7 @@
                     <a type="button" class="btn btn-outline-info btn-round" href="{{ route('citas.create') }}" >
                         {{ __('Nueva Cita') }}
                     </a>
-                </div>
+                    </div>
                 <ul class="nav nav-tabs" style="padding: 20px;">
                     <li><a class="nav-link btn-outline-info border" id="tabvistas" data-toggle="tab" href="#vistas">Vista</a></li>
                     <li><a class="nav-link btn-outline-info border" id="tabtablas" data-toggle="tab" href="#tablas">Tabla</a></li>
@@ -52,12 +52,12 @@
                                                         <td>{{$cita->paciente}} {{$cita->pacienteapell}}</td>
                                                         <td>{{$cita->medico}} {{$cita->medicoApell}}</td>
                                                         <td style="display: flex;">
-                                                            <a href="{{url('/citas/'.$cita->id.'/edit')}}" rel="tooltip"  class="btn btn-outline-warning btn-round btn-icon"><i class="now-ui-icons ui-2_settings-90"></i></a>
+                                                            <a href="{{url('/citas/'.$cita->id.'/edit')}}" rel="tooltip"  class="btn btn-outline-warning btn-square btn-icon"><i class="now-ui-icons ui-2_settings-90"></i></a>
                                                             <!--Eliminar empleado (icono)-->
                                                             <form action="{{url('/citas/'.$cita->id)}}" method="POST">
                                                                 {{csrf_field()}}
                                                                 {{method_field('DELETE')}}
-                                                                <button onclick="return confirm('¿Borrar?');" rel="tooltip" class="btn btn-outline-danger btn-round btn-icon"><i class="now-ui-icons ui-1_simple-remove"></i></button>
+                                                                <button onclick="return confirm('¿Borrar?');" rel="tooltip" class="btn btn-outline-danger btn-square btn-icon"><i class="now-ui-icons ui-1_simple-remove"></i></button>
                                                             </form>
                                                         </td>
                                                     </tr>
@@ -111,12 +111,12 @@
                                 <p class="text-muted" align="justify">Cualquier duda favor de consultarlo con el médico a cargo, de ser posible llamar a su número teléfonico.</p>
                                 <hr>
                                 <div class="text-center" style="display: flex;">
-                                    <a href="{{url('/citas/'.$cita->id.'/edit')}}" rel="tooltip"  class="btn btn-outline-warning btn-round btn-icon"><i class="now-ui-icons ui-2_settings-90"></i></a>
+                                    <a href="{{url('/citas/'.$cita->id.'/edit')}}" rel="tooltip"  class="btn btn-outline-warning btn-square btn-icon"><i class="now-ui-icons ui-2_settings-90"></i></a>
                                     <!--Eliminar empleado (icono)-->
                                     <form action="{{url('/citas/'.$cita->id)}}" method="POST">
                                         {{csrf_field()}}
                                         {{method_field('DELETE')}}
-                                        <button onclick="return confirm('¿Borrar?');" rel="tooltip" class="btn btn-outline-danger btn-round btn-icon"><i class="now-ui-icons ui-1_simple-remove"></i></button>
+                                        <button onclick="return confirm('¿Borrar?');" rel="tooltip" class="btn btn-outline-danger btn-square btn-icon"><i class="now-ui-icons ui-1_simple-remove"></i></button>
                                     </form>
                                 </div>
                             </div>

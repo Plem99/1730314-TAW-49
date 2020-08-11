@@ -52,12 +52,12 @@
                                                         <td>{{$consultas->paciente}} {{$consultas->pacienteapell}}</td>
                                                         <td>{{$consultas->medico}} {{$consultas->medicoApell}}</td>
                                                         <td style="display: flex;">
-                                                            <a href="{{url('/consultas/'.$consultas->id.'/edit')}}" rel="tooltip"  class="btn btn-outline-info btn-round btn-icon"><i class="now-ui-icons education_glasses"></i></a>
+                                                            <a href="{{url('/consultas/'.$consultas->id.'/edit')}}" rel="tooltip"  class="btn btn-outline-info btn-square btn-icon"><i class="now-ui-icons education_glasses"></i></a>
                                                             <!--Eliminar empleado (icono)-->
                                                             <form action="{{url('/consultas/'.$consultas->id)}}" method="POST">
                                                                 {{csrf_field()}}
                                                                 {{method_field('DELETE')}}
-                                                                <button onclick="return confirm('¿Borrar?');" rel="tooltip" class="btn btn-outline-danger btn-round btn-icon"><i class="now-ui-icons ui-1_simple-remove"></i></button>
+                                                                <button onclick="return confirm('¿Borrar?');" rel="tooltip" class="btn btn-outline-danger btn-square btn-icon"><i class="now-ui-icons ui-1_simple-remove"></i></button>
                                                             </form>
                                                         </td>
                                                     </tr>
@@ -76,7 +76,7 @@
                         <div class="col-md-6 mb-4">
 
                         <!--Grid column-->
-                        <div class="col-md-10">
+                        <div class="col-md-12">
 
                         <!-- Card -->
                         <div class="card gradient-card">
@@ -111,12 +111,12 @@
                                 <p class="text-muted" align="justify">{{$consultas->descripcion}}</p>
                                 <hr>
                                 <div class="text-center" style="display: flex;">
-                                    <a href="{{url('/consultas/'.$consultas->id.'/edit')}}" rel="tooltip"  class="btn btn-outline-info btn-round btn-icon"><i class="now-ui-icons education_glasses"></i></a>
+                                    <a href="{{url('/consultas/'.$consultas->id.'/edit')}}" rel="tooltip"  class="btn btn-outline-info btn-square btn-icon"><i class="now-ui-icons education_glasses"></i></a>
                                     <!--Eliminar empleado (icono)-->
                                     <form action="{{url('/consultas/'.$consultas->id)}}" method="POST">
                                         {{csrf_field()}}
                                         {{method_field('DELETE')}}
-                                        <button onclick="return confirm('¿Borrar?');" rel="tooltip" class="btn btn-outline-danger btn-round btn-icon"><i class="now-ui-icons ui-1_simple-remove"></i></button>
+                                        <button onclick="return confirm('¿Borrar?');" rel="tooltip" class="btn btn-outline-danger btn-square btn-icon"><i class="now-ui-icons ui-1_simple-remove"></i></button>
                                     </form>
                                 </div>
                             </div>

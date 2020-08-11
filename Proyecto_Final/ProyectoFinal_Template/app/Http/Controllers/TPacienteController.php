@@ -18,11 +18,18 @@ class TPacienteController extends Controller
      */
     public function index()
     {
-        $datos = DB::table('t_pacientes')
+        if(auth()->user()->tipo == "superadmin"){
+            $datos = DB::table('t_pacientes')
+            ->join('users','users.id','=', 't_pacientes.id_medico')
+            ->select('t_pacientes.*','users.name AS mediconomb','users.apellidos AS medicoapell')  
+            ->get();
+        }else{
+            $datos = DB::table('t_pacientes')
             ->join('users','users.id','=', 't_pacientes.id_medico')
             ->select('t_pacientes.*','users.name AS mediconomb','users.apellidos AS medicoapell')
-            //->where('users.tipo', '<>', 'secretario')
+            ->where('users.id', '=', auth()->user()->id)  
             ->get();
+        }
         return view('pacientes.index', compact('datos'));
     }
 
