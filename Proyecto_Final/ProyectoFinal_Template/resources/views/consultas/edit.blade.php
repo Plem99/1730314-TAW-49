@@ -37,7 +37,7 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">{{'Paciente'}}</label>
                             <div class="col-sm-4">
-                                <select class="form-control" name="id_paciente" id="id_paciente">
+                                <select disabled class="form-control" name="id_paciente" id="id_paciente">
                                 @foreach($pacientes as $paciente)
                                     <option value="{{$paciente->id}}">{{$paciente->nombre}} {{$paciente->apellidos}}</option>
                                 @endforeach
@@ -60,10 +60,17 @@
                   <th>Descripcion</th>
                 </thead>
                 <tbody>
-                  @foreach($alergias as $alergia)
+                  @foreach($alergiasPac as $alergiaPac)
                     <tr>
-                      <td>{{$alergia->nombre}}</td>
-                      <td>{{$alergia->descripcion}}</td>
+                      <td>{{$alergiaPac->nombre}}</td>
+                      <td>{{$alergiaPac->descripcion}}</td>
+                      <td>
+                            <form action="{{url('/consultas/'.$alergiaPac->id.'/delete/'.$consultas->id)}}" method="POST">
+                                {{csrf_field()}}
+                                {{method_field('DELETE')}}
+                                <button style="padding: 5px;" onclick="return confirm('¿Borrar?');" rel="tooltip" class="btn btn-outline-danger btn-square btn-icon"><i class="now-ui-icons ui-1_simple-remove"></i></button>
+                            </form>
+                        </td>
                     </tr>
                   @endforeach
                 </tbody>
@@ -71,22 +78,25 @@
             </div>
             </div>
             </div>
-            <!--<form method="post" action="">-->
+            <form method="post" action="{{url('/consultas/'.$consultas->id.'/storeDatos')}}">
                     {{csrf_field()}}
-                    {{method_field('PATCH')}}
+                    
                 <div class="form-group ">
                     <br>
                     <br>
                     <div class="col-sm-12">
-                        <select class="form-control" name="id_paciente" id="id_paciente">
+                        <select class="form-control" name="id_alergia" id="id_alergia">
                             @foreach($alergias as $alergia)
                             <option value="{{$alergia->id}}">{{$alergia->nombre}}</option>
                             @endforeach
                         </select>
+                        @foreach($pacientes as $paciente)
+                        <input style="display: none;" id="id_paciente" class="form-control" name="id_paciente" value="{{$paciente->id}}" type="text" >
+                        @endforeach
                     </div>
                 </div>
             <button type="submit" class="btn btn-outline-success btn-round">+</button>
-            <!--</form>-->
+            </form>
             </div>
             </div>
             </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\t_pacalerg;
 use Illuminate\Http\Request;
 
@@ -36,6 +37,22 @@ class TPacalergController extends Controller
     public function store(Request $request)
     {
         //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeDatos(Request $request, $id)
+    {
+        //No mandaremos el _token
+        $datos = request()->except('_token');
+        //Insertar datos en el modelo
+        t_pacalerg::insert($datos);
+
+        return redirect('consultas/'.$id.'/edit');
     }
 
     /**
@@ -78,8 +95,10 @@ class TPacalergController extends Controller
      * @param  \App\t_pacalerg  $t_pacalerg
      * @return \Illuminate\Http\Response
      */
-    public function destroy(t_pacalerg $t_pacalerg)
+    public function destroy($id,$idconsulta)
     {
-        //
+        DB::table('t_pacalergs')->where('id_alergia', $id)->delete();
+        //t_pacalerg::destroy($id);
+        return redirect('consultas/'.$idconsulta.'/edit');
     }
 }

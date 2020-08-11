@@ -71,14 +71,23 @@ class TConsultaController extends Controller
     public function edit($id)
     {
         $consultas = t_consulta::findOrFail($id);
-        $pacientes = t_paciente::all();
-        $alergias = $datos = DB::table('t_pacalergs')
-            ->join('t_pacientes','t_pacientes.id','=', 't_pacalergs.id_paciente')
-            ->join('t_alergias','t_alergias.id','=', 't_pacalergs.id_alergia')
-            ->select('t_pacientes.*','t_alergias.*')
+        //$pacientes = t_paciente::all();
+        $pacientes = DB::table('t_pacientes')
+                ->join('t_consultas','t_consultas.id_paciente','=', 't_pacientes.id')
+                ->select('t_pacientes.*')
+                //->whereRaw('t_pacientes.id = "$id" ')
+                ->get();
+        $alergias = DB::table('t_alergias')
+            ->select('t_alergias.*')
             //->whereRaw('t_pacientes.id = "$id" ')
             ->get();
-        return view('consultas.edit',compact('consultas','pacientes','alergias'));
+        $alergiasPac = DB::table('t_pacalergs')
+            ->join('t_pacientes','t_pacientes.id','=', 't_pacalergs.id_paciente')
+            ->join('t_alergias','t_alergias.id','=', 't_pacalergs.id_alergia')
+            ->select('t_pacientes.*', 't_pacientes.id as idpac','t_alergias.*','t_alergias.id as idaler')
+            ->whereRaw('t_pacientes.id = t_pacalergs.id_paciente ')
+            ->get();
+        return view('consultas.edit',compact('consultas','pacientes','alergias','alergiasPac'));
     }
 
     /**

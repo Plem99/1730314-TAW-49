@@ -50,6 +50,9 @@ Route::resource('servicios', 'TServicioController');
 Route::resource('ventas', 'TVentaController');
 //Consultas
 Route::resource('consultas', 'TConsultaController');
+Route::post('consultas/{id}/storeDatos', 'TPacalergController@storeDatos');
+Route::get('consultas/{id}/storeDatos', 'TPacalergController@storeDatos');
+Route::delete('consultas/{id}/delete/{idconsulta}', 'TPacalergController@destroy');
 //Citas
 Route::resource('citas', 'TCitaController');
 //Alergias
